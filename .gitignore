@@ -1,0 +1,63 @@
+# Visual Studio / .NET
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+bin/
+obj/
+TestResults/
+*.trx
+
+# Publish
+.publish/
+*.publish
+
+# IDEs / editors
+.vscode/
+.idea/
+
+# NuGet / packaging
+packages/
+*.nupkg
+*.snupkg
+project.assets.json
+project.lock.json
+*.dbmdl
+
+# Secrets & env
+secrets.json
+.env
+appsettings*.Secrets.json
+appsettings.Development.json
+
+# Certificates / keys
+*.pfx
+*.pem
+*.key
+
+# Logs, caches, local files
+*.log
+*.cache
+*.local
+*.userprefs
+
+# Databases
+*.mdf
+*.ldf
+*.sqlite
+*.db
+
+# Coverage
+coverage/
+*.coverage
+coverage*.xml
+
+# Node / front-end
+node_modules/
+
+# OS files
+Thumbs.db
+Desktop.ini
