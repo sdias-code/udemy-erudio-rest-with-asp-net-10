@@ -1,4 +1,4 @@
-namespace RestWithAspNet10_Scaffold
+namespace RestApiAspNet10Scaffold
 {
     public class WeatherForecast
     {
