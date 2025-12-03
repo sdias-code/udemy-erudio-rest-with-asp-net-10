@@ -1,0 +1,6 @@
+@RestWithAspNet10_Scaffold_HostAddress = http://localhost:5120
+
+GET {{RestWithAspNet10_Scaffold_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
