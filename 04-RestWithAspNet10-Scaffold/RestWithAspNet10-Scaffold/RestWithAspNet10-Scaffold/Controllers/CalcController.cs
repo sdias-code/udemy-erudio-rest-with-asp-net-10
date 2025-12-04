@@ -20,12 +20,20 @@ namespace RestWithAspNet10_Scaffold.Controllers
         private bool IsNumeric(string strNumber)
         {
             double number;
-            return double.TryParse(strNumber, System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out number);
+
+            return double.TryParse(strNumber, 
+                System.Globalization.NumberStyles.Any, 
+                System.Globalization.NumberFormatInfo.InvariantInfo, 
+                out number);
         }
         private decimal ConvertToDecimal(string strNumber)
         {
             decimal decimalValue;
-            if (decimal.TryParse(strNumber, System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out decimalValue))
+
+            if (decimal.TryParse(strNumber, 
+                System.Globalization.NumberStyles.Any, 
+                System.Globalization.NumberFormatInfo.InvariantInfo, 
+                out decimalValue))
             {
                 return decimalValue;
             }
