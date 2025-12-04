@@ -12,8 +12,8 @@ namespace RestWithAspNet10_Scaffold.Controllers
         {
             if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
-                var sum = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
-                return Ok(sum.ToString());
+                var soma = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
+                return Ok(soma.ToString());
             }
             return BadRequest("Invalid Input");
         }
@@ -35,8 +35,8 @@ namespace RestWithAspNet10_Scaffold.Controllers
         {
             if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
-                var sub = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
-                return Ok(sub.ToString());
+                var div = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+                return Ok(div.ToString());
             }
 
             return BadRequest("Invalid Input");
@@ -47,8 +47,8 @@ namespace RestWithAspNet10_Scaffold.Controllers
         {
             if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
-                var sub = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
-                return Ok(sub.ToString());
+                var mult = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+                return Ok(mult.ToString());
             }
 
             return BadRequest("Invalid Input");
@@ -59,8 +59,8 @@ namespace RestWithAspNet10_Scaffold.Controllers
         {
             if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
-                var sub = (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber)) / 2;
-                return Ok(sub.ToString());
+                var media = (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber)) / 2;
+                return Ok(media.ToString());
             }
 
             return BadRequest("Invalid Input");
