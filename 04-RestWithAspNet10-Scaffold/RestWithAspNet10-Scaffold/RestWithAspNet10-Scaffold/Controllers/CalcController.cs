@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
+using RestWithAspNet10_Scaffold.Services;
+using RestWithAspNet10_Scaffold.Utils;
+
 
 namespace RestWithAspNet10_Scaffold.Controllers
 {
@@ -7,25 +10,32 @@ namespace RestWithAspNet10_Scaffold.Controllers
     [Route("[controller]")]
     public class CalcController : ControllerBase
     {
+        private readonly NumberService _service;
+        public CalcController(NumberService service)
+        {
+            _service = service;
+        }
+
         [HttpGet("soma/{firstNumber}/{secondNumber}")]
         public IActionResult GetSum(string firstNumber, string secondNumber)
         {
-            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
-            {
-                var soma = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
-                return Ok(soma.ToString());
-            }
+
+            var result = _service.Sum(firstNumber, secondNumber);
+
+            if (result.HasValue)
+                return Ok(result.Value);
+
             return BadRequest("Invalid Input");
+
         }
 
         [HttpGet("subtracao/{firstNumber}/{secondNumber}")]
         public IActionResult GetSub( string firstNumber, string secondNumber)
         {
-            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
-            {
-                var sub = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
-                return Ok(sub.ToString());
-            }
+            var result = _service.Subtract(firstNumber, secondNumber);
+
+            if (result.HasValue)
+                return Ok(result.Value);
 
             return BadRequest("Invalid Input");
         }
@@ -33,23 +43,21 @@ namespace RestWithAspNet10_Scaffold.Controllers
         [HttpGet("divisao/{firstNumber}/{secondNumber}")]
         public IActionResult GetDiv(string firstNumber, string secondNumber)
         {
-            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
-            {
-                var div = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
-                return Ok(div.ToString());
-            }
+            var result = _service.Divide(firstNumber, secondNumber);
 
-            return BadRequest("Invalid Input");
+            if (!result.HasValue)
+                return BadRequest("Invalid Input or division by zero");
+
+            return Ok(result.Value);
         }
 
         [HttpGet("multiplicacao/{firstNumber}/{secondNumber}")]
         public IActionResult GetMult(string firstNumber, string secondNumber)
         {
-            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
-            {
-                var mult = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
-                return Ok(mult.ToString());
-            }
+            var result = _service.Multiply(firstNumber, secondNumber);
+
+            if (result.HasValue)
+                return Ok(result.Value);
 
             return BadRequest("Invalid Input");
         }
@@ -57,11 +65,10 @@ namespace RestWithAspNet10_Scaffold.Controllers
         [HttpGet("media/{firstNumber}/{secondNumber}")]
         public IActionResult GetMedia(string firstNumber, string secondNumber)
         {
-            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
-            {
-                var media = (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber)) / 2;
-                return Ok(media.ToString());
-            }
+            var result = _service.Mean(firstNumber, secondNumber);
+
+            if (result.HasValue)
+                return Ok(result.Value);
 
             return BadRequest("Invalid Input");
         }
@@ -69,34 +76,20 @@ namespace RestWithAspNet10_Scaffold.Controllers
         [HttpGet("raiz/{number}")]
         public IActionResult GetSquareRoot(string number)
         {
-            if (IsNumeric(number))
+            try
             {
-                var squareRoot = Math.Sqrt((double)ConvertToDecimal(number));
-                return Ok(squareRoot.ToString());
+                var result = _service.SquareRoot(number);
+
+                if (result.HasValue)
+                    return Ok(result.Value);
+
+                return BadRequest("Invalid Input");
             }
-            return BadRequest("Invalid Input");
-        }
-        private bool IsNumeric(string strNumber)
-        {
-            double number;
-
-            return double.TryParse(strNumber, 
-                System.Globalization.NumberStyles.Any, 
-                System.Globalization.NumberFormatInfo.InvariantInfo, 
-                out number);
-        }
-        private decimal ConvertToDecimal(string strNumber)
-        {
-            decimal decimalValue;
-
-            if (decimal.TryParse(strNumber, 
-                System.Globalization.NumberStyles.Any, 
-                System.Globalization.NumberFormatInfo.InvariantInfo, 
-                out decimalValue))
+            catch (Exception ex)
             {
-                return decimalValue;
+                return BadRequest(ex.Message);
             }
-            return 0;
         }
+        
     }
 }
