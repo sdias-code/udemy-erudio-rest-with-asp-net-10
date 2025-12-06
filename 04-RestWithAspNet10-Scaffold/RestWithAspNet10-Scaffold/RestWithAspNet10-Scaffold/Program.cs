@@ -1,4 +1,5 @@
 using RestWithAspNet10_Scaffold.Services;
+using RestWithAspNet10_Scaffold.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSingleton<NumberService>();
+builder.Services.AddScoped<IPersonServices, PersonServicesImpl>();
 
 var app = builder.Build();
 
