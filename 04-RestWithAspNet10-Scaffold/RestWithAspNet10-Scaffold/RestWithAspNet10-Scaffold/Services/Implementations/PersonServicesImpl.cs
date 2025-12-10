@@ -31,11 +31,9 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
 
         public IEnumerable<Person> FindAll()
         {
-            return _context.Persons.ToList();            
+            return _context.Persons.ToList();        
 
-        }
-
-     
+        }     
 
         public Person? FindById(long id)
         {
@@ -44,7 +42,6 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
             return person;
 
             }
-
 
 
         public Person? Update(Person person)
