@@ -1,67 +1,69 @@
-﻿using RestWithAspNet10_Scaffold.Model;
+﻿using RestWithAspNet10_Scaffold.Data;
+using RestWithAspNet10_Scaffold.Model;
 
 namespace RestWithAspNet10_Scaffold.Services.Implementations
 {
     public class PersonServicesImpl : IPersonServices
     {
+        private readonly AppDbContext _context;
+        public PersonServicesImpl(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public Person Create(Person person)
         {
-            person.Id = new Random().Next(1, 1000);
+            _context.Persons.Add(person);
+            _context.SaveChanges();
             return person;
 
         }
 
         public void Delete(long id)
         {
-            
+            var person = _context.Persons.Find(id);
+            if (person != null)
+            {
+                _context.Persons.Remove(person);
+                _context.SaveChanges();
+            }
         }
 
-        public List<Person> FindAll()
+        public IEnumerable<Person> FindAll()
         {
-            var listPerson = ListMockPerson();
-
-            return listPerson;
+            return _context.Persons.ToList();            
 
         }
 
-        private List<Person> ListMockPerson()
+     
+
+        public Person? FindById(long id)
         {
-            var listPerson = new List<Person>();
-
-            listPerson.Add(new Person(new Random().Next(1, 1000), "John", "Doe", "Mahatam 123 street", "Male"));
-            listPerson.Add(new Person(new Random().Next(1, 1000), "Marcus", "Mara", "Xito 205 street", "Male"));
-            listPerson.Add(new Person(new Random().Next(1, 1000), "Fabio", "Lara", "Cravia 409 street", "Male"));
-            listPerson.Add(new Person(new Random().Next(1, 1000), "Fabricio", "Morrow", "Boroth 202 street", "Male"));
-
-            return listPerson;
-        }
-
-        public Person FindById(long id)
-        {
-            var person = MockPerso();
+            var person = _context.Persons.Find(id);
 
             return person;
 
             }
 
-        private Person MockPerso()
+
+
+        public Person? Update(Person person)
         {
-            var person = new Person
-            {
+            var existingPerson = _context.Persons.Find(person.Id);
 
-                Id = new Random().Next(1,1000),
-                FirstName = "John",
-                LastName = "Doe",
-                Address = "Mahatam 123 street",
-                Gender = "Male"
-            };
+            if (existingPerson == null)
+                return null;
 
-            return person;
-        }
+            // Atualiza campos manualmente (mais seguro)
+            existingPerson.FirstName = person.FirstName;
+            existingPerson.LastName = person.LastName;
+            existingPerson.Address = person.Address;
+            existingPerson.Gender = person.Gender;
 
-        public Person Update(Person person)
-        {
-            return person;
-        }
+            _context.SaveChanges();
+            return existingPerson;
+        }    
+
+     
     }
 }

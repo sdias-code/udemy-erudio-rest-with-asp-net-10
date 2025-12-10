@@ -8,7 +8,7 @@ namespace RestWithAspNet10_Scaffold.Services
         Person? FindById(long id);
         IEnumerable<Person> FindAll();
         Person? Update(Person person);
-        bool Delete(long id);
+        void Delete(long id);
 
     }
 }
