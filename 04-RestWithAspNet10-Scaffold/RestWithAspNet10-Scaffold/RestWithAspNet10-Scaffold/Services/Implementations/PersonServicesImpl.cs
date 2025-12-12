@@ -57,6 +57,8 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
             existingPerson.Address = person.Address;
             existingPerson.Gender = person.Gender;
 
+            //_context.Entry(existingPerson).CurrentValues.SetValues(person);
+
             _context.SaveChanges();
             return existingPerson;
         }    

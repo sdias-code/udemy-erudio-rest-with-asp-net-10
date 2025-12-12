@@ -53,15 +53,14 @@ namespace RestWithAspNet10_Scaffold.Controllers
         public IActionResult Put(long id, [FromBody] Person person)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            // valida consistência do id
-            if (id != person.Id)
-                return BadRequest("ID do caminho não coincide com o ID do objeto.");
+                return BadRequest(ModelState);          
 
             var existing = _personServices.FindById(id);
+
             if (existing == null)
                 return NotFound();
+
+            person.Id = id;
 
             var updatedPerson = _personServices.Update(person);
 
