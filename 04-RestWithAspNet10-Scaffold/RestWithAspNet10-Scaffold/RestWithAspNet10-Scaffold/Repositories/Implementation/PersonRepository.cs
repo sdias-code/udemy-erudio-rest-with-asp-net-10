@@ -29,10 +29,8 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
         }
 
         public Person? FindById(long id)
-        {
-            var person = _context.Persons.Find(id);
-
-            return person;
+        { 
+            return _context.Persons.Find(id); ;
         }
 
         public IEnumerable<Person> FindAll()

@@ -12,6 +12,7 @@ namespace RestWithAspNet10_Scaffold.Data
 
         public DbSet<Person> Persons { get; set; }
         public DbSet<LogEvent> Logs { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

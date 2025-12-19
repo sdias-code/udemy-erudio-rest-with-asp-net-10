@@ -14,6 +14,8 @@ builder.Services.AddSingleton<NumberService>();
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IPersonServices, PersonServicesImplementation>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookServices, BookServicesImplemantation>();
 builder.Services.ConfigureSqlServer(builder.Configuration);
 
 
