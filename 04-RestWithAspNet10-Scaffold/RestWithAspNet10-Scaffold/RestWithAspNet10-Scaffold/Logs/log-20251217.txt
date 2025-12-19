@@ -1,0 +1,5 @@
+2025-12-17 03:01:43.234 -04:00 [INF] Now listening on: https://localhost:7286
+2025-12-17 03:01:43.285 -04:00 [INF] Now listening on: http://localhost:5120
+2025-12-17 03:01:43.373 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 03:01:43.377 -04:00 [INF] Hosting environment: Development
+2025-12-17 03:01:43.381 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold

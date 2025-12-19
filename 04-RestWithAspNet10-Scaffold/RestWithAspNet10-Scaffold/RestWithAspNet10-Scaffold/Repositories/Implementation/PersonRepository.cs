@@ -1,12 +1,12 @@
 ﻿using RestWithAspNet10_Scaffold.Data;
 using RestWithAspNet10_Scaffold.Model;
 
-namespace RestWithAspNet10_Scaffold.Services.Implementations
+namespace RestWithAspNet10_Scaffold.Repositories.Implementation
 {
-    public class PersonServicesImpl : IPersonServices
+    public class PersonRepository : IPersonRepository
     {
-        private readonly AppDbContext _context;
-        public PersonServicesImpl(AppDbContext context)
+        private AppDbContext _context;
+        public PersonRepository(AppDbContext context)
         {
             _context = context;
         }
@@ -16,7 +16,6 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
             _context.Persons.Add(person);
             _context.SaveChanges();
             return person;
-
         }
 
         public void Delete(long id)
@@ -29,20 +28,17 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
             }
         }
 
-        public IEnumerable<Person> FindAll()
-        {
-            return _context.Persons.ToList();        
-
-        }     
-
         public Person? FindById(long id)
         {
             var person = _context.Persons.Find(id);
 
             return person;
+        }
 
-            }
-
+        public IEnumerable<Person> FindAll()
+        {
+            return _context.Persons.ToList();
+        }        
 
         public Person? Update(Person person)
         {
@@ -61,8 +57,7 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
 
             _context.SaveChanges();
             return existingPerson;
-        }    
+        }
 
-     
     }
 }

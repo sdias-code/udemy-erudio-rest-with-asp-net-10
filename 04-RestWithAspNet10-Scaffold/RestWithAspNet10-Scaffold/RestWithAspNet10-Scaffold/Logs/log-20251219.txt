@@ -1,0 +1,20 @@
+2025-12-19 15:56:43.268 -04:00 [INF] Executing Migrate...
+2025-12-19 15:56:43.323 -04:00 [INF] Evolve initialized.
+2025-12-19 15:56:43.539 -04:00 [INF] No metadata found.
+2025-12-19 15:56:43.617 -04:00 [INF] Successfully applied migration V1__Create_Table_Person.sql in 18 ms.
+2025-12-19 15:56:43.630 -04:00 [INF] Successfully applied migration V2__Populate_Table_Person.sql in 8 ms.
+2025-12-19 15:56:43.640 -04:00 [INF] Database migrated to version 2. 2 migration(s) applied in 26 ms.
+2025-12-19 15:56:52.201 -04:00 [INF] Now listening on: https://localhost:7286
+2025-12-19 15:56:52.210 -04:00 [INF] Now listening on: http://localhost:5120
+2025-12-19 15:56:52.274 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-19 15:56:52.278 -04:00 [INF] Hosting environment: Development
+2025-12-19 15:56:52.281 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2025-12-19 16:08:23.713 -04:00 [INF] Executing Migrate...
+2025-12-19 16:08:23.768 -04:00 [INF] Evolve initialized.
+2025-12-19 16:08:23.995 -04:00 [INF] Metadata validated.
+2025-12-19 16:08:24.006 -04:00 [INF] Database is up to date. No migration needed.
+2025-12-19 16:08:24.321 -04:00 [INF] Now listening on: https://localhost:7286
+2025-12-19 16:08:24.327 -04:00 [INF] Now listening on: http://localhost:5120
+2025-12-19 16:08:24.408 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-19 16:08:24.411 -04:00 [INF] Hosting environment: Development
+2025-12-19 16:08:24.414 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
