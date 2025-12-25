@@ -9,20 +9,22 @@ namespace RestWithAspNet10_Scaffold.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private readonly IPersonServices _personServices;
+        private readonly IGenericService<Person> _service;
         private readonly ILogger<PersonController> _logger;
 
-
-        public PersonController(IPersonServices personServices, ILogger<PersonController> logger)
+        public PersonController(IGenericService<Person> service, ILogger<PersonController> logger)
         {
-            _personServices = personServices;
+            _service = service;
             _logger = logger;
         }
+
+
+       
 
         [HttpGet("{id:long}")]
         public IActionResult Get(long id)
         {
-            var person = _personServices.FindById(id);          
+            var person = _service.FindById(id);          
 
             return Ok(person);
         }
@@ -30,7 +32,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var persons = _personServices.FindAll();
+            var persons = _service.FindAll();
 
             _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");
 
@@ -50,7 +52,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var createdPerson = _personServices.Create(person);
+            var createdPerson = _service.Create(person);
 
             return CreatedAtAction(nameof(Get), new { id = createdPerson.Id }, createdPerson);
         }
@@ -64,13 +66,13 @@ namespace RestWithAspNet10_Scaffold.Controllers
             if (person.Id != 0 && person.Id != id)
                 return BadRequest("ID do corpo difere do ID da URL.");
 
-            var existing = _personServices.FindById(id);
+            var existing = _service.FindById(id);
             if (existing == null)
                 return NotFound();
 
             person.Id = id;
 
-            var updatedPerson = _personServices.Update(person);
+            var updatedPerson = _service.Update(person);
 
             return Ok(updatedPerson);
         }
@@ -78,12 +80,12 @@ namespace RestWithAspNet10_Scaffold.Controllers
         [HttpDelete("{id:long}")]
         public IActionResult Delete(long id)
         {
-            var existing = _personServices.FindById(id);
+            var existing = _service.FindById(id);
 
             if (existing == null)
                 return NotFound();
 
-            _personServices.Delete(id);
+            _service.Delete(id);
 
             return NoContent();
         }

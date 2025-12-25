@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithAspNet10_Scaffold.Model;
+using RestWithAspNet10_Scaffold.Services;
 using RestWithAspNet10_Scaffold.Services.Implementations;
 
 namespace RestWithAspNet10_Scaffold.Controllers
@@ -8,13 +9,13 @@ namespace RestWithAspNet10_Scaffold.Controllers
     [Route("api/[controller]")]
     public class BookController : ControllerBase
     {
-        private IBookServices _bookService;
+        private readonly IGenericService<Book> _service;
         private readonly ILogger<BookController> _logger;
 
-        public BookController(IBookServices bookService,
+        public BookController(IGenericService<Book> service,
             ILogger<BookController> logger)
         {
-            _bookService = bookService;
+            _service = service;
             _logger = logger;
         }
 
@@ -22,7 +23,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
         public IActionResult Get()
         {
             _logger.LogInformation("Fetching all books");
-            return Ok(_bookService.FindAll());
+            return Ok(_service.FindAll());
         }
 
         [HttpGet("{id}")]
@@ -30,7 +31,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
         {
             _logger.LogInformation("Fetching book with ID {id}", id);
 
-            var book = _bookService.FindById(id);
+            var book = _service.FindById(id);
           
             return Ok(book);
         }
@@ -40,7 +41,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
         {
             _logger.LogInformation("Creating new Book: {firstName}", book.Title);
 
-            var createdBook = _bookService.Create(book);
+            var createdBook = _service.Create(book);
 
             if (createdBook == null)
             {
@@ -56,7 +57,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
         {
             _logger.LogInformation("Updating book with ID {id}", book.Id);
 
-            var createdBook = _bookService.Update(book);
+            var createdBook = _service.Update(book);
 
             if (createdBook == null)
             {
@@ -72,7 +73,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
         public IActionResult Delete(int id)
         {
             _logger.LogInformation("Deleting book with ID {id}", id);
-            _bookService.Delete(id);
+            _service.Delete(id);
             _logger.LogDebug("Book with ID {id} deleted successfully", id);
             return NoContent();
         }

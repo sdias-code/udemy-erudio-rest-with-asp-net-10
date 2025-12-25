@@ -1,0 +1,163 @@
+2025-12-25 00:57:56.750 -04:00 [INF] Executing Migrate...
+2025-12-25 00:57:56.802 -04:00 [INF] Evolve initialized.
+2025-12-25 00:57:57.135 -04:00 [INF] Metadata validated.
+2025-12-25 00:57:57.147 -04:00 [INF] Database is up to date. No migration needed.
+2025-12-25 00:57:57.948 -04:00 [INF] Now listening on: https://localhost:7286
+2025-12-25 00:57:57.954 -04:00 [INF] Now listening on: http://localhost:5120
+2025-12-25 00:57:58.011 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-25 00:57:58.014 -04:00 [INF] Hosting environment: Development
+2025-12-25 00:57:58.017 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2025-12-25 00:58:15.836 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/book - null null
+2025-12-25 00:58:15.989 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 00:58:16.035 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-25 00:58:16.760 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-12-25 00:58:19.126 -04:00 [INF] Fetching all books
+2025-12-25 00:58:19.517 -04:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+2025-12-25 00:58:19.595 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.Model.Book, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-25 00:58:19.630 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 3586.7483ms
+2025-12-25 00:58:19.637 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 00:58:19.655 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/book - 200 null application/json; charset=utf-8 3832.428ms
+2025-12-25 00:58:30.714 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/book/4 - null null
+2025-12-25 00:58:30.722 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 00:58:30.735 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-25 00:58:32.688 -04:00 [INF] Fetching book with ID 4
+2025-12-25 00:58:32.806 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+WHERE [b].[id] = @p
+2025-12-25 00:58:32.812 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Book'.
+2025-12-25 00:58:32.816 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 2076.1889ms
+2025-12-25 00:58:32.820 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 00:58:32.824 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/book/4 - 200 null application/json; charset=utf-8 2109.6522ms
+2025-12-25 00:59:30.185 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/book - application/json 144
+2025-12-25 00:59:30.192 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2025-12-25 00:59:30.197 -04:00 [INF] Route matched with {action = "Post", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(RestWithAspNet10_Scaffold.Model.Book) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-25 00:59:30.235 -04:00 [INF] Creating new Book: JavaScript: The Good Parts 2
+2025-12-25 00:59:30.335 -04:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 8000) (DbType = AnsiString), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8000) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books] ([author], [launch_date], [price], [title])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3);
+2025-12-25 00:59:30.356 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Book'.
+2025-12-25 00:59:30.360 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold) in 158.6681ms
+2025-12-25 00:59:30.364 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2025-12-25 00:59:30.367 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/book - 200 null application/json; charset=utf-8 181.8406ms
+2025-12-25 00:59:40.320 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/book - null null
+2025-12-25 00:59:40.326 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 00:59:40.329 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-25 00:59:42.057 -04:00 [INF] Fetching all books
+2025-12-25 00:59:42.062 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+2025-12-25 00:59:42.067 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.Model.Book, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-25 00:59:42.070 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 1737.127ms
+2025-12-25 00:59:42.074 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 00:59:42.077 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/book - 200 null application/json; charset=utf-8 1757.8303ms
+2025-12-25 01:00:18.675 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/person - null null
+2025-12-25 01:00:18.682 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:00:18.687 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.PersonController (RestWithAspNet10-Scaffold).
+2025-12-25 01:00:18.701 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2025-12-25 01:00:18.711 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2025-12-25 01:00:18.715 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.Model.Person, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-25 01:00:18.720 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold) in 27.794ms
+2025-12-25 01:00:18.723 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:00:18.726 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/person - 200 null application/json; charset=utf-8 51.1196ms
+2025-12-25 01:00:33.234 -04:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7286/api/person/3 - null 0
+2025-12-25 01:00:33.242 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Put (RestWithAspNet10-Scaffold)'
+2025-12-25 01:00:33.246 -04:00 [INF] Route matched with {action = "Put", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Put(Int64, RestWithAspNet10_Scaffold.Model.Person) on controller RestWithAspNet10_Scaffold.Controllers.PersonController (RestWithAspNet10-Scaffold).
+2025-12-25 01:00:33.254 -04:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-12-25 01:00:33.271 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.PersonController.Put (RestWithAspNet10-Scaffold) in 20.6626ms
+2025-12-25 01:00:33.275 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Put (RestWithAspNet10-Scaffold)'
+2025-12-25 01:00:33.278 -04:00 [INF] Request finished HTTP/1.1 PUT https://localhost:7286/api/person/3 - 415 null application/problem+json; charset=utf-8 43.1712ms
+2025-12-25 01:01:19.453 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/person/3 - null null
+2025-12-25 01:01:19.461 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:01:19.466 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.PersonController (RestWithAspNet10-Scaffold).
+2025-12-25 01:01:21.351 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+WHERE [p].[id] = @p
+2025-12-25 01:01:21.357 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Person'.
+2025-12-25 01:01:21.360 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold) in 1887.1773ms
+2025-12-25 01:01:21.363 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:01:21.366 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/person/3 - 200 null application/json; charset=utf-8 1913.3357ms
+2025-12-25 01:02:01.753 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/person - application/json 126
+2025-12-25 01:02:01.760 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Post (RestWithAspNet10-Scaffold)'
+2025-12-25 01:02:01.765 -04:00 [INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(RestWithAspNet10_Scaffold.Model.Person) on controller RestWithAspNet10_Scaffold.Controllers.PersonController (RestWithAspNet10-Scaffold).
+2025-12-25 01:02:03.769 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 100) (DbType = AnsiString), @p1='?' (Size = 80) (DbType = AnsiString), @p2='?' (Size = 6) (DbType = AnsiString), @p3='?' (Size = 80) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [person] ([address], [first_name], [gender], [last_name])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3);
+2025-12-25 01:02:03.783 -04:00 [INF] Executing CreatedAtActionResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Person'.
+2025-12-25 01:02:03.805 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.PersonController.Post (RestWithAspNet10-Scaffold) in 2036.0637ms
+2025-12-25 01:02:03.810 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Post (RestWithAspNet10-Scaffold)'
+2025-12-25 01:02:03.814 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/person - 201 null application/json; charset=utf-8 2060.0911ms
+2025-12-25 01:02:10.749 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/person - null null
+2025-12-25 01:02:10.755 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:02:10.759 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.PersonController (RestWithAspNet10-Scaffold).
+2025-12-25 01:02:10.765 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2025-12-25 01:02:10.769 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2025-12-25 01:02:10.772 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.Model.Person, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-25 01:02:10.776 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold) in 12.0562ms
+2025-12-25 01:02:10.779 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:02:10.782 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/person - 200 null application/json; charset=utf-8 33.9375ms
+2025-12-25 01:02:37.610 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/person - application/json 121
+2025-12-25 01:02:37.617 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Post (RestWithAspNet10-Scaffold)'
+2025-12-25 01:02:37.620 -04:00 [INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(RestWithAspNet10_Scaffold.Model.Person) on controller RestWithAspNet10_Scaffold.Controllers.PersonController (RestWithAspNet10-Scaffold).
+2025-12-25 01:02:39.496 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 100) (DbType = AnsiString), @p1='?' (Size = 80) (DbType = AnsiString), @p2='?' (Size = 6) (DbType = AnsiString), @p3='?' (Size = 80) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [person] ([address], [first_name], [gender], [last_name])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3);
+2025-12-25 01:02:39.502 -04:00 [INF] Executing CreatedAtActionResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Person'.
+2025-12-25 01:02:39.506 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.PersonController.Post (RestWithAspNet10-Scaffold) in 1880.4414ms
+2025-12-25 01:02:39.510 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Post (RestWithAspNet10-Scaffold)'
+2025-12-25 01:02:39.514 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/person - 201 null application/json; charset=utf-8 1903.8481ms
+2025-12-25 01:03:02.648 -04:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:7286/api/person/5 - null null
+2025-12-25 01:03:02.655 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Delete (RestWithAspNet10-Scaffold)'
+2025-12-25 01:03:02.660 -04:00 [INF] Route matched with {action = "Delete", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Delete(Int64) on controller RestWithAspNet10_Scaffold.Controllers.PersonController (RestWithAspNet10-Scaffold).
+2025-12-25 01:03:04.650 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+WHERE [p].[id] = @p
+2025-12-25 01:03:11.314 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [person]
+OUTPUT 1
+WHERE [id] = @p0;
+2025-12-25 01:03:13.146 -04:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2025-12-25 01:03:13.149 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.PersonController.Delete (RestWithAspNet10-Scaffold) in 10483.5805ms
+2025-12-25 01:03:13.153 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Delete (RestWithAspNet10-Scaffold)'
+2025-12-25 01:03:13.156 -04:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:7286/api/person/5 - 204 null null 10507.9236ms
+2025-12-25 01:03:21.225 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/person/5 - null null
+2025-12-25 01:03:21.231 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:03:21.234 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.PersonController (RestWithAspNet10-Scaffold).
+2025-12-25 01:03:23.369 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+WHERE [p].[id] = @p
+2025-12-25 01:03:26.997 -04:00 [INF] Executing OkObjectResult, writing value of type 'null'.
+2025-12-25 01:03:27.002 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold) in 5762.7963ms
+2025-12-25 01:03:27.006 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:03:27.009 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/person/5 - 204 null null 5784.3126ms
+2025-12-25 01:03:42.423 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/person - null null
+2025-12-25 01:03:42.430 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:03:42.434 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.PersonController (RestWithAspNet10-Scaffold).
+2025-12-25 01:03:42.440 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2025-12-25 01:03:42.447 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2025-12-25 01:03:42.450 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.Model.Person, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-25 01:03:42.454 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold) in 14.8245ms
+2025-12-25 01:03:42.458 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.PersonController.Get (RestWithAspNet10-Scaffold)'
+2025-12-25 01:03:42.462 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/person - 200 null application/json; charset=utf-8 38.7383ms

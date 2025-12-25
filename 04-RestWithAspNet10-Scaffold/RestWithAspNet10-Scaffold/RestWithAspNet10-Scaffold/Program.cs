@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestWithAspNet10_Scaffold.Configurations;
 using RestWithAspNet10_Scaffold.Extensions;
+using RestWithAspNet10_Scaffold.Repositories;
 using RestWithAspNet10_Scaffold.Repositories.Implementation;
 using RestWithAspNet10_Scaffold.Services;
 using RestWithAspNet10_Scaffold.Services.Implementations;
@@ -12,10 +13,13 @@ builder.ConfigureSerilog();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<NumberService>();
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
-builder.Services.AddScoped<IPersonRepository, PersonRepository>();
-builder.Services.AddScoped<IPersonServices, PersonServicesImplementation>();
-builder.Services.AddScoped<IBookRepository, BookRepository>();
-builder.Services.AddScoped<IBookServices, BookServicesImplemantation>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+
+//builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+//builder.Services.AddScoped<IPersonServices, PersonServicesImplementation>();
+//builder.Services.AddScoped<IBookRepository, BookRepository>();
+//builder.Services.AddScoped<IBookServices, BookServicesImplemantation>();
 builder.Services.ConfigureSqlServer(builder.Configuration);
 
 
