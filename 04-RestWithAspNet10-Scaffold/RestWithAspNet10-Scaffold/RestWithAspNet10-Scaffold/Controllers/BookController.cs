@@ -52,21 +52,23 @@ namespace RestWithAspNet10_Scaffold.Controllers
             return Ok(createdBook);
         }
 
-        [HttpPut]
-        public IActionResult Put([FromBody] Book book)
+        [HttpPut("{id}")]
+        public IActionResult Put(long id, [FromBody] Book book)
         {
-            _logger.LogInformation("Updating book with ID {id}", book.Id);
+            if (book == null || book.Id != id)
+                return BadRequest("Id inconsistente.");
 
-            var createdBook = _service.Update(book);
+            _logger.LogInformation("Updating book with ID {id}", id);
 
-            if (createdBook == null)
-            {
-                _logger.LogError("Failed to update book with ID {id}", book.Id);
+            var exists = _service.FindById(id);
+            if (exists == null)
                 return NotFound();
-            }
-            _logger.LogDebug("Book updated successfully: {firstName}", createdBook.Title);
 
-            return Ok(createdBook);
+            var updated = _service.Update(book);
+
+            _logger.LogDebug("Book updated successfully: {title}", updated.Title);
+
+            return Ok(updated);
         }
 
         [HttpDelete("{id}")]

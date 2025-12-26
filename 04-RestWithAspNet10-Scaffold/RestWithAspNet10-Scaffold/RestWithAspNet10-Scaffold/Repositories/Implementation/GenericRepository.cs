@@ -21,11 +21,26 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             return entity;
         }
 
-        public T Update(T entity)
+        public T? Update(T entity)
         {
-            _dataset.Update(entity);
+            var entry = _context.Entry(entity);
+            var keyProp = entry.Property("Id");
+
+            if (keyProp.CurrentValue == null)
+                throw new InvalidOperationException("Entidade sem chave primária definida.");
+
+            var key = (long)keyProp.CurrentValue;
+
+            var current = _dataset.Find(key);
+
+            if (current == null)
+                return null;
+
+            _context.Entry(current).CurrentValues.SetValues(entity);
+
             _context.SaveChanges();
-            return entity;
+
+            return current;
         }
 
         public void Delete(long id)
@@ -44,7 +59,7 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
 
 
         public IEnumerable<T> FindAll()        
-            => _dataset.ToList();
+            => _dataset.AsNoTracking().ToList();
         
         public bool Exists(long id)
          => _dataset.Any(e => EF.Property<long>(e, "Id") == id);

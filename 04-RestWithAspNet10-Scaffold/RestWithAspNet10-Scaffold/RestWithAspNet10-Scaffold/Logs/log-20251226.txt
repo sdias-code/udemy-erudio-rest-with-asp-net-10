@@ -1,0 +1,210 @@
+2025-12-26 00:54:43.364 -04:00 [INF] Executing Migrate...
+2025-12-26 00:54:43.431 -04:00 [INF] Evolve initialized.
+2025-12-26 00:54:44.029 -04:00 [INF] Metadata validated.
+2025-12-26 00:54:44.048 -04:00 [INF] Database is up to date. No migration needed.
+2025-12-26 00:54:45.226 -04:00 [INF] Now listening on: https://localhost:7286
+2025-12-26 00:54:45.234 -04:00 [INF] Now listening on: http://localhost:5120
+2025-12-26 00:54:45.322 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 00:54:45.328 -04:00 [INF] Hosting environment: Development
+2025-12-26 00:54:45.333 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2025-12-26 00:55:43.384 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/book - null null
+2025-12-26 00:55:43.467 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 00:55:43.537 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 00:55:44.941 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-12-26 00:55:49.909 -04:00 [INF] Fetching all books
+2025-12-26 00:55:51.626 -04:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+2025-12-26 00:55:53.483 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.Model.Book, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-26 00:55:57.188 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 13637.7886ms
+2025-12-26 00:55:57.198 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 00:55:57.222 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/book - 200 null application/json; charset=utf-8 13850.1562ms
+2025-12-26 00:56:14.680 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/book/2 - null null
+2025-12-26 00:56:14.693 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 00:56:14.708 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 00:56:25.165 -04:00 [INF] Fetching book with ID 2
+2025-12-26 00:56:25.376 -04:00 [INF] Executed DbCommand (9ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+WHERE [b].[id] = @p
+2025-12-26 00:56:25.385 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Book'.
+2025-12-26 00:56:25.390 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 10676.0697ms
+2025-12-26 00:56:25.396 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 00:56:25.402 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/book/2 - 200 null application/json; charset=utf-8 10721.8924ms
+2025-12-26 00:56:58.189 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/book - application/json 144
+2025-12-26 00:56:58.198 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2025-12-26 00:56:58.207 -04:00 [INF] Route matched with {action = "Post", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(RestWithAspNet10_Scaffold.Model.Book) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 00:56:58.269 -04:00 [INF] Creating new Book: JavaScript: The Good Parts 3
+2025-12-26 00:56:58.425 -04:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 8000) (DbType = AnsiString), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8000) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books] ([author], [launch_date], [price], [title])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3);
+2025-12-26 00:56:58.463 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Book'.
+2025-12-26 00:56:58.468 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold) in 254.9234ms
+2025-12-26 00:56:58.476 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2025-12-26 00:56:58.481 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/book - 200 null application/json; charset=utf-8 292.3955ms
+2025-12-26 00:57:04.766 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/book - null null
+2025-12-26 00:57:04.774 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 00:57:04.779 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 00:57:04.785 -04:00 [INF] Fetching all books
+2025-12-26 00:57:04.792 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+2025-12-26 00:57:04.800 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.Model.Book, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-26 00:57:04.806 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 21.3458ms
+2025-12-26 00:57:04.811 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 00:57:04.816 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/book - 200 null application/json; charset=utf-8 50.4493ms
+2025-12-26 03:32:11.580 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/book - null null
+2025-12-26 03:32:11.588 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 03:32:11.593 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 03:32:11.600 -04:00 [INF] Fetching all books
+2025-12-26 03:32:12.723 -04:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+2025-12-26 03:32:12.731 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.Model.Book, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-26 03:32:12.736 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 1139.2977ms
+2025-12-26 03:32:12.740 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 03:32:12.744 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/book - 200 null application/json; charset=utf-8 1164.0058ms
+2025-12-26 03:34:13.701 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/book/2 - null null
+2025-12-26 03:34:13.708 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 03:34:13.711 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 03:34:13.716 -04:00 [INF] Fetching book with ID 2
+2025-12-26 03:34:13.729 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+WHERE [b].[id] = @p
+2025-12-26 03:34:13.734 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Book'.
+2025-12-26 03:34:13.737 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 22.3037ms
+2025-12-26 03:34:13.741 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 03:34:13.745 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/book/2 - 200 null application/json; charset=utf-8 43.208ms
+2025-12-26 03:34:18.721 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/book/17 - null null
+2025-12-26 03:34:18.728 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 03:34:18.731 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 03:34:18.736 -04:00 [INF] Fetching book with ID 17
+2025-12-26 03:34:18.740 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+WHERE [b].[id] = @p
+2025-12-26 03:34:18.745 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Book'.
+2025-12-26 03:34:18.749 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 14.0698ms
+2025-12-26 03:34:18.753 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2025-12-26 03:34:18.757 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/book/17 - 200 null application/json; charset=utf-8 36.0718ms
+2025-12-26 03:34:43.694 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/book - application/json 144
+2025-12-26 03:34:43.700 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2025-12-26 03:34:43.703 -04:00 [INF] Route matched with {action = "Post", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(RestWithAspNet10_Scaffold.Model.Book) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 03:34:43.710 -04:00 [INF] Creating new Book: JavaScript: The Good Parts 5
+2025-12-26 03:34:43.718 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 8000) (DbType = AnsiString), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8000) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books] ([author], [launch_date], [price], [title])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3);
+2025-12-26 03:34:43.723 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Book'.
+2025-12-26 03:34:43.727 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold) in 18.9433ms
+2025-12-26 03:34:43.731 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2025-12-26 03:34:43.734 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/book - 200 null application/json; charset=utf-8 40.7079ms
+2025-12-26 03:35:15.387 -04:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7286/api/book/18 - application/json 161
+2025-12-26 03:35:15.393 -04:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-12-26 03:35:15.397 -04:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-12-26 03:35:15.400 -04:00 [INF] Request finished HTTP/1.1 PUT https://localhost:7286/api/book/18 - 405 0 null 13.2082ms
+2025-12-26 03:38:24.406 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/book - application/json 144
+2025-12-26 03:38:24.413 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2025-12-26 03:38:24.417 -04:00 [INF] Route matched with {action = "Post", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(RestWithAspNet10_Scaffold.Model.Book) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 03:38:24.422 -04:00 [INF] Creating new Book: JavaScript: The Good Parts 5
+2025-12-26 03:38:24.473 -04:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (Size = 8000) (DbType = AnsiString), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8000) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books] ([author], [launch_date], [price], [title])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3);
+2025-12-26 03:38:24.479 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Book'.
+2025-12-26 03:38:24.483 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold) in 61.7654ms
+2025-12-26 03:38:24.486 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2025-12-26 03:38:24.490 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/book - 200 null application/json; charset=utf-8 83.99ms
+2025-12-26 03:39:00.491 -04:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7286/api/book/19 - application/json 165
+2025-12-26 03:39:00.499 -04:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-12-26 03:39:00.504 -04:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-12-26 03:39:00.508 -04:00 [INF] Request finished HTTP/1.1 PUT https://localhost:7286/api/book/19 - 405 0 null 16.3509ms
+2025-12-26 03:40:54.144 -04:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7286/api/book/19 - application/json 165
+2025-12-26 03:40:54.149 -04:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-12-26 03:40:54.152 -04:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-12-26 03:40:54.155 -04:00 [INF] Request finished HTTP/1.1 PUT https://localhost:7286/api/book/19 - 405 0 null 10.7654ms
+2025-12-26 03:41:36.115 -04:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7286/api/book/19 - application/json 165
+2025-12-26 03:41:36.122 -04:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-12-26 03:41:36.125 -04:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-12-26 03:41:36.128 -04:00 [INF] Request finished HTTP/1.1 PUT https://localhost:7286/api/book/19 - 405 0 null 13.3391ms
+2025-12-26 03:50:38.753 -04:00 [INF] Executing Migrate...
+2025-12-26 03:50:38.807 -04:00 [INF] Evolve initialized.
+2025-12-26 03:50:39.161 -04:00 [INF] Metadata validated.
+2025-12-26 03:50:39.172 -04:00 [INF] Database is up to date. No migration needed.
+2025-12-26 03:50:39.826 -04:00 [INF] Now listening on: https://localhost:7286
+2025-12-26 03:50:39.833 -04:00 [INF] Now listening on: http://localhost:5120
+2025-12-26 03:50:39.886 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 03:50:39.890 -04:00 [INF] Hosting environment: Development
+2025-12-26 03:50:39.893 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2025-12-26 03:51:06.689 -04:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7286/api/book/19 - application/json 165
+2025-12-26 03:51:06.737 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Put (RestWithAspNet10-Scaffold)'
+2025-12-26 03:51:06.767 -04:00 [INF] Route matched with {action = "Put", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Put(Int64, RestWithAspNet10_Scaffold.Model.Book) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 03:51:07.444 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-12-26 03:51:15.677 -04:00 [INF] Updating book with ID 19
+2025-12-26 03:51:21.787 -04:00 [INF] Executed DbCommand (5ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+WHERE [b].[id] = @p
+2025-12-26 03:57:28.537 -04:00 [INF] Executing Migrate...
+2025-12-26 03:57:28.589 -04:00 [INF] Evolve initialized.
+2025-12-26 03:57:28.827 -04:00 [INF] Metadata validated.
+2025-12-26 03:57:28.838 -04:00 [INF] Database is up to date. No migration needed.
+2025-12-26 03:57:29.141 -04:00 [INF] Now listening on: https://localhost:7286
+2025-12-26 03:57:29.147 -04:00 [INF] Now listening on: http://localhost:5120
+2025-12-26 03:57:29.198 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 03:57:29.201 -04:00 [INF] Hosting environment: Development
+2025-12-26 03:57:29.204 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2025-12-26 04:11:55.932 -04:00 [INF] Executing Migrate...
+2025-12-26 04:11:55.984 -04:00 [INF] Evolve initialized.
+2025-12-26 04:11:56.222 -04:00 [INF] Metadata validated.
+2025-12-26 04:11:56.234 -04:00 [INF] Database is up to date. No migration needed.
+2025-12-26 04:11:56.530 -04:00 [INF] Now listening on: https://localhost:7286
+2025-12-26 04:11:56.536 -04:00 [INF] Now listening on: http://localhost:5120
+2025-12-26 04:11:56.614 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 04:11:56.620 -04:00 [INF] Hosting environment: Development
+2025-12-26 04:11:56.623 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2025-12-26 04:17:57.604 -04:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7286/api/book/19 - application/json 165
+2025-12-26 04:17:57.648 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Put (RestWithAspNet10-Scaffold)'
+2025-12-26 04:17:57.676 -04:00 [INF] Route matched with {action = "Put", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Put(Int64, RestWithAspNet10_Scaffold.Model.Book) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 04:17:58.168 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-12-26 04:18:27.869 -04:00 [INF] Updating book with ID 19
+2025-12-26 04:18:34.366 -04:00 [INF] Executed DbCommand (6ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+WHERE [b].[id] = @p
+2025-12-26 04:26:50.559 -04:00 [INF] Executing Migrate...
+2025-12-26 04:26:50.615 -04:00 [INF] Evolve initialized.
+2025-12-26 04:26:50.846 -04:00 [INF] Metadata validated.
+2025-12-26 04:26:50.857 -04:00 [INF] Database is up to date. No migration needed.
+2025-12-26 04:26:51.170 -04:00 [INF] Now listening on: https://localhost:7286
+2025-12-26 04:26:51.175 -04:00 [INF] Now listening on: http://localhost:5120
+2025-12-26 04:26:51.227 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 04:26:51.230 -04:00 [INF] Hosting environment: Development
+2025-12-26 04:26:51.232 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2025-12-26 04:27:28.591 -04:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7286/api/book/19 - application/json 165
+2025-12-26 04:27:28.635 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Put (RestWithAspNet10-Scaffold)'
+2025-12-26 04:27:28.662 -04:00 [INF] Route matched with {action = "Put", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Put(Int64, RestWithAspNet10_Scaffold.Model.Book) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2025-12-26 04:27:29.137 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-12-26 04:27:32.624 -04:00 [INF] Updating book with ID 19
+2025-12-26 04:27:33.682 -04:00 [INF] Executed DbCommand (5ms) [Parameters=[@p='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+WHERE [b].[id] = @p
+2025-12-26 04:32:53.146 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (Size = 8000) (DbType = AnsiString), @p1='?' (Size = 8000) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Books] SET [author] = @p0, [title] = @p1
+OUTPUT 1
+WHERE [id] = @p2;
+2025-12-26 04:33:05.782 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.Model.Book'.
+2025-12-26 04:33:05.797 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Put (RestWithAspNet10-Scaffold) in 337126.6853ms
+2025-12-26 04:33:05.805 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Put (RestWithAspNet10-Scaffold)'
+2025-12-26 04:33:05.818 -04:00 [INF] Request finished HTTP/1.1 PUT https://localhost:7286/api/book/19 - 200 null application/json; charset=utf-8 337231.2466ms

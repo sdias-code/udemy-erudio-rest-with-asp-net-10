@@ -16,10 +16,6 @@ builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environme
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 
-//builder.Services.AddScoped<IPersonRepository, PersonRepository>();
-//builder.Services.AddScoped<IPersonServices, PersonServicesImplementation>();
-//builder.Services.AddScoped<IBookRepository, BookRepository>();
-//builder.Services.AddScoped<IBookServices, BookServicesImplemantation>();
 builder.Services.ConfigureSqlServer(builder.Configuration);
 
 
