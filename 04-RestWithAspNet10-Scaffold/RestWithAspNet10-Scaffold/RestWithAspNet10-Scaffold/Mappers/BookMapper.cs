@@ -11,7 +11,8 @@ namespace RestWithAspNet10_Scaffold.Mappers
             {
                 Title = dto.Title,
                 Author = dto.Author,
-                Price = dto.Price
+                Price = dto.Price,
+                LaunchDate = dto.LaunchDate
             };
         }
 
@@ -20,8 +21,10 @@ namespace RestWithAspNet10_Scaffold.Mappers
             return new BookResponseDTO
             {
                 Id = b.Id,
-                Title = b.Title,
-                Author = b.Author
+                Title = b.Title!,
+                Author = b.Author!,
+                Price = b.Price,
+                LaunchDate = b.LaunchDate
             };
         }
     }

@@ -6,9 +6,14 @@ namespace RestWithAspNet10_Scaffold.DTOs.Book
     {
         [Required]
         public string Title { get; set; } = null!;
-        public string? Author { get; set; }
+
+        [Required]
+        public string Author { get; set; } = null!;
 
         [Range(0.01, double.MaxValue)]
         public decimal Price { get; set; }
+
+        [Required]
+        public DateTime LaunchDate { get; set; }
     }
 }

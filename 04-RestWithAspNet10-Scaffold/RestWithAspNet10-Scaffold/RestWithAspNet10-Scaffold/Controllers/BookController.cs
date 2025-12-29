@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestWithAspNet10_Scaffold.Model;
+using RestWithAspNet10_Scaffold.DTOs.Book;
 using RestWithAspNet10_Scaffold.Services;
-using RestWithAspNet10_Scaffold.Services.Implementations;
+
 
 namespace RestWithAspNet10_Scaffold.Controllers
 {
@@ -9,10 +9,10 @@ namespace RestWithAspNet10_Scaffold.Controllers
     [Route("api/[controller]")]
     public class BookController : ControllerBase
     {
-        private readonly IGenericService<Book> _service;
+        private readonly IBookService _service;
         private readonly ILogger<BookController> _logger;
 
-        public BookController(IGenericService<Book> service,
+        public BookController(IBookService service,
             ILogger<BookController> logger)
         {
             _service = service;
@@ -23,7 +23,12 @@ namespace RestWithAspNet10_Scaffold.Controllers
         public IActionResult Get()
         {
             _logger.LogInformation("Fetching all books");
-            return Ok(_service.FindAll());
+
+            var books = _service.FindAll();
+
+            if (!books.Any()) return NotFound();
+
+            return Ok(books);
         }
 
         [HttpGet("{id}")]
@@ -32,47 +37,41 @@ namespace RestWithAspNet10_Scaffold.Controllers
             _logger.LogInformation("Fetching book with ID {id}", id);
 
             var book = _service.FindById(id);
-          
+
+            if (book == null) return NotFound();
+
             return Ok(book);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Book book)
+        public IActionResult Post([FromBody] BookCreateDTO dto)
         {
-            _logger.LogInformation("Creating new Book: {firstName}", book.Title);
+            _logger.LogInformation("Creating new Book: {firstName}", dto.Title);
 
-            var createdBook = _service.Create(book);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            if (createdBook == null)
-            {
-                _logger.LogError("Failed to create book with name {firstName}", book.Title);
+            var created = _service.Create(dto);
 
-                return NotFound();
-            }
-            return Ok(createdBook);
+            return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody] Book book)
+        public IActionResult Put(long id, [FromBody] BookUpdateDTO dto)
         {
-            if (book == null || book.Id != id)
-                return BadRequest("Id inconsistente.");
+
+            if(!ModelState.IsValid) return BadRequest(ModelState);
 
             _logger.LogInformation("Updating book with ID {id}", id);
 
-            var exists = _service.FindById(id);
-            if (exists == null)
-                return NotFound();
+            dto.Id = id;
 
-            var updated = _service.Update(book);
-
-            _logger.LogDebug("Book updated successfully: {title}", updated.Title);
+            var updated = _service.Update(dto);
 
             return Ok(updated);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(long id)
         {
             _logger.LogInformation("Deleting book with ID {id}", id);
             _service.Delete(id);
