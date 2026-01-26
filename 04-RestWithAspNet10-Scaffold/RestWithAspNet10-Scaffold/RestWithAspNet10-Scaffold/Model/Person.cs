@@ -30,5 +30,8 @@ namespace RestWithAspNet10_Scaffold.Model
         [Column("gender", TypeName = "varchar(6)")]
         [MaxLength(6)]
         public string Gender { get; set; } = null!;
+
+        //[NotMapped]
+        //public DateTime? BirthDate { get; set; }
     }
 }

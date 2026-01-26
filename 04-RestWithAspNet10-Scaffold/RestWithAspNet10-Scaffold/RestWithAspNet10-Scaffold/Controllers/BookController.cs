@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestWithAspNet10_Scaffold.DTOs.Book;
+using RestWithAspNet10_Scaffold.DTOs.V1.Book;
 using RestWithAspNet10_Scaffold.Services;
 
 
 namespace RestWithAspNet10_Scaffold.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v1")]
     public class BookController : ControllerBase
     {
         private readonly IBookService _service;

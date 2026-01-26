@@ -1,4 +1,4 @@
-﻿using RestWithAspNet10_Scaffold.DTOs.Person;
+﻿using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using RestWithAspNet10_Scaffold.Model;
 
 namespace RestWithAspNet10_Scaffold.Mappers

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithAspNet10_Scaffold.Model;
 using RestWithAspNet10_Scaffold.Services;
-using Serilog;
+
 
 namespace RestWithAspNet10_Scaffold.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v1")]
     [ApiController]
     public class PersonController : ControllerBase
     {

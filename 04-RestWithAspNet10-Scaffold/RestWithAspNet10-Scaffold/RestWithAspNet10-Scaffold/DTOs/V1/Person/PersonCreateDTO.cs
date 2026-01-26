@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RestWithAspNet10_Scaffold.DTOs.Person
+namespace RestWithAspNet10_Scaffold.DTOs.V1.Person
 {
     public class PersonCreateDTO
     {

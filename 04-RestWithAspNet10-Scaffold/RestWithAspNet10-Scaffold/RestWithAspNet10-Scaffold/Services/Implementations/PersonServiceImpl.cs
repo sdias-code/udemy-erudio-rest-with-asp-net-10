@@ -1,4 +1,4 @@
-﻿using RestWithAspNet10_Scaffold.DTOs.Person;
+﻿using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using RestWithAspNet10_Scaffold.Mappers;
 using RestWithAspNet10_Scaffold.Repositories;
 

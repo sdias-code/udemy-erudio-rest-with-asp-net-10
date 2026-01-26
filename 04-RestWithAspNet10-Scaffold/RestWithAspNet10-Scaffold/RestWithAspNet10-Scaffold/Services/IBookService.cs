@@ -1,4 +1,4 @@
-﻿using RestWithAspNet10_Scaffold.DTOs.Book;
+﻿using RestWithAspNet10_Scaffold.DTOs.V1.Book;
 
 namespace RestWithAspNet10_Scaffold.Services
 {

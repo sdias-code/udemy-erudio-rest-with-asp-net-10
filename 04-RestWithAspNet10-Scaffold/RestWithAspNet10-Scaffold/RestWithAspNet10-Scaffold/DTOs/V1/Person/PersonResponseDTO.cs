@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace RestWithAspNet10_Scaffold.DTOs.Person
+﻿namespace RestWithAspNet10_Scaffold.DTOs.V1.Person
 {
-    public class PersonUpdateDTO
+    public class PersonResponseDTO
     {
-        [Required]
         public long Id { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

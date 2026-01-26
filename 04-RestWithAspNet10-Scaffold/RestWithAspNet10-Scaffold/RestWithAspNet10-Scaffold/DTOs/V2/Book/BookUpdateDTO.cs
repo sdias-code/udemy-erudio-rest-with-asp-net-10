@@ -1,4 +1,4 @@
-﻿namespace RestWithAspNet10_Scaffold.DTOs.Book
+﻿namespace RestWithAspNet10_Scaffold.DTOs.V2.Book
 {
     public class BookUpdateDTO
     {
