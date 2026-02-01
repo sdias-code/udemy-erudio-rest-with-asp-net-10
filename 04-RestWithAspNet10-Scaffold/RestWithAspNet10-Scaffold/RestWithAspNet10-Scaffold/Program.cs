@@ -12,7 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.ConfigureSerilog();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddContentNegotiation();
+
 builder.Services.AddSingleton<NumberService>();
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();

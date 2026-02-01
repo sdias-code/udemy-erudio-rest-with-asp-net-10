@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithAspNet10_Scaffold.DTOs.V2.Person;
-using RestWithAspNet10_Scaffold.Model;
 using RestWithAspNet10_Scaffold.Services;
 
 
@@ -36,7 +35,6 @@ namespace RestWithAspNet10_Scaffold.Controllers.V2
             var persons = _service.FindAll();
 
             _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");
-
 
             if (persons == null || !persons.Any())
                 return NotFound();
