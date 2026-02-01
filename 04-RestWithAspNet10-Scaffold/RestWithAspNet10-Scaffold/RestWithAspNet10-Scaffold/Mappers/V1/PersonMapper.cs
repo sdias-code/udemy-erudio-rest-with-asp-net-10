@@ -1,7 +1,7 @@
 ﻿using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using RestWithAspNet10_Scaffold.Model;
 
-namespace RestWithAspNet10_Scaffold.Mappers
+namespace RestWithAspNet10_Scaffold.Mappers.V1
 {
     public static class PersonMapper
     {

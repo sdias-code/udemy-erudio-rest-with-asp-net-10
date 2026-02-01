@@ -1,0 +1,66 @@
+2026-02-01 03:12:11.949 -04:00 [INF] Executing Migrate...
+2026-02-01 03:12:12.017 -04:00 [INF] Evolve initialized.
+2026-02-01 03:12:12.459 -04:00 [INF] Metadata validated.
+2026-02-01 03:12:12.475 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-01 03:12:13.626 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-01 03:12:13.633 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-01 03:12:13.711 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-01 03:12:13.715 -04:00 [INF] Hosting environment: Development
+2026-02-01 03:12:13.719 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-01 03:16:54.846 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/v2/person - application/json 123
+2026-02-01 03:16:54.901 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Post (RestWithAspNet10-Scaffold)'
+2026-02-01 03:16:54.956 -04:00 [INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonCreateDTO) on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-01 03:16:55.943 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-02-01 03:16:56.272 -04:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 100) (DbType = AnsiString), @p1='?' (Size = 80) (DbType = AnsiString), @p2='?' (Size = 6) (DbType = AnsiString), @p3='?' (Size = 80) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [person] ([address], [first_name], [gender], [last_name])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3);
+2026-02-01 03:16:56.312 -04:00 [INF] Executing CreatedAtActionResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO'.
+2026-02-01 03:16:56.357 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Post (RestWithAspNet10-Scaffold) in 1390.9724ms
+2026-02-01 03:16:56.363 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Post (RestWithAspNet10-Scaffold)'
+2026-02-01 03:16:56.379 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/v2/person - 201 null application/json; charset=utf-8 1541.6361ms
+2026-02-01 03:18:32.352 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v2/person - null null
+2026-02-01 03:18:32.359 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-01 03:18:32.364 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-01 03:18:32.607 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2026-02-01 03:18:32.617 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2026-02-01 03:18:32.621 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-01 03:18:32.625 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold) in 256.562ms
+2026-02-01 03:18:32.629 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-01 03:18:32.632 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v2/person - 200 null application/json; charset=utf-8 280.7412ms
+2026-02-01 03:19:09.075 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v2/person - null null
+2026-02-01 03:19:09.082 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-01 03:19:09.085 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-01 03:19:52.135 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2026-02-01 03:22:42.416 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2026-02-01 03:22:51.124 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-01 03:23:03.480 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold) in 234391.1806ms
+2026-02-01 03:23:03.485 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-01 03:23:03.490 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v2/person - 200 null application/json; charset=utf-8 234414.8071ms
+2026-02-01 03:23:56.552 -04:00 [INF] Executing Migrate...
+2026-02-01 03:23:56.604 -04:00 [INF] Evolve initialized.
+2026-02-01 03:23:56.835 -04:00 [INF] Metadata validated.
+2026-02-01 03:23:56.846 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-01 03:23:57.135 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-01 03:23:57.140 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-01 03:23:57.194 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-01 03:23:57.197 -04:00 [INF] Hosting environment: Development
+2026-02-01 03:23:57.200 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-01 03:24:15.609 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v2/person - null null
+2026-02-01 03:24:15.655 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-01 03:24:15.678 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-01 03:24:18.214 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-02-01 03:24:18.546 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2026-02-01 03:24:18.602 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2026-02-01 03:24:18.609 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-01 03:24:18.629 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold) in 2942.3406ms
+2026-02-01 03:24:18.633 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-01 03:24:18.648 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v2/person - 200 null application/json; charset=utf-8 3045.135ms

@@ -1,14 +1,15 @@
-﻿using RestWithAspNet10_Scaffold.DTOs.V1.Person;
+﻿using RestWithAspNet10_Scaffold.DTOs.V2.Person;
 using RestWithAspNet10_Scaffold.Mappers;
+using RestWithAspNet10_Scaffold.Mappers.V2;
 using RestWithAspNet10_Scaffold.Repositories;
 
-namespace RestWithAspNet10_Scaffold.Services.Implementations
+namespace RestWithAspNet10_Scaffold.Services.Implementations.V2
 {
-    public class PersonServiceImpl: IPersonService
+    public class PersonServiceImplV2: IPersonServiceV2
     {
         private readonly IPersonRepository _repo;
 
-        public PersonServiceImpl(IPersonRepository repo)
+        public PersonServiceImplV2(IPersonRepository repo)
         {
             _repo = repo;
         }
@@ -28,21 +29,22 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
         {
             var entity = dto.ToEntity();
             return _repo.Create(entity).ToDTO();
-        }
+        }      
 
         public PersonResponseDTO Update(PersonUpdateDTO dto)
         {
             var entity = _repo.GetById(dto.Id);
 
-            if (entity == null) throw new Exception("Pessoa não encontrada");
+            if (entity == null)
+                throw new Exception("Pessoa não encontrada");
 
-            if (dto.FirstName != null) entity.FirstName = dto.FirstName;
-            if (dto.LastName != null) entity.LastName = dto.LastName;
-            if (dto.Address != null) entity.Address = dto.Address;
-            if (dto.Gender != null) entity.Gender = dto.Gender;
+            dto.ToEntity(entity);
 
-            return _repo.Update(entity).ToDTO();
+            _repo.Update(entity);
+
+            return entity.ToDTO();
         }
+
 
         public void Delete(long id) => _repo.Delete(id);
     }

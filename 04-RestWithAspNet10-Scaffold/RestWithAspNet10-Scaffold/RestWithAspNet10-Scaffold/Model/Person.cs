@@ -22,7 +22,7 @@ namespace RestWithAspNet10_Scaffold.Model
         public string LastName { get; set; } = null!;
 
         [Required]
-        [Column("address", TypeName = "varchar(100)")] // ✅ CORRIGIDO
+        [Column("address", TypeName = "varchar(100)")]
         [MaxLength(100)]
         public string Address { get; set; } = null!;
 

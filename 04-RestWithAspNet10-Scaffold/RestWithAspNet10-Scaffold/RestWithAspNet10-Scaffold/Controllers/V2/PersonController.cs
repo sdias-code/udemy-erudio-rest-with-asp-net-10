@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RestWithAspNet10_Scaffold.DTOs.V2.Person;
 using RestWithAspNet10_Scaffold.Model;
 using RestWithAspNet10_Scaffold.Services;
 
 
-namespace RestWithAspNet10_Scaffold.Controllers
+namespace RestWithAspNet10_Scaffold.Controllers.V2
 {
-    [Route("api/[controller]/v1")]
+    [Route("api/v2/[controller]")]
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private readonly IGenericService<Person> _service;
+        private readonly IPersonServiceV2 _service;
         private readonly ILogger<PersonController> _logger;
 
-        public PersonController(IGenericService<Person> service, ILogger<PersonController> logger)
+        public PersonController(IPersonServiceV2 service, ILogger<PersonController> logger)
         {
             _service = service;
             _logger = logger;
@@ -44,35 +45,33 @@ namespace RestWithAspNet10_Scaffold.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Person person)
-        {
-            if (person.Id != 0)
-                return BadRequest("ID não deve ser informado na criação.");
+        public IActionResult Post([FromBody] PersonCreateDTO dto)
+        {           
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var createdPerson = _service.Create(person);
+            var createdPerson = _service.Create(dto);
 
             return CreatedAtAction(nameof(Get), new { id = createdPerson.Id }, createdPerson);
         }
 
         [HttpPut("{id:long}")]
-        public IActionResult Put(long id, [FromBody] Person person)
+        public IActionResult Put(long id, [FromBody] PersonUpdateDTO dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (person.Id != 0 && person.Id != id)
+            if (dto.Id != 0 && dto.Id != id)
                 return BadRequest("ID do corpo difere do ID da URL.");
 
             var existing = _service.FindById(id);
             if (existing == null)
                 return NotFound();
 
-            person.Id = id;
+            dto.Id = id;
 
-            var updatedPerson = _service.Update(person);
+            var updatedPerson = _service.Update(dto);
 
             return Ok(updatedPerson);
         }
