@@ -1,0 +1,129 @@
+2026-02-02 00:05:56.620 -04:00 [INF] Executing Migrate...
+2026-02-02 00:05:56.683 -04:00 [INF] Evolve initialized.
+2026-02-02 00:05:57.181 -04:00 [INF] Metadata validated.
+2026-02-02 00:05:57.199 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-02 00:05:58.969 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-02 00:05:58.980 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-02 00:05:59.161 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.Model.Greeding'.
+System.InvalidOperationException: RestWithAspNet10_Scaffold.Model.Greeding cannot be serialized because it does not have a parameterless constructor.
+   at System.Xml.Serialization.TypeDesc.CheckSupported()
+   at System.Xml.Serialization.TypeScope.GetTypeDesc(Type type, MemberInfo source, Boolean directReference, Boolean throwOnError)
+   at System.Xml.Serialization.ModelScope.GetTypeModel(Type type, Boolean directReference)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-02 00:09:03.627 -04:00 [INF] Executing Migrate...
+2026-02-02 00:09:03.722 -04:00 [INF] Evolve initialized.
+2026-02-02 00:09:04.190 -04:00 [INF] Metadata validated.
+2026-02-02 00:09:04.214 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-02 00:09:04.878 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-02 00:09:04.890 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-02 00:13:29.475 -04:00 [INF] Executing Migrate...
+2026-02-02 00:13:29.541 -04:00 [INF] Evolve initialized.
+2026-02-02 00:13:29.834 -04:00 [INF] Metadata validated.
+2026-02-02 00:13:29.853 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-02 00:13:30.410 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-02 00:13:30.424 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-02 00:13:31.006 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-02 00:13:31.021 -04:00 [INF] Hosting environment: Development
+2026-02-02 00:13:31.027 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-02 00:15:04.659 -04:00 [INF] Executing Migrate...
+2026-02-02 00:15:04.719 -04:00 [INF] Evolve initialized.
+2026-02-02 00:15:05.064 -04:00 [INF] Metadata validated.
+2026-02-02 00:15:05.078 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-02 00:15:05.649 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-02 00:15:05.659 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-02 00:15:06.183 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-02 00:15:06.191 -04:00 [INF] Hosting environment: Development
+2026-02-02 00:15:06.197 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-02 00:20:21.640 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger - null null
+2026-02-02 00:20:21.900 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger - 301 null null 270.3326ms
+2026-02-02 00:20:21.904 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-02 00:20:22.041 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 136.9629ms
+2026-02-02 00:20:22.068 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/swagger-ui.css - null null
+2026-02-02 00:20:22.076 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/swagger-ui-bundle.js - null null
+2026-02-02 00:20:22.102 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-02 00:20:22.076 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.js - null null
+2026-02-02 00:20:22.102 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-02 00:20:22.076 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/swagger-ui-standalone-preset.js - null null
+2026-02-02 00:20:22.138 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.js - 200 null application/javascript;charset=utf-8 61.5552ms
+2026-02-02 00:20:22.076 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.css - null null
+2026-02-02 00:20:22.184 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/swagger-ui.css - 200 26248 text/css 116.9289ms
+2026-02-02 00:20:22.228 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/swagger-ui-standalone-preset.js - 200 77848 text/javascript 151.91ms
+2026-02-02 00:20:22.175 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 96.7267ms
+2026-02-02 00:20:22.189 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/swagger-ui-bundle.js - 200 424871 text/javascript 113.0624ms
+2026-02-02 00:20:22.267 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.css - 200 152 text/css 191.2367ms
+2026-02-02 00:20:22.306 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 227.4114ms
+2026-02-02 00:20:22.545 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-02 00:20:22.562 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/favicon-32x32.png - null null
+2026-02-02 00:20:22.579 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/favicon-32x32.png - 200 628 image/png 16.892ms
+2026-02-02 00:20:22.581 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 36.3915ms
+2026-02-02 00:31:46.043 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/Book/v1 - null null
+2026-02-02 00:31:46.054 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 00:31:46.076 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-02 00:31:46.449 -04:00 [INF] Fetching all books
+2026-02-02 00:31:46.888 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-02-02 00:31:48.177 -04:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+2026-02-02 00:31:48.250 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-02 00:31:48.272 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 2187.9293ms
+2026-02-02 00:31:48.276 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 00:31:48.289 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/Book/v1 - 200 null application/json; charset=utf-8 2246.4934ms
+2026-02-02 00:32:52.354 -04:00 [INF] Executing Migrate...
+2026-02-02 00:32:52.407 -04:00 [INF] Evolve initialized.
+2026-02-02 00:32:52.733 -04:00 [INF] Metadata validated.
+2026-02-02 00:32:52.744 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-02 00:32:53.756 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-02 00:32:53.762 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-02 00:32:54.040 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-02 00:32:54.043 -04:00 [INF] Hosting environment: Development
+2026-02-02 00:32:54.047 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-02 00:33:20.341 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-02 00:33:20.610 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 279.2432ms
+2026-02-02 00:33:20.627 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-02 00:33:20.627 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-02 00:33:20.656 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 29.1293ms
+2026-02-02 00:33:20.680 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 53.6602ms
+2026-02-02 00:33:20.733 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-02 00:33:20.773 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 40.2772ms
+2026-02-02 00:33:24.508 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-02 00:33:24.520 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 12.0016ms
+2026-02-02 00:33:24.531 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-02 00:33:24.534 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-02 00:33:24.545 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 10.9664ms
+2026-02-02 00:33:24.554 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.5207ms
+2026-02-02 00:33:24.588 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-02 00:33:24.600 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 11.5902ms
+2026-02-02 00:33:33.356 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-02 00:33:33.356 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-02 00:33:33.366 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 9.9123ms
+2026-02-02 00:33:33.377 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 21.438ms
+2026-02-02 00:33:33.409 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-02 00:33:33.419 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 10.2158ms
+2026-02-02 00:33:52.395 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/Book/v1 - null null
+2026-02-02 00:33:52.406 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 00:33:52.421 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-02 00:33:52.544 -04:00 [INF] Fetching all books
+2026-02-02 00:33:52.961 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-02-02 00:33:53.331 -04:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+2026-02-02 00:33:53.406 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-02 00:33:53.427 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 997.8311ms
+2026-02-02 00:33:53.430 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 00:33:53.442 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/Book/v1 - 200 null application/json; charset=utf-8 1047.5681ms
+2026-02-02 00:34:46.999 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/Book/v1 - null null
+2026-02-02 00:34:47.012 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 00:34:47.016 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-02 00:34:47.021 -04:00 [INF] Fetching all books
+2026-02-02 00:34:47.032 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [Books] AS [b]
+2026-02-02 00:34:47.063 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-02 00:34:47.087 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 66.7914ms
+2026-02-02 00:34:47.092 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 00:34:47.097 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/Book/v1 - 200 4197 application/xml; charset=utf-8 97.863ms
+2026-02-02 00:34:47.212 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/favicon.ico - null null
+2026-02-02 00:34:47.218 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/favicon.ico - 404 0 null 6.1038ms
+2026-02-02 00:34:47.225 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/favicon.ico, Response status code: 404

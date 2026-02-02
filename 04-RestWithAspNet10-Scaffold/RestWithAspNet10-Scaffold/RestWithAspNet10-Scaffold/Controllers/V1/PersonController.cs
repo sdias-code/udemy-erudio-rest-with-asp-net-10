@@ -5,7 +5,7 @@ using RestWithAspNet10_Scaffold.Services;
 
 namespace RestWithAspNet10_Scaffold.Controllers.V1
 {
-    [Route("api/[controller]/v1")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class PersonController : ControllerBase
     {

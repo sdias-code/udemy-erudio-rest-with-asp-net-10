@@ -15,6 +15,10 @@ builder.ConfigureSerilog();
 builder.Services.AddControllers()
     .AddContentNegotiation();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenAPIConfig();
+builder.Services.AddSwaggerConfig();
+
 builder.Services.AddSingleton<NumberService>();
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
@@ -35,5 +39,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseSwaggerConfig();
 
 app.Run();
