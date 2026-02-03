@@ -29,7 +29,7 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
             return Ok(person);
         }
 
-        [HttpGet]
+        [HttpGet]        
         public IActionResult Get()
         {
             var persons = _service.FindAll();

@@ -127,3 +127,50 @@ FROM [Books] AS [b]
 2026-02-02 00:34:47.212 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/favicon.ico - null null
 2026-02-02 00:34:47.218 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/favicon.ico - 404 0 null 6.1038ms
 2026-02-02 00:34:47.225 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/favicon.ico, Response status code: 404
+2026-02-02 21:53:26.653 -04:00 [INF] Executing Migrate...
+2026-02-02 21:53:26.707 -04:00 [INF] Evolve initialized.
+2026-02-02 21:53:27.142 -04:00 [INF] Metadata validated.
+2026-02-02 21:53:27.156 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-02 21:53:28.625 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-02 21:53:28.633 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-02 21:53:28.917 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-02 21:53:28.924 -04:00 [INF] Hosting environment: Development
+2026-02-02 21:53:28.929 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-02 23:39:35.429 -04:00 [INF] Executing Migrate...
+2026-02-02 23:39:35.491 -04:00 [INF] Evolve initialized.
+2026-02-02 23:39:35.795 -04:00 [INF] Metadata validated.
+2026-02-02 23:39:35.813 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-02 23:39:36.312 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-02 23:39:36.320 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-02 23:39:36.734 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-02 23:39:36.740 -04:00 [INF] Hosting environment: Development
+2026-02-02 23:39:36.746 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-02 23:40:08.479 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-02 23:40:08.479 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-02 23:40:08.538 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 68.6572ms
+2026-02-02 23:40:08.676 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 207.9825ms
+2026-02-02 23:40:08.802 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-02 23:40:08.884 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 82.1636ms
+2026-02-02 23:40:35.181 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v2/Person/1 - null null
+2026-02-02 23:40:35.203 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 23:40:35.235 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-02 23:40:36.373 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-02-02 23:40:36.976 -04:00 [INF] Executed DbCommand (7ms) [Parameters=[@id='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+WHERE [p].[id] = @id
+2026-02-02 23:40:37.060 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO'.
+2026-02-02 23:40:37.082 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold) in 1836.4086ms
+2026-02-02 23:40:37.086 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 23:40:37.100 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v2/Person/1 - 200 null application/json; charset=utf-8 1919.0073ms
+2026-02-02 23:41:11.246 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v2/Person - null null
+2026-02-02 23:41:11.267 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 23:41:11.274 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-02 23:41:11.317 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2026-02-02 23:41:11.324 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2026-02-02 23:41:11.330 -04:00 [WRN] No output formatter was found for content types '["text/plain"]' to write the response.
+2026-02-02 23:41:11.337 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold) in 55.5942ms
+2026-02-02 23:41:11.341 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-02 23:41:11.345 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v2/Person - 406 0 null 99.4879ms

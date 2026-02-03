@@ -17,32 +17,40 @@ namespace RestWithAspNet10_Scaffold.Controllers.V2
             _service = service;
             _logger = logger;
         }
-
-
        
 
         [HttpGet("{id:long}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PersonResponseDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get(long id)
         {
-            var person = _service.FindById(id);          
+            var person = _service.FindById(id);
+
+            if (person == null)
+                return NotFound();
 
             return Ok(person);
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<PersonResponseDTO>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]        
         public IActionResult Get()
         {
             var persons = _service.FindAll();
 
-            _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");
-
-            if (persons == null || !persons.Any())
-                return NotFound();
+            _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");            
 
             return Ok(persons);
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(PersonResponseDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]        
         public IActionResult Post([FromBody] PersonCreateDTO dto)
         {           
 
@@ -55,6 +63,10 @@ namespace RestWithAspNet10_Scaffold.Controllers.V2
         }
 
         [HttpPut("{id:long}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PersonResponseDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Put(long id, [FromBody] PersonUpdateDTO dto)
         {
             if (!ModelState.IsValid)
@@ -75,6 +87,10 @@ namespace RestWithAspNet10_Scaffold.Controllers.V2
         }
 
         [HttpDelete("{id:long}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Delete(long id)
         {
             var existing = _service.FindById(id);
