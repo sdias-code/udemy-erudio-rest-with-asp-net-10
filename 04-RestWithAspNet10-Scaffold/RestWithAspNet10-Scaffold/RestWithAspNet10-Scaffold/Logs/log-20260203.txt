@@ -1,0 +1,125 @@
+2026-02-03 12:25:23.544 -04:00 [INF] Executing Migrate...
+2026-02-03 12:25:23.592 -04:00 [INF] Evolve initialized.
+2026-02-03 12:25:23.817 -04:00 [INF] Metadata validated.
+2026-02-03 12:25:23.832 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-03 12:25:24.434 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-03 12:25:24.440 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-03 12:25:24.694 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-03 12:25:24.697 -04:00 [INF] Hosting environment: Development
+2026-02-03 12:25:24.701 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-03 12:25:25.223 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/ - null null
+2026-02-03 12:25:25.401 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/ - 404 null null 186.2689ms
+2026-02-03 12:25:25.417 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/, Response status code: 404
+2026-02-03 12:26:25.647 -04:00 [INF] Executing Migrate...
+2026-02-03 12:26:25.690 -04:00 [INF] Evolve initialized.
+2026-02-03 12:26:25.898 -04:00 [INF] Metadata validated.
+2026-02-03 12:26:25.908 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-03 12:26:26.252 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-03 12:26:26.258 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-03 12:26:26.455 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-03 12:26:26.458 -04:00 [INF] Hosting environment: Development
+2026-02-03 12:26:26.461 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-03 12:26:26.935 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger-ui/index.html - null null
+2026-02-03 12:26:27.080 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger-ui/index.html - 404 null null 153.7557ms
+2026-02-03 12:26:27.093 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/swagger-ui/index.html, Response status code: 404
+2026-02-03 12:26:39.959 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger - null null
+2026-02-03 12:26:39.974 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger - 301 null null 14.8048ms
+2026-02-03 12:26:39.977 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-03 12:26:40.055 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 78.2424ms
+2026-02-03 12:26:40.077 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/swagger-ui.css - null null
+2026-02-03 12:26:40.087 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.css - null null
+2026-02-03 12:26:40.087 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 12:26:40.087 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/swagger-ui-standalone-preset.js - null null
+2026-02-03 12:26:40.087 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.js - null null
+2026-02-03 12:26:40.087 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-03 12:26:40.108 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.css - 200 152 text/css 21.0743ms
+2026-02-03 12:26:40.087 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/swagger-ui-bundle.js - null null
+2026-02-03 12:26:40.129 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/swagger-ui-standalone-preset.js - 200 77848 text/javascript 42.2028ms
+2026-02-03 12:26:40.129 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.js - 200 null application/javascript;charset=utf-8 42.1562ms
+2026-02-03 12:26:40.120 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/swagger-ui.css - 200 26248 text/css 43.1741ms
+2026-02-03 12:26:40.125 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 37.3813ms
+2026-02-03 12:26:40.182 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/swagger-ui-bundle.js - 200 424871 text/javascript 95.4566ms
+2026-02-03 12:26:40.224 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 137.1072ms
+2026-02-03 12:26:40.567 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 12:26:40.585 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/favicon-32x32.png - null null
+2026-02-03 12:26:40.643 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/favicon-32x32.png - 200 628 image/png 57.7368ms
+2026-02-03 12:26:40.664 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 96.3249ms
+2026-02-03 12:27:09.113 -04:00 [INF] Executing Migrate...
+2026-02-03 12:27:09.157 -04:00 [INF] Evolve initialized.
+2026-02-03 12:27:09.390 -04:00 [INF] Metadata validated.
+2026-02-03 12:27:09.400 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-03 12:27:09.731 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-03 12:27:09.737 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-03 12:27:10.043 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-03 12:27:10.046 -04:00 [INF] Hosting environment: Development
+2026-02-03 12:27:10.048 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-03 12:27:10.447 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 12:27:10.447 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-03 12:27:10.482 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 42.4627ms
+2026-02-03 12:27:10.525 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 86.4093ms
+2026-02-03 12:27:10.839 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 12:27:10.932 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 92.9932ms
+2026-02-03 12:29:23.469 -04:00 [INF] Executing Migrate...
+2026-02-03 12:29:23.517 -04:00 [INF] Evolve initialized.
+2026-02-03 12:29:23.787 -04:00 [INF] Metadata validated.
+2026-02-03 12:29:23.797 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-03 12:29:24.226 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-03 12:29:24.232 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-03 12:29:24.487 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-03 12:29:24.490 -04:00 [INF] Hosting environment: Development
+2026-02-03 12:29:24.495 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-03 12:29:24.787 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-03 12:29:24.787 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 12:29:24.831 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 51.5188ms
+2026-02-03 12:29:24.872 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 95.5251ms
+2026-02-03 12:29:25.204 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 12:29:25.302 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 98.4117ms
+2026-02-03 12:29:52.915 -04:00 [INF] Executing Migrate...
+2026-02-03 12:29:52.964 -04:00 [INF] Evolve initialized.
+2026-02-03 12:29:53.219 -04:00 [INF] Metadata validated.
+2026-02-03 12:29:53.230 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-03 12:29:53.556 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-03 12:29:53.562 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-03 12:29:53.888 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-03 12:29:53.891 -04:00 [INF] Hosting environment: Development
+2026-02-03 12:29:53.895 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-03 12:29:54.195 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 12:29:54.195 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-03 12:29:54.231 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 41.5993ms
+2026-02-03 12:29:54.276 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 88.02ms
+2026-02-03 12:29:54.557 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 12:29:54.644 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 87.6195ms
+2026-02-03 12:30:21.353 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/ - null null
+2026-02-03 12:30:21.431 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/ - 307 null null 77.6671ms
+2026-02-03 12:30:21.434 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/ - null null
+2026-02-03 12:30:21.457 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/ - 404 null null 22.8171ms
+2026-02-03 12:30:21.468 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/, Response status code: 404
+2026-02-03 12:31:07.019 -04:00 [INF] Executing Migrate...
+2026-02-03 12:31:07.064 -04:00 [INF] Evolve initialized.
+2026-02-03 12:31:07.321 -04:00 [INF] Metadata validated.
+2026-02-03 12:31:07.332 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-03 12:31:07.648 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-03 12:31:08.017 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/swagger/index.html - null null
+2026-02-03 12:31:08.092 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-03 12:31:08.096 -04:00 [INF] Hosting environment: Development
+2026-02-03 12:31:08.104 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-03 12:31:08.157 -04:00 [WRN] Failed to determine the https port for redirect.
+2026-02-03 12:31:08.250 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/index.html - 200 null text/html;charset=utf-8 252.0675ms
+2026-02-03 12:31:08.267 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/swagger/swagger-ui.css - null null
+2026-02-03 12:31:08.277 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/swagger/index.css - null null
+2026-02-03 12:31:08.282 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/swagger/swagger-ui-standalone-preset.js - null null
+2026-02-03 12:31:08.289 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/_vs/browserLink - null null
+2026-02-03 12:31:08.289 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/swagger/index.js - null null
+2026-02-03 12:31:08.310 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/swagger-ui.css - 200 26248 text/css 44.0522ms
+2026-02-03 12:31:08.320 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/swagger-ui-standalone-preset.js - 200 77848 text/javascript 38.467ms
+2026-02-03 12:31:08.328 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/index.js - 200 null application/javascript;charset=utf-8 39.9142ms
+2026-02-03 12:31:08.279 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/swagger/swagger-ui-bundle.js - null null
+2026-02-03 12:31:08.357 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 12:31:08.353 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/index.css - 200 152 text/css 76.3231ms
+2026-02-03 12:31:08.382 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/_vs/browserLink - 200 null text/javascript; charset=UTF-8 93.6827ms
+2026-02-03 12:31:08.431 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 73.5751ms
+2026-02-03 12:31:08.436 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/swagger-ui-bundle.js - 200 424871 text/javascript 157.3742ms
+2026-02-03 12:31:08.849 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/swagger/v1/swagger.json - null null
+2026-02-03 12:31:08.867 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/swagger/favicon-32x32.png - null null
+2026-02-03 12:31:08.910 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/favicon-32x32.png - 200 628 image/png 42.3961ms
+2026-02-03 12:31:08.924 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.5632ms
