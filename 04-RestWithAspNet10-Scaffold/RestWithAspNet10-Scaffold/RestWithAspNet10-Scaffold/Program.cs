@@ -46,5 +46,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.UseSwaggerConfig();
+app.UseScalarConfig();
 
 app.Run();

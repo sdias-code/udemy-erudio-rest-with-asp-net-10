@@ -123,3 +123,167 @@
 2026-02-03 12:31:08.867 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5120/swagger/favicon-32x32.png - null null
 2026-02-03 12:31:08.910 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/favicon-32x32.png - 200 628 image/png 42.3961ms
 2026-02-03 12:31:08.924 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5120/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.5632ms
+2026-02-03 12:33:58.460 -04:00 [INF] Executing Migrate...
+2026-02-03 12:33:58.505 -04:00 [INF] Evolve initialized.
+2026-02-03 12:33:58.738 -04:00 [INF] Metadata validated.
+2026-02-03 12:33:58.749 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-03 12:33:59.102 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-03 12:33:59.107 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-03 12:33:59.342 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-03 12:33:59.347 -04:00 [INF] Hosting environment: Development
+2026-02-03 12:33:59.351 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-03 12:33:59.628 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-03 12:33:59.628 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 12:33:59.676 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 53.8442ms
+2026-02-03 12:33:59.720 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 99.5438ms
+2026-02-03 12:33:59.933 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 12:34:00.025 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 92.6435ms
+2026-02-03 12:34:13.321 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 12:34:13.449 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 127.9122ms
+2026-02-03 12:34:13.797 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/favicon.ico - null null
+2026-02-03 12:34:13.809 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/favicon.ico - 404 0 null 12.4157ms
+2026-02-03 12:34:13.819 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/favicon.ico, Response status code: 404
+2026-02-03 12:34:49.772 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 12:34:49.812 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 40.2353ms
+2026-02-03 12:48:21.870 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v2/person - null null
+2026-02-03 12:48:21.878 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 12:48:21.893 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-03 12:48:22.672 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-02-03 12:48:24.463 -04:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2026-02-03 12:48:24.746 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2026-02-03 12:48:24.755 -04:00 [WRN] No output formatter was found for content types '["text/plain"]' to write the response.
+2026-02-03 12:48:24.764 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold) in 2863.1091ms
+2026-02-03 12:48:24.769 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 12:48:24.992 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v2/person - 406 0 null 3122.0677ms
+2026-02-03 12:50:03.450 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v2/person - null null
+2026-02-03 12:50:03.457 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 12:50:03.460 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-03 12:50:03.470 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2026-02-03 12:50:03.476 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2026-02-03 12:50:03.479 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-03 12:50:03.492 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold) in 28.8222ms
+2026-02-03 12:50:03.497 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 12:50:03.502 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v2/person - 200 1161 application/xml; charset=utf-8 52.4019ms
+2026-02-03 12:51:18.960 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v2/person - null null
+2026-02-03 12:51:18.970 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 12:51:18.976 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-03 12:51:19.066 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+2026-02-03 12:51:19.071 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2026-02-03 12:51:19.075 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-03 12:51:19.087 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold) in 99.3419ms
+2026-02-03 12:51:19.091 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 12:51:19.094 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v2/person - 200 null application/json; charset=utf-8 133.8807ms
+2026-02-03 12:52:04.552 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/logtest - null null
+2026-02-03 12:52:04.559 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.LogTestController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 12:52:04.564 -04:00 [INF] Route matched with {action = "Get", controller = "LogTest"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller RestWithAspNet10_Scaffold.Controllers.LogTestController (RestWithAspNet10-Scaffold).
+2026-02-03 12:52:04.574 -04:00 [INF] LogTestController accessed at 03/02/2026 12:52:04
+2026-02-03 12:52:04.577 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-02-03 12:52:04.581 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.LogTestController.Get (RestWithAspNet10-Scaffold) in 11.6953ms
+2026-02-03 12:52:04.584 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.LogTestController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 12:52:04.588 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/logtest - 200 null text/plain; charset=utf-8 35.4727ms
+2026-02-03 15:47:16.339 -04:00 [INF] Executing Migrate...
+2026-02-03 15:47:16.384 -04:00 [INF] Evolve initialized.
+2026-02-03 15:47:16.659 -04:00 [INF] Metadata validated.
+2026-02-03 15:47:16.670 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-03 15:47:17.784 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-03 15:47:17.789 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-03 15:47:18.061 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-03 15:47:18.066 -04:00 [INF] Hosting environment: Development
+2026-02-03 15:47:18.071 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-03 15:47:18.300 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-03 15:47:18.300 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 15:47:18.359 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 66.7181ms
+2026-02-03 15:47:18.413 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 124.8016ms
+2026-02-03 15:47:18.638 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 15:47:18.719 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 81.8772ms
+2026-02-03 15:47:36.022 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar - null null
+2026-02-03 15:47:36.104 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-03 15:47:36.123 -04:00 [INF] Executing RedirectResult, redirecting to scalar/.
+2026-02-03 15:47:36.127 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-03 15:47:36.132 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar - 302 null null 109.9575ms
+2026-02-03 15:47:36.136 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/ - null null
+2026-02-03 15:47:36.153 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-03 15:47:36.287 -04:00 [INF] Write content with HTTP Response ContentType of text/html
+2026-02-03 15:47:36.298 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-03 15:47:36.304 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/ - 200 null text/html 168.9436ms
+2026-02-03 15:47:36.347 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/scalar.js - null null
+2026-02-03 15:47:36.351 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 15:47:36.351 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/scalar.aspnetcore.js - null null
+2026-02-03 15:47:36.351 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-03 15:47:36.368 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/scalar.js'
+2026-02-03 15:47:36.372 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 21.761ms
+2026-02-03 15:47:36.393 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/scalar.aspnetcore.js'
+2026-02-03 15:47:36.428 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 77.443ms
+2026-02-03 15:47:36.433 -04:00 [INF] Sending file with download name ''.
+2026-02-03 15:47:36.436 -04:00 [INF] Sending file with download name ''.
+2026-02-03 15:47:36.451 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/scalar.aspnetcore.js'
+2026-02-03 15:47:36.457 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/scalar.aspnetcore.js - 200 1111 text/javascript 106.8701ms
+2026-02-03 15:47:36.507 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/scalar.js'
+2026-02-03 15:47:36.512 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/scalar.js - 200 974175 text/javascript 164.6502ms
+2026-02-03 15:47:36.899 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/v1/swagger/swagger.json - null null
+2026-02-03 15:47:36.906 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/v1/swagger/swagger.json - 404 0 null 7.3428ms
+2026-02-03 15:47:36.914 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/v1/swagger/swagger.json, Response status code: 404
+2026-02-03 15:47:37.673 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/favicon.svg - null null
+2026-02-03 15:47:37.681 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/favicon.svg'
+2026-02-03 15:47:37.686 -04:00 [INF] Sending file with download name ''.
+2026-02-03 15:47:37.690 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/favicon.svg'
+2026-02-03 15:47:37.695 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/favicon.svg - 200 533 image/svg+xml 21.827ms
+2026-02-03 15:48:18.098 -04:00 [INF] Executing Migrate...
+2026-02-03 15:48:18.150 -04:00 [INF] Evolve initialized.
+2026-02-03 15:48:18.361 -04:00 [INF] Metadata validated.
+2026-02-03 15:48:18.372 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-03 15:48:18.788 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-03 15:48:18.794 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-03 15:48:18.991 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-03 15:48:18.994 -04:00 [INF] Hosting environment: Development
+2026-02-03 15:48:18.998 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-03 15:48:19.299 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-03 15:48:19.299 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 15:48:19.336 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 43.3462ms
+2026-02-03 15:48:19.376 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 84.2952ms
+2026-02-03 15:48:19.659 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 15:48:19.749 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 90.7699ms
+2026-02-03 15:48:33.199 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar - null null
+2026-02-03 15:48:33.273 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-03 15:48:33.283 -04:00 [INF] Executing RedirectResult, redirecting to scalar/.
+2026-02-03 15:48:33.287 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-03 15:48:33.292 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar - 302 null null 92.8496ms
+2026-02-03 15:48:33.295 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/ - null null
+2026-02-03 15:48:33.310 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-03 15:48:33.437 -04:00 [INF] Write content with HTTP Response ContentType of text/html
+2026-02-03 15:48:33.449 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-03 15:48:33.455 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/ - 200 null text/html 160.2667ms
+2026-02-03 15:48:33.472 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/scalar.js - null null
+2026-02-03 15:48:33.480 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/scalar.js'
+2026-02-03 15:48:33.483 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-03 15:48:33.483 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/scalar.aspnetcore.js - null null
+2026-02-03 15:48:33.491 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-03 15:48:33.501 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 18.3198ms
+2026-02-03 15:48:33.505 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/scalar.aspnetcore.js'
+2026-02-03 15:48:33.495 -04:00 [INF] Sending file with download name ''.
+2026-02-03 15:48:33.519 -04:00 [INF] Sending file with download name ''.
+2026-02-03 15:48:33.524 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 33.3715ms
+2026-02-03 15:48:33.526 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/scalar.aspnetcore.js'
+2026-02-03 15:48:33.566 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/scalar.aspnetcore.js - 200 1111 text/javascript 83.0627ms
+2026-02-03 15:48:33.570 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/scalar.js'
+2026-02-03 15:48:33.577 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/scalar.js - 200 974175 text/javascript 105.7199ms
+2026-02-03 15:48:33.946 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-03 15:48:33.978 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 32.0281ms
+2026-02-03 15:49:50.527 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v2/person/1 - null null
+2026-02-03 15:49:50.536 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 15:49:50.558 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.V2.PersonController (RestWithAspNet10-Scaffold).
+2026-02-03 15:49:51.344 -04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-02-03 15:49:51.784 -04:00 [INF] Executed DbCommand (6ms) [Parameters=[@id='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[id], [p].[address], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+WHERE [p].[id] = @id
+2026-02-03 15:49:51.846 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO'.
+2026-02-03 15:49:51.859 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold) in 1292.9433ms
+2026-02-03 15:49:51.862 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V2.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-03 15:49:51.872 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v2/person/1 - 200 null application/json; charset=utf-8 1345.5575ms
