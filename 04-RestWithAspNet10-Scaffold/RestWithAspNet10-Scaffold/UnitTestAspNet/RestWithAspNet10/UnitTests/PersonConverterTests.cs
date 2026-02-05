@@ -3,7 +3,7 @@ using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using RestWithAspNet10_Scaffold.Mappers.V1;
 using RestWithAspNet10_Scaffold.Model;
 
-namespace RestWithAspNet10
+namespace RestWithAspNet10.UnitTests
 {
     public class PersonConverterTests
     {       
