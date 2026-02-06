@@ -36,7 +36,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCorsConfiguration();
+app.UseCorsConfiguration(builder.Configuration);
 
 app.UseAuthorization();
 
