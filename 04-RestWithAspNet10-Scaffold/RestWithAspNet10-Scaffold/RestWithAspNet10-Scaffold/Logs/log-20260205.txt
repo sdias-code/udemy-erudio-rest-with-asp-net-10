@@ -1,0 +1,121 @@
+2026-02-05 19:06:36.153 -04:00 [INF] Executing Migrate...
+2026-02-05 19:06:36.197 -04:00 [INF] Evolve initialized.
+2026-02-05 19:06:36.545 -04:00 [INF] Metadata validated.
+2026-02-05 19:06:36.557 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-05 19:06:36.567 -04:00 [INF] Executing Migrate...
+2026-02-05 19:06:36.571 -04:00 [INF] Evolve initialized.
+2026-02-05 19:06:36.590 -04:00 [INF] Metadata validated.
+2026-02-05 19:06:36.598 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-05 19:06:37.850 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-05 19:06:37.859 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-05 19:06:38.087 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-05 19:06:38.091 -04:00 [INF] Hosting environment: Development
+2026-02-05 19:06:38.094 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-05 19:06:38.590 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-05 19:06:38.590 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-05 19:06:38.643 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 63.9784ms
+2026-02-05 19:06:38.772 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 193.637ms
+2026-02-05 19:06:38.939 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-05 19:06:39.035 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 96.1353ms
+2026-02-05 19:06:57.427 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-05 19:06:57.532 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 104.3843ms
+2026-02-05 19:06:57.914 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/favicon.ico - null null
+2026-02-05 19:06:57.927 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/favicon.ico - 404 0 null 12.7702ms
+2026-02-05 19:06:57.938 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/favicon.ico, Response status code: 404
+2026-02-05 19:14:24.684 -04:00 [INF] Executing Migrate...
+2026-02-05 19:14:24.729 -04:00 [INF] Evolve initialized.
+2026-02-05 19:14:24.990 -04:00 [INF] Metadata validated.
+2026-02-05 19:14:25.004 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-05 19:14:25.013 -04:00 [INF] Executing Migrate...
+2026-02-05 19:14:25.017 -04:00 [INF] Evolve initialized.
+2026-02-05 19:14:25.037 -04:00 [INF] Metadata validated.
+2026-02-05 19:14:25.044 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-05 19:14:25.411 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-05 19:14:25.417 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-05 19:14:25.637 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-05 19:14:25.643 -04:00 [INF] Hosting environment: Development
+2026-02-05 19:14:25.647 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-05 19:14:25.970 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-05 19:14:25.970 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-05 19:14:26.018 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 55.3904ms
+2026-02-05 19:14:26.064 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 103.8527ms
+2026-02-05 19:14:26.305 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-05 19:14:26.380 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.6876ms
+2026-02-05 19:14:38.083 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-05 19:14:38.193 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 110.5757ms
+2026-02-05 19:14:38.506 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/favicon.ico - null null
+2026-02-05 19:14:38.520 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/favicon.ico - 404 0 null 13.1834ms
+2026-02-05 19:14:38.532 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/favicon.ico, Response status code: 404
+2026-02-05 20:02:06.611 -04:00 [INF] Executing Migrate...
+2026-02-05 20:02:06.659 -04:00 [INF] Evolve initialized.
+2026-02-05 20:02:06.937 -04:00 [INF] Metadata validated.
+2026-02-05 20:02:06.949 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-05 20:02:06.958 -04:00 [INF] Executing Migrate...
+2026-02-05 20:02:06.961 -04:00 [INF] Evolve initialized.
+2026-02-05 20:02:06.984 -04:00 [INF] Metadata validated.
+2026-02-05 20:02:06.992 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-05 20:02:08.138 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-05 20:02:08.144 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-05 20:02:08.519 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-05 20:02:08.524 -04:00 [INF] Hosting environment: Development
+2026-02-05 20:02:08.529 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-05 20:02:08.814 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-05 20:02:08.815 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-05 20:02:08.856 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 45.3605ms
+2026-02-05 20:02:08.919 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 114.0323ms
+2026-02-05 20:02:09.231 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-05 20:02:09.357 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 126.5525ms
+2026-02-05 20:02:14.574 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/.well-known/appspecific/com.chrome.devtools.json - null null
+2026-02-05 20:02:14.596 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/.well-known/appspecific/com.chrome.devtools.json - 404 0 null 22.3958ms
+2026-02-05 20:02:14.608 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/.well-known/appspecific/com.chrome.devtools.json, Response status code: 404
+2026-02-05 20:02:33.630 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/.well-known/appspecific/com.chrome.devtools.json - null null
+2026-02-05 20:02:33.640 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/.well-known/appspecific/com.chrome.devtools.json - 404 0 null 9.661ms
+2026-02-05 20:02:33.649 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/.well-known/appspecific/com.chrome.devtools.json, Response status code: 404
+2026-02-05 20:31:06.973 -04:00 [INF] Executing Migrate...
+2026-02-05 20:31:07.020 -04:00 [INF] Evolve initialized.
+2026-02-05 20:31:07.278 -04:00 [INF] Metadata validated.
+2026-02-05 20:31:07.295 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-05 20:31:07.309 -04:00 [INF] Executing Migrate...
+2026-02-05 20:31:07.314 -04:00 [INF] Evolve initialized.
+2026-02-05 20:31:07.338 -04:00 [INF] Metadata validated.
+2026-02-05 20:31:07.346 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-05 20:31:07.804 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-05 20:31:07.810 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-05 20:31:08.060 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-05 20:31:08.063 -04:00 [INF] Hosting environment: Development
+2026-02-05 20:31:08.067 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-05 20:31:08.548 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-05 20:31:08.548 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-05 20:31:08.587 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 43.21ms
+2026-02-05 20:31:08.638 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 99.2378ms
+2026-02-05 20:31:08.920 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-05 20:31:09.015 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 95.2529ms
+2026-02-05 20:31:21.300 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-05 20:31:21.401 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 101.2091ms
+2026-02-05 20:31:21.820 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/favicon.ico - null null
+2026-02-05 20:31:21.834 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/favicon.ico - 404 0 null 13.9059ms
+2026-02-05 20:31:21.845 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/favicon.ico, Response status code: 404
+2026-02-05 20:31:51.994 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/index.html - null null
+2026-02-05 20:31:52.010 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-05 20:31:52.155 -04:00 [INF] Write content with HTTP Response ContentType of text/html
+2026-02-05 20:31:52.165 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/{documentName?}'
+2026-02-05 20:31:52.172 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/index.html - 200 null text/html 178.3059ms
+2026-02-05 20:31:52.211 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/scalar.js - null null
+2026-02-05 20:31:52.222 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/scalar.js'
+2026-02-05 20:31:52.229 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-05 20:31:52.235 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-05 20:31:52.229 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/scalar/scalar.aspnetcore.js - null null
+2026-02-05 20:31:52.257 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 27.5764ms
+2026-02-05 20:31:52.249 -04:00 [INF] Sending file with download name ''.
+2026-02-05 20:31:52.268 -04:00 [INF] Executing endpoint 'HTTP: GET /scalar/scalar.aspnetcore.js'
+2026-02-05 20:31:52.283 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.9246ms
+2026-02-05 20:31:52.288 -04:00 [INF] Sending file with download name ''.
+2026-02-05 20:31:52.310 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/scalar.aspnetcore.js'
+2026-02-05 20:31:52.337 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/scalar.aspnetcore.js - 200 1111 text/javascript 107.49ms
+2026-02-05 20:31:52.341 -04:00 [INF] Executed endpoint 'HTTP: GET /scalar/scalar.js'
+2026-02-05 20:31:52.352 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/scalar/scalar.js - 200 974175 text/javascript 141.061ms
+2026-02-05 20:31:52.733 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-05 20:31:52.760 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.5991ms
+2026-02-05 20:32:31.999 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/.well-known/appspecific/com.chrome.devtools.json - null null
+2026-02-05 20:32:32.007 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/.well-known/appspecific/com.chrome.devtools.json - 404 0 null 8.3384ms
+2026-02-05 20:32:32.027 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/.well-known/appspecific/com.chrome.devtools.json, Response status code: 404

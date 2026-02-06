@@ -9,14 +9,13 @@ namespace RestWithAspNet10.IntegrationTests.Tools
         public string ConnectionString => Container.GetConnectionString();
         public SqlServerFixture()
         {
-            Container = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2022-CU14-ubuntu-22.04")
-                .WithPassword("@Admin123")
+            Container = new MsSqlBuilder()                
                 .Build();
-            Container.StartAsync().GetAwaiter().GetResult();
         }
         public async Task InitializeAsync()
         {
             await Container.StartAsync();
+
             EvolveConfig.ExecuteMigrations(ConnectionString);
         }
         public async Task DisposeAsync()
