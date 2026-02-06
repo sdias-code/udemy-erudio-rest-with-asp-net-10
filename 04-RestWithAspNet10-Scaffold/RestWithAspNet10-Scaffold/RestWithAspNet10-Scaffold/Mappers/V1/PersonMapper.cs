@@ -10,10 +10,25 @@ namespace RestWithAspNet10_Scaffold.Mappers.V1
             return new Person
             {
                 FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Address = dto.Address,
+                LastName = dto.LastName
+                    ?? throw new ArgumentException("LastName é obrigatório"),
+
+                Address = dto.Address
+                    ?? throw new ArgumentException("Address é obrigatório"),
+
                 Gender = dto.Gender
+                    ?? throw new ArgumentException("Gender é obrigatório")
             };
+        }
+
+        public static Person ToEntity(this PersonUpdateDTO dto, Person entity)
+        {
+            entity.FirstName = dto.FirstName ?? entity.FirstName;
+            entity.LastName = dto.LastName ?? entity.LastName;
+            entity.Address = dto.Address ?? entity.Address;
+            entity.Gender = dto.Gender ?? entity.Gender;
+
+            return entity;
         }
 
         public static PersonResponseDTO ToDTO(this Person p)
@@ -22,7 +37,9 @@ namespace RestWithAspNet10_Scaffold.Mappers.V1
             {
                 Id = p.Id,
                 FirstName = p.FirstName,
-                LastName = p.LastName
+                LastName = p.LastName,
+                Address = p.Address,
+                Gender = p.Gender
             };
         }
     }

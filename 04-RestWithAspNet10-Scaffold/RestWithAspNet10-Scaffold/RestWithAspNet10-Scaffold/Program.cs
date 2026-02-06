@@ -15,9 +15,12 @@ builder.ConfigureSerilog();
 builder.Services.AddControllers()
     .AddContentNegotiation();
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenAPIConfig();
+builder.Services.AddCorsConfiguration(builder.Configuration);
 builder.Services.AddSwaggerConfig();
+builder.Services.AddOpenAPIConfig();
+builder.Services.AddRouteConfiguration();
+builder.Services.ConfigureSqlServer(builder.Configuration);
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSingleton<NumberService>();
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
@@ -27,25 +30,20 @@ builder.Services.AddScoped<IPersonServiceV2, PersonServiceImplV2>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookServiceImpl>();
 
-builder.Services.Configure<RouteOptions>(options =>
-{
-    options.LowercaseUrls = true;
-    options.LowercaseQueryStrings = true;
-});
-
-
-
-builder.Services.ConfigureSqlServer(builder.Configuration);
-
-
 var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
+app.UseCorsConfiguration();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
 app.UseSwaggerConfig();
+
 app.UseScalarConfig();
 
 app.Run();
