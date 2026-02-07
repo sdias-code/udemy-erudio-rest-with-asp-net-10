@@ -6,67 +6,60 @@ namespace RestWithAspNet10_Scaffold.Configurations
 {
     public static class EvolveConfig
     {
+        private static readonly List<string> DefaultLocations = new()
+        {
+            "db/migrations",
+            "db/dataset"
+        };
+
+        public static void ExecuteMigrations(string connectionString)
+        {
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new ArgumentNullException(nameof(connectionString));
+
+            try
+            {
+                using var connection = new SqlConnection(connectionString);
+
+                var evolve = new Evolve(
+                    connection,
+                    msg =>
+                    {
+                        Console.WriteLine($"[EVOLVE] {msg}");
+                        Log.Information(msg);
+                    })
+                {
+                    Locations = DefaultLocations,
+                    IsEraseDisabled = true,
+                    CommandTimeout = 60
+                };
+
+                evolve.Migrate();
+
+                Console.WriteLine("[EVOLVE] Migrations executed successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[EVOLVE] Migration failed");
+                Log.Error(ex, "Evolve migration failed");
+                throw;
+            }
+        }
+
+        // Opcional: usar no Program.cs se quiser
         public static IServiceCollection AddEvolveConfiguration(
             this IServiceCollection services,
             IConfiguration configuration,
             IWebHostEnvironment environment)
         {
-            if (environment.IsDevelopment())
-            {
-                var connectionString = configuration.GetConnectionString("DefaultConnection");
+            if (!environment.IsDevelopment())
+                return services;
 
-                if (string.IsNullOrEmpty(connectionString))
-                {
-                    throw new ArgumentNullException(
-                        "Connection string 'ConnectionString' not found.");
-                }
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-                try
-                {
-                    ExecuteMigrations(connectionString);
+            ExecuteMigrations(connectionString!);
 
-                    using var evolveConnection = new SqlConnection(connectionString);
-
-                    var evolve = new Evolve(
-                        evolveConnection,
-                        msg => Log.Information(msg))
-                    {
-                        Locations = new List<string> { "db/migrations", "db/dataset" },
-                        IsEraseDisabled = true
-                    };
-                    evolve.Migrate();
-                }
-                catch (Exception ex)
-                {
-                    Log.Error(ex, "An error occurred while migrating the database.");
-                    throw;
-                }
-            }
             return services;
         }
-
-        public static void ExecuteMigrations(string connectionString)
-        {
-            try
-            {              
-                using var evolveConnection = new SqlConnection(connectionString);
-                var evolve = new Evolve(
-                    evolveConnection,
-                    msg => Log.Information(msg))
-                {
-                    Locations = new List<string> { "db/migrations", "db/dataset" },
-                    IsEraseDisabled = true
-                };
-                evolve.Migrate();
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, "An error occurred while migrating the database.");
-                throw;
-            }
-        }
     }
-
-
 }
-

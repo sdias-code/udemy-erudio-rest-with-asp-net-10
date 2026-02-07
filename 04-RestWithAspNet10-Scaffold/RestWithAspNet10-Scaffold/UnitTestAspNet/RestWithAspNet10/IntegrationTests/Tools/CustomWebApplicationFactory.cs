@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.Extensions.DependencyInjection;
+using RestWithAspNet10_Scaffold.Data;
 
 namespace RestWithAspNet10.IntegrationTests.Tools
 {
@@ -18,20 +18,21 @@ namespace RestWithAspNet10.IntegrationTests.Tools
 
             protected override void ConfigureWebHost(IWebHostBuilder builder)
             {
-                builder.ConfigureAppConfiguration((context, config) =>
+            builder.ConfigureServices(services =>
+            {
+                // Remove o DbContext real
+                var descriptor = services.SingleOrDefault(
+                    d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
+
+                if (descriptor != null)
+                    services.Remove(descriptor);
+
+                // Registra usando o container
+                services.AddDbContext<AppDbContext>(options =>
                 {
-                    var configuration = new ConfigurationBuilder()
-                        .AddJsonFile("appsettings.json")
-                        .AddEnvironmentVariables()
-                        .Build();
-    
-                    // Override the connection string with the one provided in the constructor
-                    configuration["ConnectionStrings:DefaultConnection"] = _conectionString;
-
-                    config.AddConfiguration(configuration);
-
-                    //config.AddInMemoryCollection(configuration!);
+                    options.UseSqlServer(_conectionString);
                 });
+            });
         }
 
     }

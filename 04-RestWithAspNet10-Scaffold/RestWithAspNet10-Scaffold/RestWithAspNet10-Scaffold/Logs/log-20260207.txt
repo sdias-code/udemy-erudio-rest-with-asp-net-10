@@ -1,0 +1,15 @@
+2026-02-07 14:18:13.402 -04:00 [INF] Executing Migrate...
+2026-02-07 14:18:13.462 -04:00 [INF] Evolve initialized.
+2026-02-07 14:18:13.891 -04:00 [INF] Metadata validated.
+2026-02-07 14:18:13.910 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-07 14:18:14.798 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-07 14:18:14.805 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-07 14:18:15.048 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-07 14:18:15.051 -04:00 [INF] Hosting environment: Development
+2026-02-07 14:18:15.054 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-07 14:18:15.877 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-07 14:18:15.877 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-07 14:18:15.951 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 83.2981ms
+2026-02-07 14:18:16.218 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 351.0042ms
+2026-02-07 14:18:16.385 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-07 14:18:16.499 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 114.0034ms
