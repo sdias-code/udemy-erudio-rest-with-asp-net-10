@@ -31,6 +31,11 @@ namespace RestWithAspNet10_Scaffold.Model
         [MaxLength(6)]
         public string Gender { get; set; } = null!;
 
+        [Required]
+        [Column("enabled")]
+        public bool Enabled { get; set; } = true;
+
+
         //[NotMapped]
         //public DateTime? BirthDate { get; set; }
     }
