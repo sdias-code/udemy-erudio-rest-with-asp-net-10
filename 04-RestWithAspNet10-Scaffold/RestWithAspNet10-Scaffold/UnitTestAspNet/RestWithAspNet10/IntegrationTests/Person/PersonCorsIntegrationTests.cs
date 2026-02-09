@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
-using RestWithAspNet10.IntegrationTests.Tools;
+﻿using RestWithAspNet10.IntegrationTests.Tools;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using System.Net;
 using System.Net.Http.Json;
