@@ -4,7 +4,7 @@ using RestWithAspNet10_Scaffold.Repositories;
 
 namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
 {
-    public class PersonServiceImpl: IPersonService
+    public class PersonServiceImpl : IPersonService
     {
         private readonly IPersonRepository _repo;
 
@@ -39,27 +39,23 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
             if (dto.FirstName != null) entity.FirstName = dto.FirstName;
             if (dto.LastName != null) entity.LastName = dto.LastName;
             if (dto.Address != null) entity.Address = dto.Address;
-            if (dto.Gender != null) entity.Gender = dto.Gender;           
+            if (dto.Gender != null) entity.Gender = dto.Gender;
 
             return _repo.Update(entity).ToDTO();
         }
 
         public void Delete(long id) => _repo.Delete(id);
 
-        public PersonResponseDTO? Disable(long id)
-        {
-            
-            var entity = _repo.Disable(id);
-            return entity?.ToDTO();
-
-        }
 
         public PersonResponseDTO? Enable(long id)
         {
-
             var entity = _repo.Enable(id);
             return entity?.ToDTO();
-
+        }
+        public PersonResponseDTO? Disable(long id)
+        {
+            var entity = _repo.Disable(id);
+            return entity?.ToDTO();
         }
 
 

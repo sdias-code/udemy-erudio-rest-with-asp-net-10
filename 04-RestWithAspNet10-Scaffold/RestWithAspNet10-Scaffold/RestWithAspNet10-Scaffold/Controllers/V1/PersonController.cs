@@ -20,52 +20,73 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
         }       
 
         [HttpGet("{id:long}")]
-        public IActionResult Get(long id)
+        [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<PersonResponseDTO> Get(long id)
         {
-            var person = _service.FindById(id);          
+            var person = _service.FindById(id);
+
+            if (person == null)
+                return NotFound();
 
             return Ok(person);
         }
 
-        [HttpGet]        
-        public IActionResult Get()
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<PersonResponseDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public ActionResult<IEnumerable<PersonResponseDTO>> Get()
         {
             var persons = _service.FindAll();
 
-            _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");
-
-
-            if (persons == null || !persons.Any())
-                return NotFound();
+            _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");           
 
             return Ok(persons);
         }
 
         [HttpPatch("{id:long}/enable")]
-        public IActionResult Enable(long id)
+        [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
+        public ActionResult<PersonResponseDTO> Enable(long id)
         {
             var person = _service.Enable(id);
+
             if (person == null)
+            {
+                _logger.LogWarning("Tentativa de habilitar pessoa com ID {Id} falhou. Pessoa não encontrada.", id);
                 return NotFound();
+            }
+            
+            _logger.LogInformation("Pessoa com ID {Id} habilitada com sucesso.", id);
 
             return Ok(person);
         }
 
         [HttpPatch("{id:long}/disable")]
-        public IActionResult Disable(long id)
+        [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]       
+        public ActionResult<PersonResponseDTO> Disable(long id)
         {
             var person = _service.Disable(id);
             if (person == null)
+            {
+                _logger.LogWarning("Tentativa de desabilitar pessoa com ID {Id} falhou. Pessoa não encontrada.", id);
                 return NotFound();
+            }
+                
+            _logger.LogInformation("Pessoa com ID {Id} desabilitada com sucesso.", id);
 
             return Ok(person);
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Post([FromBody] PersonCreateDTO dto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);           
+        {                     
 
             var createdPerson = _service.Create(dto);
 
@@ -73,13 +94,15 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
         }
 
         [HttpPut("{id:long}")]
+        [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Put(long id, [FromBody] PersonUpdateDTO dto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        {            
 
-            if (dto.Id != 0 && dto.Id != id)
-                return BadRequest("ID do corpo difere do ID da URL.");
+            if (id != dto.Id)
+                return BadRequest("ID da rota diferente do body.");
 
             var existing = _service.FindById(id);
             if (existing == null)
@@ -93,6 +116,9 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
         }
 
         [HttpDelete("{id:long}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Delete(long id)
         {
             var existing = _service.FindById(id);
