@@ -6,7 +6,7 @@ namespace RestWithAspNet10_Scaffold.Mappers.V1
     public static class PersonMapper
     {
         public static Person ToEntity(this PersonCreateDTO dto)
-        {    
+        {
             return new Person
             {
                 FirstName = dto.FirstName,
@@ -17,7 +17,7 @@ namespace RestWithAspNet10_Scaffold.Mappers.V1
                     ?? throw new ArgumentException("Address é obrigatório"),
 
                 Gender = dto.Gender
-                    ?? throw new ArgumentException("Gender é obrigatório")
+                    ?? throw new ArgumentException("Gender é obrigatório")               
             };
         }
 
@@ -26,7 +26,7 @@ namespace RestWithAspNet10_Scaffold.Mappers.V1
             entity.FirstName = dto.FirstName ?? entity.FirstName;
             entity.LastName = dto.LastName ?? entity.LastName;
             entity.Address = dto.Address ?? entity.Address;
-            entity.Gender = dto.Gender ?? entity.Gender;
+            entity.Gender = dto.Gender ?? entity.Gender;            
 
             return entity;
         }
@@ -39,8 +39,10 @@ namespace RestWithAspNet10_Scaffold.Mappers.V1
                 FirstName = p.FirstName,
                 LastName = p.LastName,
                 Address = p.Address,
-                Gender = p.Gender
+                Gender = p.Gender,
+                Enabled = p.Enabled
             };
         }
+     
     }
 }

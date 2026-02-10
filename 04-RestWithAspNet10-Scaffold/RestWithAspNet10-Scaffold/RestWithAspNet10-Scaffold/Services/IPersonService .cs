@@ -6,6 +6,8 @@ namespace RestWithAspNet10_Scaffold.Services
     {
         PersonResponseDTO? FindById(long id);
         List<PersonResponseDTO> FindAll();
+        PersonResponseDTO? Enable(long id);
+        PersonResponseDTO? Disable(long id);
         PersonResponseDTO Create(PersonCreateDTO dto);
         PersonResponseDTO Update(PersonUpdateDTO dto);
         void Delete(long id);

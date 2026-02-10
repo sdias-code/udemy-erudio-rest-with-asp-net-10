@@ -17,7 +17,9 @@ namespace RestWithAspNet10_Scaffold.DTOs.V2.Person
 
 
         [JsonConverter(typeof(GenderSerializer))]
-        public string? Gender { get; set; }        
+        public string? Gender { get; set; }     
+        
+        public bool Enabled { get; set; }
 
     }
 }

@@ -5,7 +5,7 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
 {
     public class PersonRepository : IPersonRepository
     {
-        private readonly AppDbContext _context;
+        protected readonly AppDbContext _context;
 
         public PersonRepository(AppDbContext context)
         {
@@ -44,6 +44,32 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
                 _context.Persons.Remove(entity);
                 _context.SaveChanges();
             }
+        }
+
+        public Person? Disable(long id)
+        {
+            var entity = _context.Persons.FirstOrDefault(p => p.Id == id);
+
+            if (entity == null) return null;
+
+            entity.Enabled = false;
+            _context.SaveChanges();
+
+            return entity;
+
+        }
+
+        public Person? Enable(long id)
+        {
+            var entity = _context.Persons.FirstOrDefault(p => p.Id == id);
+
+            if (entity == null) return null;
+
+            entity.Enabled = true;
+            _context.SaveChanges();
+
+            return entity;
+
         }
     }
 }

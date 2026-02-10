@@ -41,6 +41,26 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
             return Ok(persons);
         }
 
+        [HttpPatch("{id:long}/enable")]
+        public IActionResult Enable(long id)
+        {
+            var person = _service.Enable(id);
+            if (person == null)
+                return NotFound();
+
+            return Ok(person);
+        }
+
+        [HttpPatch("{id:long}/disable")]
+        public IActionResult Disable(long id)
+        {
+            var person = _service.Disable(id);
+            if (person == null)
+                return NotFound();
+
+            return Ok(person);
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody] PersonCreateDTO dto)
         {
