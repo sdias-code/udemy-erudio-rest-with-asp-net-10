@@ -3,7 +3,7 @@ using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using System.Net;
 using System.Net.Http.Json;
 
-namespace RestWithAspNet10.IntegrationTests.Person
+namespace RestWithAspNet10.IntegrationTests.Person.JSON
 {
     [TestCaseOrderer("RestWithAspNet10.IntegrationTests.Tools.PriorityOrderer", "RestWithAspNet10.IntegrationTests")]
     public class PersonCorsIntegrationTests : IClassFixture<SqlServerFixture>
