@@ -1,4 +1,5 @@
-﻿using RestWithAspNet10.IntegrationTests.Tools;
+﻿using RestWithAspNet10.IntegrationTests.Fixtures;
+using RestWithAspNet10.IntegrationTests.Tools;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using System.Net;
 using System.Net.Http.Json;
@@ -6,15 +7,24 @@ using System.Net.Http.Json;
 namespace RestWithAspNet10.IntegrationTests.Person.JSON
 {
     [TestCaseOrderer("RestWithAspNet10.IntegrationTests.Tools.PriorityOrderer", "RestWithAspNet10.IntegrationTests")]
+    [Collection("IntegrationTests")]
     public class PersonCorsIntegrationTests : IClassFixture<SqlServerFixture>
     {
         private readonly HttpClient _client;
+        private readonly TestDatabaseFixture _db;
 
-        public PersonCorsIntegrationTests(SqlServerFixture sqlServerFixture)
+        public PersonCorsIntegrationTests(
+            SqlServerFixture sqlServerFixture,
+            TestDatabaseFixture db)
         {
-
+            
             var factory = new CustomWebApplicationFactory<Program>
                 (sqlServerFixture.ConnectionString);
+
+            _db = db;
+
+            _db.InitializeAsync(sqlServerFixture.ConnectionString)
+                .GetAwaiter().GetResult();
 
             _client = factory.CreateClient();
         }
@@ -34,7 +44,8 @@ namespace RestWithAspNet10.IntegrationTests.Person.JSON
 
             var response = await _client.SendAsync(request);
 
-            Assert.Equal(HttpStatusCode.Forbidden, response.StatusCode);
+            Assert.False(
+                response.Headers.Contains("Access-Control-Allow-Origin"));
         }
 
         [Fact, TestPriority(2)]
@@ -134,6 +145,8 @@ namespace RestWithAspNet10.IntegrationTests.Person.JSON
         public async Task CreatePerson_ShouldAllowRequestFromAllowedOrigin()
         {
             // Arrange
+            await _db.ResetAsync();
+
             var allowedOrigins = new[]
             {
                 "http://localhost:8080",
@@ -208,6 +221,12 @@ namespace RestWithAspNet10.IntegrationTests.Person.JSON
             // Act
             var response = await _client.SendAsync(request);
 
+            foreach (var header in response.Headers)
+            {
+                Console.WriteLine($"{header.Key}: {string.Join(",", header.Value)}");
+            }
+
+
             // Assert
             Assert.True(
                 response.Headers.Contains("Access-Control-Allow-Origin"));
@@ -226,6 +245,8 @@ namespace RestWithAspNet10.IntegrationTests.Person.JSON
         public async Task CreatePerson_WithAllowedOrgin_SholdReturnCreated()
         {
             // Arrange
+            await _db.ResetAsync();
+
             var allowedOrigins = new[]
             {
                 "http://localhost:8080",

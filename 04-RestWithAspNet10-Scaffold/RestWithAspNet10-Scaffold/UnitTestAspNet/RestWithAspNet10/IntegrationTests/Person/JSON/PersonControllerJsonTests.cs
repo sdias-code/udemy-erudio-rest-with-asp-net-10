@@ -1,4 +1,5 @@
-﻿using RestWithAspNet10.IntegrationTests.Tools;
+﻿using RestWithAspNet10.IntegrationTests.Fixtures;
+using RestWithAspNet10.IntegrationTests.Tools;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using System.Net;
 using System.Net.Http.Json;
@@ -6,15 +7,22 @@ using System.Net.Http.Json;
 namespace RestWithAspNet10.IntegrationTests.Person
 {
     [TestCaseOrderer("RestWithAspNet10.IntegrationTests.Tools.PriorityOrderer", "RestWithAspNet10.IntegrationTests")]
+    [Collection("IntegrationTests")]
     public class PersonControllerJsonTests : IClassFixture<SqlServerFixture>
     {
         private readonly HttpClient _client;
+        private readonly TestDatabaseFixture _db;
 
-        public PersonControllerJsonTests(SqlServerFixture sqlServerFixture)
+        public PersonControllerJsonTests(SqlServerFixture sqlServerFixture, TestDatabaseFixture db)
         {
 
             var factory = new CustomWebApplicationFactory<Program>
                 (sqlServerFixture.ConnectionString);
+
+            _db = db;
+
+            _db.InitializeAsync(sqlServerFixture.ConnectionString)
+                .GetAwaiter().GetResult();
 
             _client = factory.CreateClient();
 
@@ -24,13 +32,16 @@ namespace RestWithAspNet10.IntegrationTests.Person
         [Fact(DisplayName = "01 - Retorna uma lista de Person"), TestPriority(1)]
         public async Task GetAllPersonsShouldReturnPersonList()
         {
+            // Arrange
+            await _db.ResetAsync();
+            await _db.SeedAsync();
 
             var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/person");
 
             // Act
             var response = await _client.SendAsync(request);
 
-            // Assert — status HTTP
+            // Assert
             response.EnsureSuccessStatusCode();
 
             // Assert — desserializa para lista
@@ -47,9 +58,10 @@ namespace RestWithAspNet10.IntegrationTests.Person
         public async Task GetPersonByIdShouldReturnPerson()
         {
             // Arrange
+            await _db.ResetAsync();
+            await _db.SeedAsync();
 
             var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/person/1");
-
 
             // Act
             var response = await _client.SendAsync(request);
@@ -74,6 +86,7 @@ namespace RestWithAspNet10.IntegrationTests.Person
         {
             // Arrange
 
+            await _db.ResetAsync();
 
             var request = new PersonCreateDTO
             {
@@ -104,6 +117,9 @@ namespace RestWithAspNet10.IntegrationTests.Person
         public async Task UpdatePersonShouldReturnUpdatePerson()
         {
             // Arrange
+            await _db.ResetAsync();
+            await _db.SeedAsync();
+
             var _personUpdateDTO = new PersonUpdateDTO
             {
                 Id = 1,
@@ -112,7 +128,6 @@ namespace RestWithAspNet10.IntegrationTests.Person
                 Address = "São Paulo - Brasil",
                 Gender = "Male"
             };
-
 
 
             // Act
@@ -135,6 +150,9 @@ namespace RestWithAspNet10.IntegrationTests.Person
         public async Task DeletePersonShouldReturnNoContent()
         {
             // Arrange
+            await _db.ResetAsync();
+            await _db.SeedAsync();
+
             var personId = 1;
 
             // Act
@@ -151,6 +169,9 @@ namespace RestWithAspNet10.IntegrationTests.Person
         public async Task EnablePersonShouldReturnEnabledPerson()
         {
             // Arrange
+            await _db.ResetAsync();
+            await _db.SeedAsync();
+
             var personId = 2;
 
             // Act
@@ -169,6 +190,9 @@ namespace RestWithAspNet10.IntegrationTests.Person
         public async Task DisablePersonShouldReturnDisabledPerson()
         {
             // Arrange
+            await _db.ResetAsync();
+            await _db.SeedAsync();
+
             var personId = 2;
 
             // Act
@@ -202,6 +226,9 @@ namespace RestWithAspNet10.IntegrationTests.Person
         public async Task GetPersonByIdShouldReturnPersonResponseDTO()
         {
             // Arrange
+            await _db.ResetAsync();
+            await _db.SeedAsync();
+
             var personId = 1;
 
             // Act

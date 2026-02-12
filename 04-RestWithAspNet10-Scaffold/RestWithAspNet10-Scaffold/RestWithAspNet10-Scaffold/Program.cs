@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using RestWithAspNet10_Scaffold.Configurations;
 using RestWithAspNet10_Scaffold.Extensions;
 using RestWithAspNet10_Scaffold.Repositories;
@@ -36,7 +35,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCorsConfiguration(builder.Configuration);
+app.UseCors("DefaultPolicy");
 
 app.UseAuthorization();
 
