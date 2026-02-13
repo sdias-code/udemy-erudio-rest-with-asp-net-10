@@ -6,7 +6,7 @@ using RestWithAspNet10_Scaffold.Services;
 namespace RestWithAspNet10_Scaffold.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/v1")]
+    [Route("api/v1/[controller]")]
     public class BookController : ControllerBase
     {
         private readonly IBookService _service;

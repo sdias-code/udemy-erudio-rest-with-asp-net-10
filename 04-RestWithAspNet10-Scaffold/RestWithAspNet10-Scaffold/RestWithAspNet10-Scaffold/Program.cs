@@ -1,5 +1,6 @@
 using RestWithAspNet10_Scaffold.Configurations;
 using RestWithAspNet10_Scaffold.Extensions;
+using RestWithAspNet10_Scaffold.Hypermedia.Filters;
 using RestWithAspNet10_Scaffold.Repositories;
 using RestWithAspNet10_Scaffold.Repositories.Implementation;
 using RestWithAspNet10_Scaffold.Services;
@@ -11,10 +12,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.ConfigureSerilog();
 
-builder.Services.AddControllers()
+builder.Services.AddControllers( options =>
+{
+    options.Filters.Add<HypermediaFilter>();
+    
+})
     .AddContentNegotiation();
 
 builder.Services.AddCorsConfiguration(builder.Configuration);
+builder.Services.AddHATEOASConfiguration();
 builder.Services.AddSwaggerConfig();
 builder.Services.AddOpenAPIConfig();
 builder.Services.AddRouteConfiguration();
@@ -40,6 +46,8 @@ app.UseCors("DefaultPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseHATEOASRoutes();
 
 app.UseSwaggerConfig();
 

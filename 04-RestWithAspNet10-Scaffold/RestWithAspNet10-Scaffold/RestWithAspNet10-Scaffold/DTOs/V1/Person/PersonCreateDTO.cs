@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RestWithAspNet10_Scaffold.Hypermedia;
+using RestWithAspNet10_Scaffold.Hypermedia.Abstract;
+using System.ComponentModel.DataAnnotations;
 
 namespace RestWithAspNet10_Scaffold.DTOs.V1.Person
 {

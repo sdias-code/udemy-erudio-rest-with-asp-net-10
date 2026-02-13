@@ -1,8 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using RestWithAspNet10_Scaffold.Hypermedia;
+using RestWithAspNet10_Scaffold.Hypermedia.Abstract;
 
 namespace RestWithAspNet10_Scaffold.DTOs.V1.Person
 {
-    public class PersonResponseDTO
+    public class PersonResponseDTO : ISupportsHypermedia
     {
         public long Id { get; set; }
         public string? FirstName { get; set; }
@@ -12,5 +13,6 @@ namespace RestWithAspNet10_Scaffold.DTOs.V1.Person
         
         public string? Gender { get; set; }
         public bool Enabled { get; set; }
+        public List<HypermediaLink> Links { get ; set ; } = [];
     }
 }
