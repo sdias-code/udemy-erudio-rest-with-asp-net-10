@@ -1,31 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Routing;
+using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.Hypermedia.Abstract;
 
 namespace RestWithAspNet10_Scaffold.Hypermedia
 {
     public abstract class ContentResponseEnricher<T>
         : IResponseEnricher where T : ISupportsHypermedia
-    {
-        /*
-        PSEUDOCODE / PLAN (detailed):
-        - Problem: CS8602 arises because okObjectResult.Value may be null and we call GetType() on it.
-        - Fix: Before calling GetType(), ensure Value is not null.
-        - Implementation steps:
-          1. In IResponseEnricher.CanEnrich(ResultExecutingContext), check if response.Result is OkObjectResult.
-          2. If it is, capture okObjectResult.Value into a local variable.
-          3. If the local value is null, return false (cannot enrich a null payload).
-          4. Otherwise call CanEnrich(value.GetType()) and return its result.
-        - Keep other logic unchanged: Enrich method uses pattern matching which is null-safe.
-        - This change avoids dereferencing a possibly-null reference and preserves previous behavior.
-        - No other code is modified.
-        */
+    {   
 
         public virtual bool CanEnrich(Type contentType)
         {
             return contentType == typeof(T)
-                || contentType == typeof(List<T>);
+                || contentType == typeof(List<T>)
+                || contentType == typeof(PagedResponse<T>);
         }
 
         protected abstract Task EnrichModel(
@@ -42,6 +31,7 @@ namespace RestWithAspNet10_Scaffold.Hypermedia
                 
                 return CanEnrich(value.GetType());
             }
+
             return false;
         }
         public async Task Enrich(ResultExecutingContext response)
@@ -55,14 +45,15 @@ namespace RestWithAspNet10_Scaffold.Hypermedia
                 {
                     await EnrichModel(model, urlHelper);
                 }
-                else if (objectResult.Value is IEnumerable<T> collection)
+                else if (objectResult.Value is PagedResponse<T> paged)
                 {
-                    foreach (var element in collection)
+                    foreach (var element in paged.Items)
                     {
                         await EnrichModel(element, urlHelper);
                     }
                 }
             }
+           
         }
 
     }

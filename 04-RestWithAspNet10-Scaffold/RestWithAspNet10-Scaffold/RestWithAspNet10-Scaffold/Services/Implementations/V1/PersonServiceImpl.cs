@@ -1,4 +1,6 @@
-﻿using RestWithAspNet10_Scaffold.DTOs.V1.Person;
+﻿using Microsoft.EntityFrameworkCore;
+using RestWithAspNet10_Scaffold.DTOs.Common;
+using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using RestWithAspNet10_Scaffold.Mappers.V1;
 using RestWithAspNet10_Scaffold.Repositories;
 
@@ -17,12 +19,7 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
         {
             var entity = _repo.GetById(id);
             return entity?.ToDTO();
-        }
-
-        public List<PersonResponseDTO> FindAll()
-        {
-            return _repo.FindAll().Select(p => p.ToDTO()).ToList();
-        }
+        }      
 
         public PersonResponseDTO Create(PersonCreateDTO dto)
         {
@@ -46,7 +43,6 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
 
         public void Delete(long id) => _repo.Delete(id);
 
-
         public PersonResponseDTO? Enable(long id)
         {
             var entity = _repo.Enable(id);
@@ -57,6 +53,30 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
             var entity = _repo.Disable(id);
             return entity?.ToDTO();
         }
+
+        public PagedResponse<PersonResponseDTO> FindAll(int page, int pageSize)
+        {
+            var query = _repo.FindAll().AsQueryable();
+
+            var total = query.Count();
+
+            var items = query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            // Map entity list to DTO list to match PagedResponse<T>
+            var dtoItems = items.Select(p => p.ToDTO()).ToList();
+
+            return new PagedResponse<PersonResponseDTO>
+            {
+                Page = page,
+                PageSize = pageSize,
+                TotalItems = total,
+                Items = dtoItems
+            };
+        }
+
 
 
     }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using RestWithAspNet10_Scaffold.Services;
 
@@ -32,15 +34,20 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<PersonResponseDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(PagedResponse<PersonResponseDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public ActionResult<IEnumerable<PersonResponseDTO>> Get()
+        public ActionResult<PagedResponse<PersonResponseDTO>> Get(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 10)
         {
-            var persons = _service.FindAll();
+            var result = _service.FindAll(page, pageSize);
+
+            if (!result.Items.Any())
+                return NotFound();
 
             _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");           
 
-            return Ok(persons);
+            return Ok(result);
         }
 
         [HttpPatch("{id:long}/enable")]
