@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using RestWithAspNet10_Scaffold.Services;
@@ -7,7 +6,7 @@ using RestWithAspNet10_Scaffold.Services;
 namespace RestWithAspNet10_Scaffold.Controllers.V1
 {
     [Route("api/v1/[controller]")]
-    [ApiController]    
+    [ApiController]
     public class PersonController : ControllerBase
     {
         private readonly IPersonService _service;
@@ -17,15 +16,15 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
         {
             _service = service;
             _logger = logger;
-        }       
+        }
 
         [HttpGet("{id:long}")]
         [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<PersonResponseDTO> Get(long id)
+        public async Task<ActionResult<PersonResponseDTO>> Get(long id)
         {
-            var person = _service.FindById(id);
+            var person = await _service.FindById(id);
 
             if (person == null)
                 return NotFound();
@@ -36,16 +35,19 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
         [HttpGet]
         [ProducesResponseType(typeof(PagedResponse<PersonResponseDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public ActionResult<PagedResponse<PersonResponseDTO>> Get(
+        public async Task<ActionResult<PagedResponse<PersonResponseDTO>>> Get(
             [FromQuery] int page = 1,
-            [FromQuery] int pageSize = 10)
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string sortBy = "id",
+            [FromQuery] string direction = "asc",
+            [FromQuery] string? search = null)
         {
-            var result = _service.FindAll(page, pageSize);
+            var result = await _service.FindAll(page, pageSize, sortBy, direction, search);
 
             if (!result.Items.Any())
                 return NotFound();
 
-            _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");           
+            _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");
 
             return Ok(result);
         }
@@ -63,7 +65,7 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
                 _logger.LogWarning("Tentativa de habilitar pessoa com ID {Id} falhou. Pessoa não encontrada.", id);
                 return NotFound();
             }
-            
+
             _logger.LogInformation("Pessoa com ID {Id} habilitada com sucesso.", id);
 
             return Ok(person);
@@ -71,7 +73,7 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
 
         [HttpPatch("{id:long}/disable")]
         [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]       
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<PersonResponseDTO> Disable(long id)
         {
             var person = _service.Disable(id);
@@ -80,7 +82,7 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
                 _logger.LogWarning("Tentativa de desabilitar pessoa com ID {Id} falhou. Pessoa não encontrada.", id);
                 return NotFound();
             }
-                
+
             _logger.LogInformation("Pessoa com ID {Id} desabilitada com sucesso.", id);
 
             return Ok(person);
@@ -91,7 +93,7 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Post([FromBody] PersonCreateDTO dto)
-        {                     
+        {
 
             var createdPerson = _service.Create(dto);
 
@@ -104,7 +106,7 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Put(long id, [FromBody] PersonUpdateDTO dto)
-        {            
+        {
 
             if (id != dto.Id)
                 return BadRequest("ID da rota diferente do body.");

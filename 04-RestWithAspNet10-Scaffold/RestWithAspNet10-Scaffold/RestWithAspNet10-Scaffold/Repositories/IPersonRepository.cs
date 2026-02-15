@@ -1,15 +1,27 @@
-﻿using RestWithAspNet10_Scaffold.Model;
+﻿using RestWithAspNet10_Scaffold.DTOs.Common;
+using RestWithAspNet10_Scaffold.Model;
 
 namespace RestWithAspNet10_Scaffold.Repositories
 {
     public interface IPersonRepository
     {
-        Person? GetById(long id);
-        Person? Disable(long id);
-        Person? Enable(long id);
-        List<Person> FindAll();
-        Person Create(Person person);
-        Person Update(Person person);
-        void Delete(long id);
+        Task<Person?> GetById(long id);
+
+        Task<PagedResponse<Person>> FindAll(
+            int page,
+            int pageSize,
+            string sortBy,
+            string direction,
+            string? search);
+
+        Task<Person> Create(Person person);
+
+        Task<Person> Update(Person person);
+
+        Task Delete(long id);
+
+        Task<Person?> Disable(long id);
+
+        Task<Person?> Enable(long id);
     }
 }

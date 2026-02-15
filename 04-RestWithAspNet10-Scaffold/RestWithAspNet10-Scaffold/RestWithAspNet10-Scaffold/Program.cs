@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Formatters;
 using RestWithAspNet10_Scaffold.Configurations;
 using RestWithAspNet10_Scaffold.Extensions;
 using RestWithAspNet10_Scaffold.Hypermedia.Filters;
@@ -15,7 +16,10 @@ builder.ConfigureSerilog();
 builder.Services.AddControllers( options =>
 {
     options.Filters.Add<HypermediaFilter>();
-    
+
+    options.OutputFormatters.RemoveType<
+        StringOutputFormatter>();
+
 })
     .AddContentNegotiation();
 

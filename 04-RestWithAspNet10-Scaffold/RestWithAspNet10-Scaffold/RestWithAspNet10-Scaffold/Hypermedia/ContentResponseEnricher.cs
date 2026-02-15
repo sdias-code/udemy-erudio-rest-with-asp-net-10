@@ -49,6 +49,7 @@ namespace RestWithAspNet10_Scaffold.Hypermedia
                 {
                     foreach (var element in paged.Items)
                     {
+                        //element.Links?.Clear();
                         await EnrichModel(element, urlHelper);
                     }
                 }

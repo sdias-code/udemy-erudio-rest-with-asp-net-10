@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V2.Person;
 using RestWithAspNet10_Scaffold.Services;
 
@@ -35,16 +36,23 @@ namespace RestWithAspNet10_Scaffold.Controllers.V2
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<PersonResponseDTO>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]        
-        public IActionResult Get()
+        [ProducesResponseType(typeof(PagedResponse<PersonResponseDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<PagedResponse<PersonResponseDTO>>> Get(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string sortBy = "id",
+            [FromQuery] string direction = "asc",
+            [FromQuery] string? search = null)
         {
-            var persons = _service.FindAll();
+            var result = await _service.FindAll(page, pageSize, sortBy, direction, search);
 
-            _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");            
+            if (!result.Items.Any())
+                return NotFound();
 
-            return Ok(persons);
+            _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");
+
+            return Ok(result);
         }
 
         [HttpPost]

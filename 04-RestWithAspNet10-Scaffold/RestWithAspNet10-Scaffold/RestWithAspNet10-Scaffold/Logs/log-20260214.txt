@@ -169,3 +169,19 @@ FROM [person] AS [p]
 2026-02-14 18:17:07.094 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.PersonController.Get (RestWithAspNet10-Scaffold) in 11386.5678ms
 2026-02-14 18:17:07.099 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.PersonController.Get (RestWithAspNet10-Scaffold)'
 2026-02-14 18:17:07.103 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/person?page=1&pageSize=10 - 200 null application/json; charset=utf-8 11414.213ms
+2026-02-14 22:28:02.781 -04:00 [INF] Executing Migrate...
+2026-02-14 22:28:02.850 -04:00 [INF] Evolve initialized.
+2026-02-14 22:28:03.472 -04:00 [INF] Metadata validated.
+2026-02-14 22:28:03.824 -04:00 [INF] Successfully applied migration V6__Populate_Person_With_Many.sql in 320 ms.
+2026-02-14 22:28:03.841 -04:00 [INF] Database migrated to version 6. 1 migration(s) applied in 320 ms.
+2026-02-14 22:28:05.347 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-14 22:28:05.359 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-14 22:28:06.100 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-14 22:28:06.175 -04:00 [INF] Hosting environment: Development
+2026-02-14 22:28:06.237 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-14 22:28:06.474 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-14 22:28:06.474 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-14 22:28:06.600 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 136.384ms
+2026-02-14 22:28:06.852 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 391.2618ms
+2026-02-14 22:28:07.150 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-14 22:28:07.354 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 204.1825ms

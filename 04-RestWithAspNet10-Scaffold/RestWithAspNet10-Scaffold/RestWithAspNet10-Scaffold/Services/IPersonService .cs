@@ -5,12 +5,19 @@ namespace RestWithAspNet10_Scaffold.Services
 {
     public interface IPersonService
     {
-        PersonResponseDTO? FindById(long id);
-        PagedResponse<PersonResponseDTO> FindAll(int page, int pageSize);
-        PersonResponseDTO? Enable(long id);
-        PersonResponseDTO? Disable(long id);
-        PersonResponseDTO Create(PersonCreateDTO dto);
-        PersonResponseDTO Update(PersonUpdateDTO dto);
-        void Delete(long id);
+        Task<PersonResponseDTO?> FindById(long id);
+
+        Task<PagedResponse<PersonResponseDTO>> FindAll(
+            int page,
+            int pageSize,
+            string sortBy,
+            string direction,
+            string? search);
+
+        Task<PersonResponseDTO?> Enable(long id);
+        Task<PersonResponseDTO?> Disable(long id);
+        Task<PersonResponseDTO> Create(PersonCreateDTO dto);
+        Task<PersonResponseDTO> Update(PersonUpdateDTO dto);
+        Task Delete(long id);
     }
 }
