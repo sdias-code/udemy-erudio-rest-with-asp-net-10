@@ -4,10 +4,23 @@ namespace RestWithAspNet10_Scaffold.Repositories
 {
     public interface IBookRepository
     {
-        Book? GetById(long id);
-        List<Book> FindAll();
-        Book Create(Book book);
-        Book Update(Book book);
-        void Delete(long id);
+        Task<Book?> FindByIdAsync(long id);
+
+        Task<(List<Book> Books, int TotalItems)> FindAllAsync(
+            int page,
+            int pageSize,
+            string sortBy,
+            string direction,
+            string? search,
+            DateTime? launchFrom,
+            DateTime? launchTo,
+            decimal? minPrice,
+            decimal? maxPrice);
+
+        Task<Book> CreateAsync(Book book);
+
+        Task<Book> UpdateAsync(Book book);
+
+        Task DeleteAsync(long id);
     }
 }

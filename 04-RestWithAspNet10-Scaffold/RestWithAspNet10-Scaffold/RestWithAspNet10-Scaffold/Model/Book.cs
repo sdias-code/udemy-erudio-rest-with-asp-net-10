@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RestWithAspNet10_Scaffold.Model
 {
+    [Table("books")]
     public class Book
     {
         [Key]

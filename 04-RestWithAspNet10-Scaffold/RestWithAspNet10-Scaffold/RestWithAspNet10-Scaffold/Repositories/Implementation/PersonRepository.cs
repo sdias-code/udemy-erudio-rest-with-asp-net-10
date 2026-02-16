@@ -89,7 +89,6 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             return person;
         }
 
-
         public async Task Delete(long id)
         {
             var entity = await _context.Persons
@@ -129,7 +128,6 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
 
             return entity;
         }
-
 
     }
 }

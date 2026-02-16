@@ -1,0 +1,1080 @@
+2026-02-16 15:45:29.417 -04:00 [INF] Executing Migrate...
+2026-02-16 15:45:29.459 -04:00 [INF] Evolve initialized.
+2026-02-16 15:45:29.849 -04:00 [INF] Metadata validated.
+2026-02-16 15:45:29.862 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 15:45:30.862 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 15:45:30.868 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 15:45:31.197 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 15:45:31.201 -04:00 [INF] Hosting environment: Development
+2026-02-16 15:45:31.205 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 15:45:31.947 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 15:45:31.947 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 15:45:32.016 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 75.2037ms
+2026-02-16 15:45:32.164 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 230.1807ms
+2026-02-16 15:45:32.459 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 15:45:32.595 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 136.2745ms
+2026-02-16 15:45:58.878 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 15:45:58.908 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 15:45:58.936 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 15:45:59.282 -04:00 [INF] Fetching all books
+2026-02-16 15:46:30.850 -04:00 [ERR] Failed executing DbCommand (16ms) [Parameters=[@offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM book
+    
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 15:46:30.876 -04:00 [ERR] An exception occurred while iterating over the results of a query for context type 'RestWithAspNet10_Scaffold.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'book'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6c4101d9-6f98-4675-91e7-0e2619c8ee4e
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'book'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6c4101d9-6f98-4675-91e7-0e2619c8ee4e
+Error Number:208,State:1,Class:16
+2026-02-16 15:51:50.042 -04:00 [INF] Executing Migrate...
+2026-02-16 15:51:50.090 -04:00 [INF] Evolve initialized.
+2026-02-16 15:51:50.349 -04:00 [INF] Metadata validated.
+2026-02-16 15:51:50.368 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 15:51:50.810 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 15:51:50.819 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 15:51:51.182 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 15:51:51.186 -04:00 [INF] Hosting environment: Development
+2026-02-16 15:51:51.191 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 15:51:51.753 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 15:51:51.753 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 15:51:51.839 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 88.8785ms
+2026-02-16 15:51:51.932 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 190.6868ms
+2026-02-16 15:51:52.135 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 15:51:52.278 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 143.399ms
+2026-02-16 15:51:58.672 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 15:51:58.705 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 15:51:58.736 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 15:51:58.888 -04:00 [INF] Fetching all books
+2026-02-16 15:52:08.180 -04:00 [ERR] Failed executing DbCommand (16ms) [Parameters=[@offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM book
+    
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 15:52:08.207 -04:00 [ERR] An exception occurred while iterating over the results of a query for context type 'RestWithAspNet10_Scaffold.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'book'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:b44b4bde-9649-4047-817c-f8c88338bc6b
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'book'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:b44b4bde-9649-4047-817c-f8c88338bc6b
+Error Number:208,State:1,Class:16
+2026-02-16 15:56:45.608 -04:00 [INF] Executing Migrate...
+2026-02-16 15:56:45.650 -04:00 [INF] Evolve initialized.
+2026-02-16 15:56:45.729 -04:00 [INF] Metadata validated.
+2026-02-16 15:56:45.741 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 15:56:46.123 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 15:56:46.128 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 15:56:46.403 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 15:56:46.407 -04:00 [INF] Hosting environment: Development
+2026-02-16 15:56:46.412 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 15:56:46.784 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 15:56:46.784 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 15:56:46.853 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 42.8522ms
+2026-02-16 15:56:46.905 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 130.4015ms
+2026-02-16 15:56:47.143 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 15:56:47.305 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 162.0225ms
+2026-02-16 15:56:55.830 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 15:56:55.859 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 15:56:55.892 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 15:56:56.043 -04:00 [INF] Fetching all books
+2026-02-16 15:57:10.090 -04:00 [ERR] Failed executing DbCommand (16ms) [Parameters=[@offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dob.books
+    
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 15:57:10.122 -04:00 [ERR] An exception occurred while iterating over the results of a query for context type 'RestWithAspNet10_Scaffold.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'dob.books'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:188113a9-7c54-41a2-85ce-43fb63640eea
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'dob.books'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:188113a9-7c54-41a2-85ce-43fb63640eea
+Error Number:208,State:1,Class:16
+2026-02-16 15:57:37.134 -04:00 [INF] Executing Migrate...
+2026-02-16 15:57:37.178 -04:00 [INF] Evolve initialized.
+2026-02-16 15:57:37.262 -04:00 [INF] Metadata validated.
+2026-02-16 15:57:37.275 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 15:57:37.642 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 15:57:37.648 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 15:57:37.918 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 15:57:37.922 -04:00 [INF] Hosting environment: Development
+2026-02-16 15:57:37.926 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 15:57:38.361 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 15:57:38.361 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 15:57:38.412 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 56.8383ms
+2026-02-16 15:57:38.456 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 103.4884ms
+2026-02-16 15:57:38.745 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 15:57:38.866 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 120.8221ms
+2026-02-16 15:57:49.219 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 15:57:49.247 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 15:57:49.275 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 15:57:49.406 -04:00 [INF] Fetching all books
+2026-02-16 15:57:53.897 -04:00 [INF] Executed DbCommand (19ms) [Parameters=[@offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 15:58:14.370 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 15:58:16.868 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 27584.7408ms
+2026-02-16 15:58:16.873 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 15:58:16.885 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - 200 null application/json; charset=utf-8 27666.5042ms
+2026-02-16 16:13:31.994 -04:00 [INF] Executing Migrate...
+2026-02-16 16:13:32.039 -04:00 [INF] Evolve initialized.
+2026-02-16 16:13:32.123 -04:00 [INF] Metadata validated.
+2026-02-16 16:13:32.197 -04:00 [INF] Successfully applied migration V7__Populate_Books_With_Many.sql in 57 ms.
+2026-02-16 16:13:32.205 -04:00 [INF] Database migrated to version 7. 1 migration(s) applied in 57 ms.
+2026-02-16 16:13:32.586 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 16:13:32.592 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 16:13:32.900 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 16:13:32.904 -04:00 [INF] Hosting environment: Development
+2026-02-16 16:13:32.909 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 16:13:33.277 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 16:13:33.276 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 16:13:33.321 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 49.5428ms
+2026-02-16 16:13:33.370 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 98.2918ms
+2026-02-16 16:13:33.665 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 16:13:33.764 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 99.2598ms
+2026-02-16 16:15:01.946 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&search=Clean - null null
+2026-02-16 16:15:01.968 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 16:15:01.998 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 16:15:02.135 -04:00 [INF] Fetching all books
+2026-02-16 16:15:07.887 -04:00 [INF] Executed DbCommand (22ms) [Parameters=[@search='?' (Size = 7), @offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    WHERE (title LIKE @search OR author LIKE @search)
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 16:15:07.923 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 16:15:07.944 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 5934.7587ms
+2026-02-16 16:15:07.948 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 16:15:07.958 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&search=Clean - 200 null application/json; charset=utf-8 6012.2063ms
+2026-02-16 16:15:29.683 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&search=Robert - null null
+2026-02-16 16:15:29.694 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 16:15:29.699 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 16:15:29.706 -04:00 [INF] Fetching all books
+2026-02-16 16:15:29.722 -04:00 [INF] Executed DbCommand (8ms) [Parameters=[@search='?' (Size = 8), @offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    WHERE (title LIKE @search OR author LIKE @search)
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 16:15:29.729 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 16:15:29.734 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 29.1476ms
+2026-02-16 16:15:29.738 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 16:15:29.742 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&search=Robert - 200 null application/json; charset=utf-8 59.4557ms
+2026-02-16 16:22:36.897 -04:00 [INF] Executing Migrate...
+2026-02-16 16:22:36.940 -04:00 [INF] Evolve initialized.
+2026-02-16 16:22:37.124 -04:00 [INF] Metadata validated.
+2026-02-16 16:22:37.137 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 16:22:37.503 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 16:22:37.508 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 16:22:37.839 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 16:22:37.842 -04:00 [INF] Hosting environment: Development
+2026-02-16 16:22:37.848 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 16:22:38.130 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 16:22:38.130 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 16:22:38.213 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 89.3585ms
+2026-02-16 16:22:38.284 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 166.4521ms
+2026-02-16 16:22:38.495 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 16:22:38.599 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 103.9316ms
+2026-02-16 16:22:46.733 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 16:22:46.752 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 16:22:46.779 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 16:22:46.915 -04:00 [INF] Fetching all books
+2026-02-16 16:22:47.713 -04:00 [INF] Executed DbCommand (18ms) [Parameters=[@offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 16:22:47.752 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 16:22:47.776 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 988.8613ms
+2026-02-16 16:22:47.781 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 16:22:47.792 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - 200 null application/json; charset=utf-8 1058.9847ms
+2026-02-16 16:23:42.479 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 16:23:42.505 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 16:23:42.510 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 16:23:42.518 -04:00 [INF] Fetching all books
+2026-02-16 16:23:54.602 -04:00 [INF] Executed DbCommand (14ms) [Parameters=[@offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 16:29:19.089 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 16:29:19.111 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 336595.1398ms
+2026-02-16 16:29:19.116 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 16:29:19.120 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - 200 null application/json; charset=utf-8 336640.8366ms
+2026-02-16 17:36:19.708 -04:00 [INF] Executing Migrate...
+2026-02-16 17:36:19.756 -04:00 [INF] Evolve initialized.
+2026-02-16 17:36:20.061 -04:00 [INF] Metadata validated.
+2026-02-16 17:36:20.075 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 17:36:20.463 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 17:36:20.468 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 17:36:20.497 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:36:20.657 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:36:20.739 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:36:20.874 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 17:36:20.886 -04:00 [INF] Hosting environment: Development
+2026-02-16 17:36:20.893 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 17:36:21.062 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 17:36:21.062 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 17:36:21.236 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 181.8278ms
+2026-02-16 17:36:21.293 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 240.5067ms
+2026-02-16 17:36:21.465 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 17:36:21.565 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 100.5219ms
+2026-02-16 17:36:28.685 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 17:36:28.705 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 17:36:28.734 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 17:36:28.880 -04:00 [INF] Fetching all books
+2026-02-16 17:36:29.676 -04:00 [ERR] Failed executing DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [s].[Value]
+FROM (
+        SELECT COUNT(*)
+        FROM dbo.books
+        
+) AS [s]
+2026-02-16 17:36:29.697 -04:00 [ERR] An exception occurred while iterating over the results of a query for context type 'RestWithAspNet10_Scaffold.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): No column name was specified for column 1 of 's'.
+Invalid column name 'Value'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:78538ac5-a878-4226-bf36-d630b165cb99
+Error Number:8155,State:2,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): No column name was specified for column 1 of 's'.
+Invalid column name 'Value'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:78538ac5-a878-4226-bf36-d630b165cb99
+Error Number:8155,State:2,Class:16
+2026-02-16 17:40:58.342 -04:00 [INF] Executing Migrate...
+2026-02-16 17:40:58.386 -04:00 [INF] Evolve initialized.
+2026-02-16 17:40:58.618 -04:00 [INF] Metadata validated.
+2026-02-16 17:40:58.632 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 17:40:59.013 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 17:40:59.019 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 17:40:59.046 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:40:59.160 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:40:59.233 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:40:59.309 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 17:40:59.314 -04:00 [INF] Hosting environment: Development
+2026-02-16 17:40:59.319 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 17:40:59.599 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 17:40:59.599 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 17:40:59.648 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 53.3699ms
+2026-02-16 17:40:59.690 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 99.4657ms
+2026-02-16 17:40:59.988 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 17:41:00.130 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 142.2889ms
+2026-02-16 17:41:08.466 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 17:41:08.499 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 17:41:08.532 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 17:41:08.672 -04:00 [INF] Fetching all books
+2026-02-16 17:41:09.396 -04:00 [ERR] Failed executing DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [s].[Value]
+FROM (
+        SELECT COUNT(*) AS Total
+        FROM dbo.books
+        
+) AS [s]
+2026-02-16 17:41:09.417 -04:00 [ERR] An exception occurred while iterating over the results of a query for context type 'RestWithAspNet10_Scaffold.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Value'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9b50978e-816f-4f19-a7d0-9dae9bb18aa6
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Value'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9b50978e-816f-4f19-a7d0-9dae9bb18aa6
+Error Number:207,State:1,Class:16
+2026-02-16 17:45:15.433 -04:00 [INF] Executing Migrate...
+2026-02-16 17:45:15.485 -04:00 [INF] Evolve initialized.
+2026-02-16 17:45:15.729 -04:00 [INF] Metadata validated.
+2026-02-16 17:45:15.741 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 17:45:16.148 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 17:45:16.156 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 17:45:16.189 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:45:16.311 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:45:16.375 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:45:16.449 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 17:45:16.453 -04:00 [INF] Hosting environment: Development
+2026-02-16 17:45:16.457 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 17:45:17.002 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 17:45:17.002 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 17:45:17.057 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 62.1696ms
+2026-02-16 17:45:17.107 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 113.991ms
+2026-02-16 17:45:17.398 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 17:45:17.516 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 118.655ms
+2026-02-16 17:46:01.162 -04:00 [INF] Executing Migrate...
+2026-02-16 17:46:01.212 -04:00 [INF] Evolve initialized.
+2026-02-16 17:46:01.409 -04:00 [INF] Metadata validated.
+2026-02-16 17:46:01.423 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 17:46:01.820 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 17:46:01.827 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 17:46:01.888 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:46:02.029 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:46:02.169 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 17:46:02.332 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 17:46:02.337 -04:00 [INF] Hosting environment: Development
+2026-02-16 17:46:02.333 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 17:46:02.333 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 17:46:02.356 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 17:46:02.400 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 69.9704ms
+2026-02-16 17:46:02.482 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 159.0026ms
+2026-02-16 17:46:02.722 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 17:46:02.819 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 97.0949ms
+2026-02-16 17:46:28.158 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 17:46:28.195 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 17:46:28.250 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 17:46:28.420 -04:00 [INF] Fetching all books
+2026-02-16 17:46:29.254 -04:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+        SELECT id
+        FROM dbo.books
+        
+) AS [r]
+2026-02-16 17:46:29.346 -04:00 [INF] Executed DbCommand (6ms) [Parameters=[@offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 17:46:47.303 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 17:46:47.334 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 19072.4228ms
+2026-02-16 17:46:47.339 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 17:46:47.348 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - 200 null application/json; charset=utf-8 19190.1505ms
+2026-02-16 17:50:02.333 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/person?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 17:50:02.352 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 17:50:02.368 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.PersonController (RestWithAspNet10-Scaffold).
+2026-02-16 17:50:02.422 -04:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [person] AS [p]
+2026-02-16 17:50:02.448 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[enabled], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+ORDER BY [p].[id]
+OFFSET @p ROWS FETCH NEXT @p1 ROWS ONLY
+2026-02-16 17:50:02.528 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2026-02-16 17:50:11.850 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 17:50:11.887 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.PersonController.Get (RestWithAspNet10-Scaffold) in 9486.4149ms
+2026-02-16 17:50:11.891 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 17:50:11.895 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/person?page=1&pageSize=10&sortBy=id&direction=asc - 200 null application/json; charset=utf-8 9562.141ms
+2026-02-16 17:51:36.354 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-16 17:51:36.487 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 132.3831ms
+2026-02-16 17:51:36.529 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 17:51:36.533 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 17:51:36.541 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 12.861ms
+2026-02-16 17:51:36.576 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.8504ms
+2026-02-16 17:51:36.870 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 17:51:36.927 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 57.9103ms
+2026-02-16 17:51:49.419 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/person?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 17:51:49.428 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 17:51:49.431 -04:00 [INF] Route matched with {action = "Get", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.PersonController (RestWithAspNet10-Scaffold).
+2026-02-16 17:51:49.507 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [person] AS [p]
+2026-02-16 17:51:49.518 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[id], [p].[address], [p].[enabled], [p].[first_name], [p].[gender], [p].[last_name]
+FROM [person] AS [p]
+ORDER BY [p].[id]
+OFFSET @p ROWS FETCH NEXT @p1 ROWS ONLY
+2026-02-16 17:51:49.525 -04:00 [INF] Listando todas as pessoas cadastradas no banco.
+2026-02-16 17:51:49.529 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 17:51:49.533 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.PersonController.Get (RestWithAspNet10-Scaffold) in 97.4305ms
+2026-02-16 17:51:49.538 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.PersonController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 17:51:49.542 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/person?page=1&pageSize=10&sortBy=id&direction=asc - 200 null application/json; charset=utf-8 122.4899ms
+2026-02-16 18:00:37.529 -04:00 [INF] Executing Migrate...
+2026-02-16 18:00:37.597 -04:00 [INF] Evolve initialized.
+2026-02-16 18:00:37.822 -04:00 [INF] Metadata validated.
+2026-02-16 18:00:37.835 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-16 18:00:38.207 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-16 18:00:38.213 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-16 18:00:38.240 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 18:00:38.387 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V2.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 18:00:38.468 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+System.InvalidOperationException: There was an error reflecting type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO]'.
+ ---> System.InvalidOperationException: Cannot serialize member 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Person.PersonResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]].Links' of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]', see inner exception for more details.
+ ---> System.InvalidOperationException: RestWithAspNet10_Scaffold.DTOs.Common.LinkDTO cannot be serialized because it does not have a parameterless constructor.
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.StructModel.CheckSupportedMember(TypeDesc typeDesc, MemberInfo member, Type type)
+   at System.Xml.Serialization.StructModel.GetPropertyModel(PropertyInfo propertyInfo)
+   at System.Xml.Serialization.StructModel.GetFieldModel(MemberInfo memberInfo)
+   at System.Xml.Serialization.XmlReflectionImporter.InitializeStructMembers(StructMapping mapping, StructModel model, Boolean openModel, String typeName, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportStructLikeMapping(StructModel model, String ns, Boolean openModel, XmlAttributes a, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(TypeModel model, String ns, ImportContext context, String dataType, XmlAttributes a, Boolean repeats, Boolean openModel, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportElement(TypeModel model, XmlRootAttribute root, String defaultNamespace, RecursionLimiter limiter)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-16 18:00:38.597 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-16 18:00:38.649 -04:00 [INF] Hosting environment: Development
+2026-02-16 18:00:38.680 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-16 18:00:38.776 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 18:00:38.776 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 18:00:38.828 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 60.9477ms
+2026-02-16 18:00:38.917 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 152.5942ms
+2026-02-16 18:00:39.155 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 18:00:39.264 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 108.4547ms
+2026-02-16 18:05:33.222 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - null null
+2026-02-16 18:05:33.256 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:05:33.292 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:05:33.424 -04:00 [INF] Fetching all books
+2026-02-16 18:05:34.288 -04:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+        SELECT id
+        FROM dbo.books
+        
+) AS [r]
+2026-02-16 18:05:34.367 -04:00 [INF] Executed DbCommand (6ms) [Parameters=[@offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 18:05:34.400 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 18:05:34.427 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 1125.9198ms
+2026-02-16 18:05:34.432 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:05:34.443 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc - 200 null application/json; charset=utf-8 1220.9411ms
+2026-02-16 18:11:11.213 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-16 18:11:11.337 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 123.4259ms
+2026-02-16 18:11:11.388 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 18:11:11.388 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 18:11:11.410 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 18.9913ms
+2026-02-16 18:11:11.441 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.3633ms
+2026-02-16 18:11:11.753 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 18:11:11.806 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 53.7667ms
+2026-02-16 18:11:42.883 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&minPrice=110 - null null
+2026-02-16 18:11:42.896 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:11:42.901 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:11:42.910 -04:00 [INF] Fetching all books
+2026-02-16 18:11:42.963 -04:00 [INF] Executed DbCommand (8ms) [Parameters=[@minPrice='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+        SELECT id
+        FROM dbo.books
+        WHERE price >= @minPrice
+) AS [r]
+2026-02-16 18:11:42.977 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@minPrice='?' (DbType = Decimal), @offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    WHERE price >= @minPrice
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 18:11:42.983 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 18:11:42.992 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 84.4356ms
+2026-02-16 18:11:42.996 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:11:43.000 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&minPrice=110 - 200 null application/json; charset=utf-8 116.5563ms
+2026-02-16 18:11:46.525 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&minPrice=110 - null null
+2026-02-16 18:11:46.534 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:11:46.539 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:11:46.551 -04:00 [INF] Fetching all books
+2026-02-16 18:11:46.620 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@minPrice='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+        SELECT id
+        FROM dbo.books
+        WHERE price >= @minPrice
+) AS [r]
+2026-02-16 18:11:46.629 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@minPrice='?' (DbType = Decimal), @offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    WHERE price >= @minPrice
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 18:11:46.635 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 18:11:46.640 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 94.3529ms
+2026-02-16 18:11:46.645 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:11:46.649 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&minPrice=110 - 200 null application/json; charset=utf-8 124.2381ms
+2026-02-16 18:12:19.722 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&minPrice=110&maxPrice=120 - null null
+2026-02-16 18:12:19.735 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:12:19.740 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:12:19.747 -04:00 [INF] Fetching all books
+2026-02-16 18:12:19.756 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@minPrice='?' (DbType = Decimal), @maxPrice='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+        SELECT id
+        FROM dbo.books
+        WHERE price >= @minPrice AND price <= @maxPrice
+) AS [r]
+2026-02-16 18:12:19.769 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@minPrice='?' (DbType = Decimal), @maxPrice='?' (DbType = Decimal), @offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    WHERE price >= @minPrice AND price <= @maxPrice
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 18:12:19.775 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 18:12:19.780 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 34.034ms
+2026-02-16 18:12:19.786 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:12:19.790 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&minPrice=110&maxPrice=120 - 200 null application/json; charset=utf-8 67.6831ms
+2026-02-16 18:12:49.569 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&minPrice=110&maxPrice=112 - null null
+2026-02-16 18:12:49.584 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:12:49.590 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:12:49.598 -04:00 [INF] Fetching all books
+2026-02-16 18:12:49.607 -04:00 [INF] Executed DbCommand (4ms) [Parameters=[@minPrice='?' (DbType = Decimal), @maxPrice='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+        SELECT id
+        FROM dbo.books
+        WHERE price >= @minPrice AND price <= @maxPrice
+) AS [r]
+2026-02-16 18:12:49.616 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@minPrice='?' (DbType = Decimal), @maxPrice='?' (DbType = Decimal), @offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    WHERE price >= @minPrice AND price <= @maxPrice
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 18:12:49.623 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 18:12:49.628 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 30.9555ms
+2026-02-16 18:12:49.633 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:12:49.637 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&minPrice=110&maxPrice=112 - 200 null application/json; charset=utf-8 67.6897ms
+2026-02-16 18:13:30.168 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-16 18:13:30.186 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 17.991ms
+2026-02-16 18:13:30.238 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 18:13:30.241 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 18:13:30.253 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 15.5551ms
+2026-02-16 18:13:30.298 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 57.2157ms
+2026-02-16 18:13:30.570 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 18:13:30.624 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 53.5076ms
+2026-02-16 18:17:03.170 -04:00 [INF] Request starting HTTP/2 POST https://localhost:7286/api/v1/book - application/json 150
+2026-02-16 18:17:03.182 -04:00 [INF] CORS policy execution successful.
+2026-02-16 18:17:03.187 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2026-02-16 18:17:03.197 -04:00 [INF] Route matched with {action = "Post", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Post(RestWithAspNet10_Scaffold.DTOs.V1.Book.BookCreateDTO) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:17:03.235 -04:00 [INF] Creating new Book: Use a Cabeça Java
+2026-02-16 18:17:05.464 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 8000) (DbType = AnsiString), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8000) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [books] ([author], [launch_date], [price], [title])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3);
+2026-02-16 18:17:05.497 -04:00 [INF] Executing CreatedAtActionResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO'.
+2026-02-16 18:17:05.518 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold) in 2314.0121ms
+2026-02-16 18:17:05.522 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2026-02-16 18:17:05.526 -04:00 [INF] Request finished HTTP/2 POST https://localhost:7286/api/v1/book - 201 null application/json; charset=utf-8 2355.5501ms
+2026-02-16 18:18:25.188 -04:00 [INF] Request starting HTTP/2 POST https://localhost:7286/api/v1/book - application/json 150
+2026-02-16 18:18:25.198 -04:00 [INF] CORS policy execution successful.
+2026-02-16 18:18:25.202 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2026-02-16 18:18:25.207 -04:00 [INF] Route matched with {action = "Post", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Post(RestWithAspNet10_Scaffold.DTOs.V1.Book.BookCreateDTO) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:18:25.215 -04:00 [INF] Creating new Book: Use a Cabeça Java
+2026-02-16 18:18:26.668 -04:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (Size = 8000) (DbType = AnsiString), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8000) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [books] ([author], [launch_date], [price], [title])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3);
+2026-02-16 18:18:26.674 -04:00 [INF] Executing CreatedAtActionResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO'.
+2026-02-16 18:18:26.680 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold) in 1465.8864ms
+2026-02-16 18:18:26.686 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Post (RestWithAspNet10-Scaffold)'
+2026-02-16 18:18:26.690 -04:00 [INF] Request finished HTTP/2 POST https://localhost:7286/api/v1/book - 201 null application/json; charset=utf-8 1502.0817ms
+2026-02-16 18:18:49.681 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-16 18:18:49.708 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 27.0705ms
+2026-02-16 18:18:49.782 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 18:18:49.789 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 18:18:49.810 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 27.5729ms
+2026-02-16 18:18:49.836 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.6224ms
+2026-02-16 18:18:50.162 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 18:18:50.197 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.7208ms
+2026-02-16 18:19:09.404 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&search=Use%20a%20Cabe%C3%A7a%20Java - null null
+2026-02-16 18:19:09.423 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:19:09.430 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:19:09.438 -04:00 [INF] Fetching all books
+2026-02-16 18:19:09.453 -04:00 [INF] Executed DbCommand (9ms) [Parameters=[@search='?' (Size = 19)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+        SELECT id
+        FROM dbo.books
+        WHERE (title LIKE @search OR author LIKE @search)
+) AS [r]
+2026-02-16 18:19:09.473 -04:00 [INF] Executed DbCommand (8ms) [Parameters=[@search='?' (Size = 19), @offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    WHERE (title LIKE @search OR author LIKE @search)
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 18:19:09.479 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 18:19:09.483 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 46.3226ms
+2026-02-16 18:19:09.488 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:19:09.492 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&search=Use%20a%20Cabe%C3%A7a%20Java - 200 null application/json; charset=utf-8 87.3351ms
+2026-02-16 18:19:12.215 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&search=Use%20a%20Cabe%C3%A7a%20Java - null null
+2026-02-16 18:19:12.226 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:19:12.230 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]]] Get(Int32, Int32, System.String, System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal]) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:19:12.236 -04:00 [INF] Fetching all books
+2026-02-16 18:19:12.251 -04:00 [INF] Executed DbCommand (10ms) [Parameters=[@search='?' (Size = 19)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+        SELECT id
+        FROM dbo.books
+        WHERE (title LIKE @search OR author LIKE @search)
+) AS [r]
+2026-02-16 18:19:12.267 -04:00 [INF] Executed DbCommand (10ms) [Parameters=[@search='?' (Size = 19), @offset='?' (DbType = Int32), @pageSize='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+    SELECT id, title, author, price, launch_date
+    FROM dbo.books
+    WHERE (title LIKE @search OR author LIKE @search)
+    ORDER BY id ASC
+    OFFSET @offset ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+2026-02-16 18:19:12.273 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.Common.PagedResponse`1[[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-16 18:19:12.278 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 42.3691ms
+2026-02-16 18:19:12.282 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:19:12.287 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book?page=1&pageSize=10&sortBy=id&direction=asc&search=Use%20a%20Cabe%C3%A7a%20Java - 200 null application/json; charset=utf-8 72.1075ms
+2026-02-16 18:19:39.499 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-16 18:19:39.509 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 9.6501ms
+2026-02-16 18:19:39.546 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 18:19:39.549 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 18:19:39.563 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 16.779ms
+2026-02-16 18:19:39.581 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.4548ms
+2026-02-16 18:19:39.973 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 18:19:40.004 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 31.1548ms
+2026-02-16 18:19:51.810 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book/1025 - null null
+2026-02-16 18:19:51.821 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:19:51.832 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]] Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:19:51.839 -04:00 [INF] Fetching book with ID 1025
+2026-02-16 18:19:51.904 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@id='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [books] AS [b]
+WHERE [b].[id] = @id
+2026-02-16 18:19:51.914 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO'.
+2026-02-16 18:19:51.918 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 80.8588ms
+2026-02-16 18:19:51.923 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:19:51.927 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book/1025 - 200 null application/json; charset=utf-8 117.8829ms
+2026-02-16 18:20:02.253 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-16 18:20:02.263 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 10.2983ms
+2026-02-16 18:20:02.298 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 18:20:02.301 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 18:20:02.319 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.6873ms
+2026-02-16 18:20:02.319 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 18.0624ms
+2026-02-16 18:20:02.451 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 18:20:02.492 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 40.7524ms
+2026-02-16 18:20:14.245 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/api/v1/book/1025 - null null
+2026-02-16 18:20:14.254 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:20:14.259 -04:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO]] Get(Int64) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:20:14.265 -04:00 [INF] Fetching book with ID 1025
+2026-02-16 18:20:14.274 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@id='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [books] AS [b]
+WHERE [b].[id] = @id
+2026-02-16 18:20:14.280 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO'.
+2026-02-16 18:20:14.284 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold) in 20.1372ms
+2026-02-16 18:20:14.288 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Get (RestWithAspNet10-Scaffold)'
+2026-02-16 18:20:14.293 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/api/v1/book/1025 - 200 null application/json; charset=utf-8 47.5876ms
+2026-02-16 18:20:42.855 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-16 18:20:42.864 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 9.0613ms
+2026-02-16 18:20:42.904 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 18:20:42.911 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 18:20:42.929 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 24.6728ms
+2026-02-16 18:20:42.933 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 21.6791ms
+2026-02-16 18:20:43.097 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 18:20:43.130 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 32.2712ms
+2026-02-16 18:21:47.911 -04:00 [INF] Request starting HTTP/2 PUT https://localhost:7286/api/v1/book/1025 - application/json 181
+2026-02-16 18:21:47.919 -04:00 [INF] CORS policy execution successful.
+2026-02-16 18:21:47.923 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Put (RestWithAspNet10-Scaffold)'
+2026-02-16 18:21:47.935 -04:00 [INF] Route matched with {action = "Put", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Put(Int64, RestWithAspNet10_Scaffold.DTOs.V1.Book.BookUpdateDTO) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:21:47.957 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@id='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [books] AS [b]
+WHERE [b].[id] = @id
+2026-02-16 18:21:47.965 -04:00 [INF] Updating book with ID 1025
+2026-02-16 18:21:47.971 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@id='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [books] AS [b]
+WHERE [b].[id] = @id
+2026-02-16 18:21:49.706 -04:00 [INF] Executed DbCommand (5ms) [Parameters=[@p4='?' (DbType = Int64), @p0='?' (Size = 8000) (DbType = AnsiString), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8000) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [books] SET [author] = @p0, [launch_date] = @p1, [price] = @p2, [title] = @p3
+OUTPUT 1
+WHERE [id] = @p4;
+2026-02-16 18:21:49.714 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V1.Book.BookResponseDTO'.
+2026-02-16 18:21:49.719 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Put (RestWithAspNet10-Scaffold) in 1777.4628ms
+2026-02-16 18:21:49.723 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Put (RestWithAspNet10-Scaffold)'
+2026-02-16 18:21:49.726 -04:00 [INF] Request finished HTTP/2 PUT https://localhost:7286/api/v1/book/1025 - 200 null application/json; charset=utf-8 1815.0148ms
+2026-02-16 18:22:11.169 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-16 18:22:11.181 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 11.3342ms
+2026-02-16 18:22:11.220 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-16 18:22:11.223 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-16 18:22:11.241 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 18.0149ms
+2026-02-16 18:22:11.243 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 21.691ms
+2026-02-16 18:22:11.558 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-16 18:22:11.588 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 30.6486ms
+2026-02-16 18:22:28.041 -04:00 [INF] Request starting HTTP/2 DELETE https://localhost:7286/api/v1/book/1024 - null null
+2026-02-16 18:22:28.050 -04:00 [INF] CORS policy execution successful.
+2026-02-16 18:22:28.054 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Delete (RestWithAspNet10-Scaffold)'
+2026-02-16 18:22:28.065 -04:00 [INF] Route matched with {action = "Delete", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int64) on controller RestWithAspNet10_Scaffold.Controllers.BookController (RestWithAspNet10-Scaffold).
+2026-02-16 18:22:28.075 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@id='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [books] AS [b]
+WHERE [b].[id] = @id
+2026-02-16 18:22:28.082 -04:00 [INF] Deleting book with ID 1024
+2026-02-16 18:22:29.631 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@id='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[id], [b].[author], [b].[launch_date], [b].[price], [b].[title]
+FROM [books] AS [b]
+WHERE [b].[id] = @id
+2026-02-16 18:22:29.645 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [books]
+OUTPUT 1
+WHERE [id] = @p0;
+2026-02-16 18:22:29.656 -04:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-02-16 18:22:29.660 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.BookController.Delete (RestWithAspNet10-Scaffold) in 1588.7216ms
+2026-02-16 18:22:29.665 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.BookController.Delete (RestWithAspNet10-Scaffold)'
+2026-02-16 18:22:29.669 -04:00 [INF] Request finished HTTP/2 DELETE https://localhost:7286/api/v1/book/1024 - 204 null null 1628.0921ms

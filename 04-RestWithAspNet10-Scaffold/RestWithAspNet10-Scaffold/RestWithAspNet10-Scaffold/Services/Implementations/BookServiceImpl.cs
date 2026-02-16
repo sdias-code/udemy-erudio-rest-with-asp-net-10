@@ -1,4 +1,5 @@
-﻿using RestWithAspNet10_Scaffold.DTOs.V1.Book;
+﻿using RestWithAspNet10_Scaffold.DTOs.Common;
+using RestWithAspNet10_Scaffold.DTOs.V1.Book;
 using RestWithAspNet10_Scaffold.Mappers;
 using RestWithAspNet10_Scaffold.Repositories;
 
@@ -13,38 +14,71 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
             _repo = repo;
         }
 
-        public BookResponseDTO? FindById(long id)
+        public async Task<BookResponseDTO?> FindByIdAsync(long id)
         {
-            var entity = _repo.GetById(id);
+            var entity = await _repo.FindByIdAsync(id);
+
             return entity?.ToDTO();
         }
 
-        public List<BookResponseDTO> FindAll()
-        {
-            return _repo.FindAll()
-                        .Select(b => b.ToDTO())
-                        .ToList();
+        public async Task<PagedResponse<BookResponseDTO>> FindAllAsync(
+            int page,
+            int pageSize,
+            string sortBy,
+            string direction,
+            string? search,
+            DateTime? launchFrom,
+            DateTime? launchTo,
+            decimal? minPrice,
+            decimal? maxPrice)
+            {
+            var (books, totalItems) = await _repo.FindAllAsync(
+                page,
+                pageSize,
+                sortBy,
+                direction,
+                search,
+                launchFrom,
+                launchTo,
+                minPrice,
+                maxPrice
+            );
+
+            return new PagedResponse<BookResponseDTO>
+            {
+                Page = page,
+                PageSize = pageSize,
+                TotalItems = totalItems,
+                Items = books.Select(b => b.ToDTO()).ToList()
+            };
         }
 
-        public BookResponseDTO Create(BookCreateDTO dto)
+        public async Task<BookResponseDTO> CreateAsync(BookCreateDTO dto)
         {
             var entity = dto.ToEntity();
-            return _repo.Create(entity).ToDTO();
+            var created = await _repo.CreateAsync(entity);
+            return created.ToDTO();
         }
 
-        public BookResponseDTO Update(BookUpdateDTO dto)
+        public async Task<BookResponseDTO> UpdateAsync(BookUpdateDTO dto)
         {
-            var entity = _repo.GetById(dto.Id);
+            var entity = await _repo.FindByIdAsync(dto.Id);
             if (entity == null)
                 throw new Exception("Livro não encontrado");
 
             entity.Title = dto.Title;
             entity.Author = dto.Author;
-            if (dto.Price.HasValue) entity.Price = dto.Price.Value;
 
-            return _repo.Update(entity).ToDTO();
+            if (dto.Price.HasValue)
+                entity.Price = dto.Price.Value;
+
+            var updated = await _repo.UpdateAsync(entity);
+            return updated.ToDTO();
         }
 
-        public void Delete(long id) => _repo.Delete(id);
+        public async Task DeleteAsync(long id)
+        {
+            await _repo.DeleteAsync(id);
+        }
     }
 }
