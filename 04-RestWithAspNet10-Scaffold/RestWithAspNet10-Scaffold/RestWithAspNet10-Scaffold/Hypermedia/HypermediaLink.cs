@@ -15,5 +15,16 @@ namespace RestWithAspNet10_Scaffold.Hypermedia
 
         [XmlAttribute]
         public string Action { get; set; } = string.Empty;
+
+        public HypermediaLink(string rel, string href, string type = "application/json", string action = "")
+        {
+            Rel = rel;
+            Href = href;
+            Type = type;
+            Action = action;
+        }
+
+        public HypermediaLink() { }
+
     }
 }

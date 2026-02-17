@@ -14,13 +14,13 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             _context = context;
         }
 
-        public async Task<Person?> GetById(long id)
+        public async Task<Person?> GetByIdAsync(long id)
         {
             return await _context.Persons
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<PagedResponse<Person>> FindAll(
+        public async Task<PagedResponse<Person>> FindAllAsync(
             int page,
             int pageSize,
             string sortBy,
@@ -75,21 +75,29 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             };
         }
 
-        public async Task<Person> Create(Person person)
+        public async Task<Person> CreateAsync(Person person)
         {
-            _context.Persons.Add(person);
-            await _context.SaveChangesAsync();
-            return person;
+            try
+            {
+                _context.Persons.Add(person);
+                await _context.SaveChangesAsync();
+                return person;
+            }
+            catch (Exception ex)
+            {
+                var inner = ex.InnerException?.Message;
+                throw new Exception(inner ?? ex.Message);
+            }
         }
 
-        public async Task<Person> Update(Person person)
+        public async Task<Person> UpdateAsync(Person person)
         {
             _context.Persons.Update(person);
             await _context.SaveChangesAsync();
             return person;
         }
 
-        public async Task Delete(long id)
+        public async Task DeleteAsync(long id)
         {
             var entity = await _context.Persons
                 .FirstOrDefaultAsync(p => p.Id == id);

@@ -1,18 +1,20 @@
 ﻿using RestWithAspNet10.IntegrationTests.Fixtures;
 using RestWithAspNet10.IntegrationTests.Tools;
-using RestWithAspNet10_Scaffold.DTOs.V1.Book;
+using RestWithAspNet10_Scaffold.DTOs.Common;
+using RestWithAspNet10_Scaffold.DTOs.V1.Person;
+using System.Net;
 using System.Text;
 using System.Text.Json;
 
 namespace RestWithAspNet10.IntegrationTests.HETOAS
 {
     [Collection("IntegrationTests")]
-    public class BookControllerHATEOASTests : IClassFixture<SqlServerFixture>
+    public class PersonControllerHATOASTests : IClassFixture<SqlServerFixture>
     {
         private readonly HttpClient _client;
         private readonly TestDatabaseFixture _db;
 
-        public BookControllerHATEOASTests(SqlServerFixture sqlServerFixture, TestDatabaseFixture db)
+        public PersonControllerHATOASTests(SqlServerFixture sqlServerFixture, TestDatabaseFixture db)
         {
             var factory = new CustomWebApplicationFactory<Program>(
                 sqlServerFixture.ConnectionString);
@@ -26,26 +28,24 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         }
 
         [Fact]
-        public async Task GetAllBooks_ShouldReturnBooksWithHateoasLinks()
+        public async Task GetAllPerson_ShouldReturnPersonWithHateoasLinks()
         {
-            // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
-            // Act 
-            var response = await _client.GetAsync("/api/v1/book");
+            var response = await _client.GetAsync("/api/v1/person");
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var books = JsonSerializer.Deserialize<List<BookResponseDTO>>(
+            var responseData = JsonSerializer.Deserialize<PagedResponse<PersonResponseDTO>>(
                 json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-            // Assert 
-            Assert.NotEmpty(books);
+            Assert.NotNull(responseData);
+            Assert.NotEmpty(responseData.Items);
 
-            var first = books[0];
+            var first = responseData.Items[0];
 
             Assert.NotEmpty(first.Links);
             Assert.Contains(first.Links, l => l.Rel == "collection");
@@ -55,59 +55,60 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
             Assert.Contains(first.Links, l => l.Rel == "delete");
         }
 
+
         [Fact]
-        public async Task GetBookById_ShouldReturnBookWithHateoasLinks()
+        public async Task GetPersonById_ShouldReturnPersonWithHateoasLinks()
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
             // Act
-            var response = await _client.GetAsync("/api/v1/book/1");
+            var response = await _client.GetAsync("/api/v1/person/1");
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var book = JsonSerializer.Deserialize<BookResponseDTO>(
+            var person = JsonSerializer.Deserialize<PersonResponseDTO>(
                 json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
             // Assert
-            Assert.NotNull(book);
-            Assert.NotEmpty(book.Links);
+            Assert.NotNull(person);
+            Assert.NotEmpty(person.Links);
 
-            Assert.Contains(book.Links, l => l.Rel == "self");
-            Assert.Contains(book.Links, l => l.Rel == "update");
-            Assert.Contains(book.Links, l => l.Rel == "delete");
+            Assert.Contains(person.Links, l => l.Rel == "self");
+            Assert.Contains(person.Links, l => l.Rel == "update");
+            Assert.Contains(person.Links, l => l.Rel == "delete");
         }
 
         [Fact]
-        public async Task CreateBook_ShouldReturnBookWithHateoasLinks()
+        public async Task CreatePerson_ShouldReturnPersonkWithHateoasLinks()
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
-            var newBook = new
+            var person = new
             {
-                title = "Clean Architecture",
-                author = "Robert C. Martin",
-                price = 120,
-                launchDate = DateTime.UtcNow
+                firstName = "John",
+                lastName = "Doe",
+                address = "123 Main",
+                gender = "Male"
             };
 
             var content = new StringContent(
-                JsonSerializer.Serialize(newBook),
+                JsonSerializer.Serialize(person),
                 Encoding.UTF8,
                 "application/json");
 
             // Act
-            var response = await _client.PostAsync("/api/v1/book", content);
+            var response = await _client.PostAsync("/api/v1/person", content);
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var created = JsonSerializer.Deserialize<BookResponseDTO>(
+            var created = JsonSerializer.Deserialize<PersonResponseDTO>(
                 json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
@@ -122,60 +123,57 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         }
 
         [Fact]
-        public async Task UpdateBook_ShouldReturnUpdatedBookWithHateoasLinks()
+        public async Task UpdatePerson_ShouldReturnUpdatedPersonWithHateoasLinks()
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
-            var updatedBook = new
+            var updatedPerson = new
             {
                 id = 1,
-                title = "Updated Title",
-                author = "Updated Author",
-                price = 99,
-                launchDate = DateTime.UtcNow
+                firstName = "Updated First Name",
+                lastName = "Updated Last Name",
+                address = "Updated Address"
             };
 
             var content = new StringContent(
-                JsonSerializer.Serialize(updatedBook),
+                JsonSerializer.Serialize(updatedPerson),
                 Encoding.UTF8,
                 "application/json");
 
             // Act
-            var response = await _client.PutAsync("/api/v1/book/1", content);
+            var response = await _client.PutAsync("/api/v1/person/1", content);
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var book = JsonSerializer.Deserialize<BookResponseDTO>(
+            var person = JsonSerializer.Deserialize<PersonResponseDTO>(
                 json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
             // Assert
-            Assert.NotNull(book);
-            Assert.Equal("Updated Title", book.Title);
-            Assert.NotEmpty(book.Links);
-
-            Assert.Contains(book.Links, l => l.Rel == "self");
-            Assert.Contains(book.Links, l => l.Rel == "delete");
+            Assert.NotNull(person);
+            Assert.NotEmpty(person.Links);
+            Assert.Contains(person.Links, l => l.Rel == "self");
+            Assert.Contains(person.Links, l => l.Rel == "delete");
         }
 
         [Fact]
-        public async Task DeleteBook_ShouldRemoveBook()
+        public async Task DeletePerson_ShouldRemovePerson()
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
             // Act
-            var deleteResponse = await _client.DeleteAsync("/api/v1/book/1");
+            var deleteResponse = await _client.DeleteAsync("/api/v1/person/1");
 
             // Assert
-            Assert.Equal(System.Net.HttpStatusCode.NoContent, deleteResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.NoContent, deleteResponse.StatusCode);
 
-            var getResponse = await _client.GetAsync("/api/v1/book/1");
-            Assert.Equal(System.Net.HttpStatusCode.NotFound, getResponse.StatusCode);
+            var getResponse = await _client.GetAsync("/api/v1/person/1");
+            Assert.Equal(HttpStatusCode.NotFound, getResponse.StatusCode);
         }
     }
 }

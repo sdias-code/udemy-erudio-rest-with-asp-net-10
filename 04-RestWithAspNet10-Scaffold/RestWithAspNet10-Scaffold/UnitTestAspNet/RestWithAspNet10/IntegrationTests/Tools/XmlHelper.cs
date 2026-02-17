@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Net.Http.Headers;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace RestWithAspNet10.IntegrationTests.Tools
@@ -28,17 +29,29 @@ namespace RestWithAspNet10.IntegrationTests.Tools
 
         }
 
-        public static async Task<T?> ReadFromXmlAsync<T>(
-           HttpResponseMessage response)
+        public static async Task<T?> ReadFromXmlAsync<T>(HttpResponseMessage response)
         {
+            response.EnsureSuccessStatusCode();
+
             var serializer = new XmlSerializer(typeof(T));
 
-            await using var stream = await response
-                .Content.ReadAsStreamAsync();
-
+            await using var stream = await response.Content.ReadAsStreamAsync();
             stream.Position = 0;
 
             return (T?)serializer.Deserialize(stream);
+        }
+
+        // Se precisar enviar objetos via POST/PUT em XML.
+        public static HttpContent ToXmlContent<T>(T obj)
+        {
+            var serializer = new XmlSerializer(typeof(T));
+            using var stream = new MemoryStream();
+            serializer.Serialize(stream, obj);
+            stream.Position = 0;
+            return new StreamContent(stream)
+            {
+                Headers = { ContentType = new MediaTypeHeaderValue("application/xml") }
+            };
         }
 
         private class Utf8StringWriter : StringWriter

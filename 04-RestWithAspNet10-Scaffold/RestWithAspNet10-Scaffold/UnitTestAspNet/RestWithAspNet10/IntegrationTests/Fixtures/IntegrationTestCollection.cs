@@ -7,5 +7,5 @@ public class IntegrationTestCollection :
    ICollectionFixture<SqlServerFixture>,
    ICollectionFixture<TestDatabaseFixture>
 {
-
+    
 }

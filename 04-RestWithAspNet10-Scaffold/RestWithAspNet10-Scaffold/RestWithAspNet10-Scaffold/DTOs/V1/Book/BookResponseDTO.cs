@@ -11,6 +11,7 @@ namespace RestWithAspNet10_Scaffold.DTOs.V1.Book
         public decimal Price { get; set; }
         public DateTime LaunchDate { get; set; }
 
-        public List<HypermediaLink> Links { get; set; } = [];
+        public List<HypermediaLink> Links { get; set; } = new List<HypermediaLink>();
+
     }
 }

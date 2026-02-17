@@ -14,18 +14,18 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
             _repo = repo;
         }
 
-        public async Task<PagedResponse<PersonResponseDTO>> FindAll(
-           int page,
-           int pageSize,
-           string sortBy,
-           string direction,
-           string? search)
+        public async Task<PagedResponse<PersonResponseDTO>> FindAllAsync(
+            int page,
+            int pageSize,
+            string sortBy,
+            string direction,
+            string? search)
         {
-            var pagedPersons = await _repo.FindAll(
-                page, 
-                pageSize, 
-                sortBy, 
-                direction, 
+            var pagedPersons = await _repo.FindAllAsync(
+                page,
+                pageSize,
+                sortBy,
+                direction,
                 search);
 
             return new PagedResponse<PersonResponseDTO>
@@ -38,54 +38,73 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
                     .ToList()
             };
         }
-        
-        public async Task<PersonResponseDTO?> FindById(long id)
+
+        public async Task<PersonResponseDTO?> FindByIdAsync(long id)
         {
-            var entity = await _repo.GetById(id);  
+            var entity = await _repo.GetByIdAsync(id);
 
             return entity?.ToDTO();
         }
 
-        public async Task<PersonResponseDTO> Create(PersonCreateDTO dto)
+        public async Task<PersonResponseDTO> CreateAsync(PersonCreateDTO dto)
         {
             var entity = dto.ToEntity();
 
-            var created = await _repo.Create(entity);
+            var created = await _repo.CreateAsync(entity);
+
+            if (created == null)
+                throw new Exception("Erro ao criar pessoa");
 
             return created.ToDTO();
         }
 
-        public async Task<PersonResponseDTO> Update(PersonUpdateDTO dto)
+        public async Task<PersonResponseDTO?> UpdateAsync(long id, PersonUpdateDTO dto)
         {
-            var entity = await _repo.GetById(dto.Id);
+            var entity = await _repo.GetByIdAsync(id);
 
             if (entity == null)
-                throw new Exception("Pessoa não encontrada");
+                return null;
 
-            if (dto.FirstName != null) entity.FirstName = dto.FirstName;
-            if (dto.LastName != null) entity.LastName = dto.LastName;
-            if (dto.Address != null) entity.Address = dto.Address;
-            if (dto.Gender != null) entity.Gender = dto.Gender;
+            if (!string.IsNullOrWhiteSpace(dto.FirstName))
+                entity.FirstName = dto.FirstName;
 
-            var updated = await _repo.Update(entity);
+            if (!string.IsNullOrWhiteSpace(dto.LastName))
+                entity.LastName = dto.LastName;
+
+            if (!string.IsNullOrWhiteSpace(dto.Address))
+                entity.Address = dto.Address;
+
+            if (!string.IsNullOrWhiteSpace(dto.Gender))
+                entity.Gender = dto.Gender;
+
+            var updated = await _repo.UpdateAsync(entity);
 
             return updated.ToDTO();
         }
 
-
-        public async Task Delete(long id)
+        public async Task<bool> DeleteAsync(long id)
         {
-            await _repo.Delete(id);
+            var entity = await _repo.GetByIdAsync(id);
+
+            if (entity == null)
+                return false;
+
+            await _repo.DeleteAsync(id);
+
+            return true;
         }
 
         public async Task<PersonResponseDTO?> Enable(long id)
         {
             var entity = await _repo.Enable(id);
+
             return entity?.ToDTO();
         }
+
         public async Task<PersonResponseDTO?> Disable(long id)
         {
             var entity = await _repo.Disable(id);
+
             return entity?.ToDTO();
         }
     }

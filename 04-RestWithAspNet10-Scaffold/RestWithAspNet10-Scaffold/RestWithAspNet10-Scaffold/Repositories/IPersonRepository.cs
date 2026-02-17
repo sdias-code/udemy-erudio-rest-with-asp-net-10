@@ -5,20 +5,20 @@ namespace RestWithAspNet10_Scaffold.Repositories
 {
     public interface IPersonRepository
     {
-        Task<Person?> GetById(long id);
+        Task<Person?> GetByIdAsync(long id);
 
-        Task<PagedResponse<Person>> FindAll(
+        Task<PagedResponse<Person>> FindAllAsync(
             int page,
             int pageSize,
             string sortBy,
             string direction,
             string? search);
 
-        Task<Person> Create(Person person);
+        Task<Person> CreateAsync(Person person);
 
-        Task<Person> Update(Person person);
+        Task<Person> UpdateAsync(Person person);
 
-        Task Delete(long id);
+        Task DeleteAsync(long id);
 
         Task<Person?> Disable(long id);
 

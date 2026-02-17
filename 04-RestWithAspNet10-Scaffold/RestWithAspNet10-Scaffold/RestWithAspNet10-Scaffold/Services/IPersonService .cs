@@ -5,9 +5,9 @@ namespace RestWithAspNet10_Scaffold.Services
 {
     public interface IPersonService
     {
-        Task<PersonResponseDTO?> FindById(long id);
+        Task<PersonResponseDTO?> FindByIdAsync(long id);
 
-        Task<PagedResponse<PersonResponseDTO>> FindAll(
+        Task<PagedResponse<PersonResponseDTO>> FindAllAsync(
             int page,
             int pageSize,
             string sortBy,
@@ -16,8 +16,8 @@ namespace RestWithAspNet10_Scaffold.Services
 
         Task<PersonResponseDTO?> Enable(long id);
         Task<PersonResponseDTO?> Disable(long id);
-        Task<PersonResponseDTO> Create(PersonCreateDTO dto);
-        Task<PersonResponseDTO> Update(PersonUpdateDTO dto);
-        Task Delete(long id);
+        Task<PersonResponseDTO> CreateAsync(PersonCreateDTO dto);
+        Task<PersonResponseDTO?> UpdateAsync(long id, PersonUpdateDTO dto);
+        Task<bool> DeleteAsync(long id);
     }
 }

@@ -17,7 +17,7 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V2
 
         public async Task<PersonResponseDTO?> FindById(long id)
         {
-            var entity = await _repo.GetById(id);
+            var entity = await _repo.GetByIdAsync(id);
 
             return entity?.ToDTO();
         }
@@ -29,7 +29,7 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V2
           string direction,
           string? search)
         {
-            var pagedPersons = await _repo.FindAll(
+            var pagedPersons = await _repo.FindAllAsync(
                 page,
                 pageSize,
                 sortBy,
@@ -51,14 +51,14 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V2
         {
             var entity = dto.ToEntity();
 
-            var created = await _repo.Create(entity);
+            var created = await _repo.CreateAsync(entity);
 
             return created.ToDTO();
         }
 
         public async Task<PersonResponseDTO> Update(PersonUpdateDTO dto)
         {
-            var entity = await _repo.GetById(dto.Id);
+            var entity = await _repo.GetByIdAsync(dto.Id);
 
             if (entity == null)
                 throw new Exception("Pessoa não encontrada");
@@ -68,7 +68,7 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V2
             if (dto.Address != null) entity.Address = dto.Address;
             if (dto.Gender != null) entity.Gender = dto.Gender;
 
-            var updated = await _repo.Update(entity);
+            var updated = await _repo.UpdateAsync(entity);
 
             return updated.ToDTO();
         }
@@ -76,7 +76,7 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V2
 
         public async Task Delete(long id)
         {
-            await _repo.Delete(id);
+            await _repo.DeleteAsync(id);
         }
 
         public async Task<PersonResponseDTO?> Enable(long id)

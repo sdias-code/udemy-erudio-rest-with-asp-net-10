@@ -21,7 +21,6 @@ public class TestDatabaseFixture
             TablesToIgnore = new[]
             {
                 new Table("__EFMigrationsHistory")
-               
             },
             WithReseed = true
         });
@@ -35,7 +34,7 @@ public class TestDatabaseFixture
         await _respawner.ResetAsync(connection);
     }
 
-    public async Task SeedAsync()
+    public async Task SeedPersonAsync()
     {
         await using var conn = new SqlConnection(ConnectionString);
         await conn.OpenAsync();
@@ -52,4 +51,26 @@ public class TestDatabaseFixture
         await cmd.ExecuteNonQueryAsync();
     }
 
+    public async Task SeedBookAsync()
+    {
+        await using var conn = new SqlConnection(ConnectionString);
+        await conn.OpenAsync();
+
+        var cmd = conn.CreateCommand();
+        cmd.CommandText = """
+        INSERT INTO books (title, author, price, launch_date)
+        VALUES
+        ('Clean Code', 'Robert C. Martin', 50.00, '2008-08-01'),
+        ('The Pragmatic Programmer', 'Andrew Hunt', 45.00, '1999-10-30'),
+        ('Design Patterns', 'Erich Gamma', 60.00, '1994-10-21');
+        """;
+
+        await cmd.ExecuteNonQueryAsync();
+    }
+
+    public async Task SeedAllAsync()
+    {
+        await SeedPersonAsync();
+        await SeedBookAsync();
+    }
 }

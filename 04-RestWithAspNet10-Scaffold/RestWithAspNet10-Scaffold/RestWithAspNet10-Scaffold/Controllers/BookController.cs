@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Book;
+using RestWithAspNet10_Scaffold.Hypermedia;
 using RestWithAspNet10_Scaffold.Services;
 
 namespace RestWithAspNet10_Scaffold.Controllers
@@ -23,7 +24,6 @@ namespace RestWithAspNet10_Scaffold.Controllers
         // ==========================
         // GET PAGINADO + FILTROS
         // ==========================
-
         [HttpGet]
         [ProducesResponseType(typeof(PagedResponse<BookResponseDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -41,7 +41,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
         {
             _logger.LogInformation("Fetching all books");
 
-            var response = await _service.FindAllAsync(
+            var pagedResponse = await _service.FindAllAsync(
                 page,
                 pageSize,
                 sortBy,
@@ -52,39 +52,38 @@ namespace RestWithAspNet10_Scaffold.Controllers
                 minPrice,
                 maxPrice);
 
-            if (!response.Items.Any())
+            if (!pagedResponse.Items.Any())
                 return NotFound();
 
+            // Inicializa links da página
+            pagedResponse.Links ??= new List<HypermediaLink>();
             var baseUrl = $"{Request.Scheme}://{Request.Host}/api/v1/book";
 
-            response.Links.Add(new LinkDTO(
-                "self",
-                $"{baseUrl}?page={page}&pageSize={pageSize}",
-                "GET"));
-
-            if (page < response.TotalPages)
-            {
-                response.Links.Add(new LinkDTO(
-                    "next",
-                    $"{baseUrl}?page={page + 1}&pageSize={pageSize}",
-                    "GET"));
-            }
-
+            // Links de paginação HATEOAS
+            pagedResponse.Links.Add(new HypermediaLink("self", $"{baseUrl}?page={page}&pageSize={pageSize}", "GET"));
+            if (page < pagedResponse.TotalPages)
+                pagedResponse.Links.Add(new HypermediaLink("next", $"{baseUrl}?page={page + 1}&pageSize={pageSize}", "GET"));
             if (page > 1)
+                pagedResponse.Links.Add(new HypermediaLink("prev", $"{baseUrl}?page={page - 1}&pageSize={pageSize}", "GET"));
+
+            // Links HATEOAS para cada item
+            foreach (var book in pagedResponse.Items)
             {
-                response.Links.Add(new LinkDTO(
-                    "prev",
-                    $"{baseUrl}?page={page - 1}&pageSize={pageSize}",
-                    "GET"));
+                book.Links ??= new List<HypermediaLink>();
+
+                book.Links.Add(new HypermediaLink("self", $"{baseUrl}/{book.Id}", "GET"));
+                book.Links.Add(new HypermediaLink("update", $"{baseUrl}/{book.Id}", "PUT"));
+                book.Links.Add(new HypermediaLink("delete", $"{baseUrl}/{book.Id}", "DELETE"));
+                book.Links.Add(new HypermediaLink("create", $"{baseUrl}", "POST"));
+                book.Links.Add(new HypermediaLink("collection", $"{baseUrl}", "GET"));
             }
 
-            return Ok(response);
+            return Ok(pagedResponse);
         }
 
         // ==========================
         // GET BY ID
         // ==========================
-
         [HttpGet("{id:long}")]
         [ProducesResponseType(typeof(BookResponseDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -98,13 +97,22 @@ namespace RestWithAspNet10_Scaffold.Controllers
             if (book == null)
                 return NotFound();
 
+            // Inicializa links HATEOAS para o item
+            book.Links ??= new List<HypermediaLink>();
+            var baseUrl = $"{Request.Scheme}://{Request.Host}/api/v1/book";
+
+            book.Links.Add(new HypermediaLink("self", $"{baseUrl}/{book.Id}", "GET"));
+            book.Links.Add(new HypermediaLink("update", $"{baseUrl}/{book.Id}", "PUT"));
+            book.Links.Add(new HypermediaLink("delete", $"{baseUrl}/{book.Id}", "DELETE"));
+            book.Links.Add(new HypermediaLink("create", $"{baseUrl}", "POST"));
+            book.Links.Add(new HypermediaLink("collection", $"{baseUrl}", "GET"));
+
             return Ok(book);
         }
 
         // ==========================
         // CREATE
         // ==========================
-
         [HttpPost]
         [ProducesResponseType(typeof(BookResponseDTO), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -124,7 +132,6 @@ namespace RestWithAspNet10_Scaffold.Controllers
         // ==========================
         // UPDATE
         // ==========================
-
         [HttpPut("{id:long}")]
         [ProducesResponseType(typeof(BookResponseDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -152,7 +159,6 @@ namespace RestWithAspNet10_Scaffold.Controllers
         // ==========================
         // DELETE
         // ==========================
-
         [HttpDelete("{id:long}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

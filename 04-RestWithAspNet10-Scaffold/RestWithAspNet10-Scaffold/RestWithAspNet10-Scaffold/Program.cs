@@ -21,6 +21,7 @@ builder.Services.AddControllers( options =>
         StringOutputFormatter>();
 
 })
+    .AddXmlSerializerFormatters()
     .AddContentNegotiation();
 
 builder.Services.AddCorsConfiguration(builder.Configuration);

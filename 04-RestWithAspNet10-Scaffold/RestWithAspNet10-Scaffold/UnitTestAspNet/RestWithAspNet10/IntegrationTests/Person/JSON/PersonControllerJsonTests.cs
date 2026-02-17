@@ -1,5 +1,6 @@
 ﻿using RestWithAspNet10.IntegrationTests.Fixtures;
 using RestWithAspNet10.IntegrationTests.Tools;
+using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using System.Net;
 using System.Net.Http.Json;
@@ -34,22 +35,23 @@ namespace RestWithAspNet10.IntegrationTests.Person
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
             var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/person");
 
             // Act
             var response = await _client.SendAsync(request);
 
-            // Assert
+            
+            // Assert — desserializa para lista
             response.EnsureSuccessStatusCode();
 
-            // Assert — desserializa para lista
-            var persons = await response.Content
-                .ReadFromJsonAsync<List<PersonResponseDTO>>();
+            var paged = await response.Content
+                .ReadFromJsonAsync<PagedResponse<PersonResponseDTO>>();
 
-            Assert.NotNull(persons);
-            Assert.True(persons.Count >= 3);
+            Assert.NotNull(paged);
+            Assert.NotEmpty(paged.Items);
+            Assert.Equal(3, paged.Items.Count);
 
         }
 
@@ -59,7 +61,7 @@ namespace RestWithAspNet10.IntegrationTests.Person
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
             var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/person/1");
 
@@ -118,7 +120,7 @@ namespace RestWithAspNet10.IntegrationTests.Person
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
             var _personUpdateDTO = new PersonUpdateDTO
             {
@@ -151,7 +153,7 @@ namespace RestWithAspNet10.IntegrationTests.Person
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
             var personId = 1;
 
@@ -170,7 +172,7 @@ namespace RestWithAspNet10.IntegrationTests.Person
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
             var personId = 2;
 
@@ -191,7 +193,7 @@ namespace RestWithAspNet10.IntegrationTests.Person
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
             var personId = 2;
 
@@ -227,7 +229,7 @@ namespace RestWithAspNet10.IntegrationTests.Person
         {
             // Arrange
             await _db.ResetAsync();
-            await _db.SeedAsync();
+            await _db.SeedAllAsync();
 
             var personId = 1;
 

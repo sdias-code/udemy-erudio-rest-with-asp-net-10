@@ -18,13 +18,15 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
             _logger = logger;
         }
 
+        // ============================
+        // GET BY ID
+        // ============================
         [HttpGet("{id:long}")]
         [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<PersonResponseDTO>> Get(long id)
         {
-            var person = await _service.FindById(id);
+            var person = await _service.FindByIdAsync(id);
 
             if (person == null)
                 return NotFound();
@@ -32,8 +34,13 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
             return Ok(person);
         }
 
+        // ============================
+        // GET PAGINADO
+        // ============================
         [HttpGet]
+        [Produces("application/json", "application/xml")]
         [ProducesResponseType(typeof(PagedResponse<PersonResponseDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<PagedResponse<PersonResponseDTO>>> Get(
             [FromQuery] int page = 1,
@@ -42,98 +49,103 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
             [FromQuery] string direction = "asc",
             [FromQuery] string? search = null)
         {
-            var result = await _service.FindAll(page, pageSize, sortBy, direction, search);
+            var result = await _service.FindAllAsync(
+                page, 
+                pageSize, 
+                sortBy, 
+                direction, 
+                search);
 
             if (!result.Items.Any())
                 return NotFound();
 
-            _logger.LogInformation("Listando todas as pessoas cadastradas no banco.");
+            _logger.LogInformation("Listando pessoas.");
 
             return Ok(result);
         }
 
+        // ============================
+        // ENABLE
+        // ============================
         [HttpPatch("{id:long}/enable")]
         [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
-        public ActionResult<PersonResponseDTO> Enable(long id)
+        public async Task<ActionResult<PersonResponseDTO>> Enable(long id)
         {
-            var person = _service.Enable(id);
+            var person = await _service.Enable(id);
 
             if (person == null)
-            {
-                _logger.LogWarning("Tentativa de habilitar pessoa com ID {Id} falhou. Pessoa não encontrada.", id);
                 return NotFound();
-            }
-
-            _logger.LogInformation("Pessoa com ID {Id} habilitada com sucesso.", id);
 
             return Ok(person);
         }
 
+        // ============================
+        // DISABLE
+        // ============================
         [HttpPatch("{id:long}/disable")]
         [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<PersonResponseDTO> Disable(long id)
+        public async Task<ActionResult<PersonResponseDTO>> Disable(long id)
         {
-            var person = _service.Disable(id);
-            if (person == null)
-            {
-                _logger.LogWarning("Tentativa de desabilitar pessoa com ID {Id} falhou. Pessoa não encontrada.", id);
-                return NotFound();
-            }
+            var person = await _service.Disable(id);
 
-            _logger.LogInformation("Pessoa com ID {Id} desabilitada com sucesso.", id);
+            if (person == null)
+                return NotFound();
 
             return Ok(person);
         }
 
+        // ============================
+        // CREATE
+        // ============================
         [HttpPost]
         [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Post([FromBody] PersonCreateDTO dto)
+        public async Task<IActionResult> Post([FromBody] PersonCreateDTO dto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            var createdPerson = _service.Create(dto);
+            var createdPerson = await _service.CreateAsync(dto);
 
-            return CreatedAtAction(nameof(Get), new { id = createdPerson.Id }, createdPerson);
+            return CreatedAtAction(
+                nameof(Get),
+                new { id = createdPerson.Id },
+                createdPerson);
         }
 
+        // ============================
+        // UPDATE
+        // ============================
         [HttpPut("{id:long}")]
         [ProducesResponseType(typeof(PersonResponseDTO), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Put(long id, [FromBody] PersonUpdateDTO dto)
+        public async Task<IActionResult> Put(long id, [FromBody] PersonUpdateDTO dto)
         {
-
             if (id != dto.Id)
                 return BadRequest("ID da rota diferente do body.");
 
-            var existing = _service.FindById(id);
-            if (existing == null)
+            var updatedPerson = await _service.UpdateAsync(id, dto);
+
+            if (updatedPerson == null)
                 return NotFound();
-
-            dto.Id = id;
-
-            var updatedPerson = _service.Update(dto);
 
             return Ok(updatedPerson);
         }
 
+        // ============================
+        // DELETE
+        // ============================
         [HttpDelete("{id:long}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Delete(long id)
+        public async Task<IActionResult> Delete(long id)
         {
-            var existing = _service.FindById(id);
+            var deleted = await _service.DeleteAsync(id);
 
-            if (existing == null)
+            if (!deleted)
                 return NotFound();
-
-            _service.Delete(id);
 
             return NoContent();
         }
