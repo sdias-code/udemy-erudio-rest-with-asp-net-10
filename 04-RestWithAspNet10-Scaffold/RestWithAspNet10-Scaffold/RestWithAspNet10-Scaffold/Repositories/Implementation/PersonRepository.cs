@@ -1,7 +1,9 @@
-﻿using RestWithAspNet10_Scaffold.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RestWithAspNet10_Scaffold.Data;
 using RestWithAspNet10_Scaffold.DTOs.Common;
+using RestWithAspNet10_Scaffold.Infrastructure.Query;
 using RestWithAspNet10_Scaffold.Model;
-using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace RestWithAspNet10_Scaffold.Repositories.Implementation
 {
@@ -17,6 +19,7 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
         public async Task<Person?> GetByIdAsync(long id)
         {
             return await _context.Persons
+                .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
@@ -27,37 +30,17 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             string direction,
             string? search)
         {
-            var query = _context.Persons.AsQueryable();
+            IQueryable<Person> query = _context.Persons.AsNoTracking();
 
             if (!string.IsNullOrWhiteSpace(search))
             {
-                var term = search.ToLower();
-
+                var term = $"%{search}%";
                 query = query.Where(p =>
-                    p.FirstName.ToLower().Contains(term) ||
-                    p.LastName.ToLower().Contains(term));
+                    EF.Functions.Like(p.FirstName, term) ||
+                    EF.Functions.Like(p.LastName, term));
             }
 
-            var isAsc = direction.ToLower() == "asc";
-
-            query = sortBy.ToLower() switch
-            {
-                "firstname" => isAsc
-                    ? query.OrderBy(p => p.FirstName)
-                    : query.OrderByDescending(p => p.FirstName),
-
-                "lastname" => isAsc
-                    ? query.OrderBy(p => p.LastName)
-                    : query.OrderByDescending(p => p.LastName),
-
-                "gender" => isAsc
-                    ? query.OrderBy(p => p.Gender)
-                    : query.OrderByDescending(p => p.Gender),
-
-                _ => isAsc
-                    ? query.OrderBy(p => p.Id)
-                    : query.OrderByDescending(p => p.Id)
-            };
+            query = query.ApplySorting(sortBy, direction, SortMap);
 
             var totalItems = await query.CountAsync();
 
@@ -75,19 +58,14 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             };
         }
 
+
+
         public async Task<Person> CreateAsync(Person person)
         {
-            try
-            {
-                _context.Persons.Add(person);
-                await _context.SaveChangesAsync();
-                return person;
-            }
-            catch (Exception ex)
-            {
-                var inner = ex.InnerException?.Message;
-                throw new Exception(inner ?? ex.Message);
-            }
+            _context.Persons.Add(person);
+            await _context.SaveChangesAsync();
+            return person;
+          
         }
 
         public async Task<Person> UpdateAsync(Person person)
@@ -108,7 +86,6 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
                 await _context.SaveChangesAsync();
             }
         }
-
 
         public async Task<Person?> Disable(long id)
         {
@@ -137,5 +114,15 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             return entity;
         }
 
+        private static readonly Dictionary<string, Expression<Func<Person, object?>>> SortMap
+        = new(StringComparer.OrdinalIgnoreCase)
+        {
+            ["firstname"] = p => p.FirstName,
+            ["lastname"] = p => p.LastName,
+            ["gender"] = p => p.Gender,
+            ["id"] = p => p.Id
+        };
+
     }
+    
 }

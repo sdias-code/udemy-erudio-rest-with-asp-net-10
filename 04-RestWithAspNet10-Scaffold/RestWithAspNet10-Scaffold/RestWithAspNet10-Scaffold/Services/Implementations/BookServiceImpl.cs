@@ -32,7 +32,7 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
             decimal? minPrice,
             decimal? maxPrice)
             {
-            var (books, totalItems) = await _repo.FindAllAsync(
+            var result = await _repo.FindAllAsync(
                 page,
                 pageSize,
                 sortBy,
@@ -46,10 +46,12 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
 
             return new PagedResponse<BookResponseDTO>
             {
-                Page = page,
-                PageSize = pageSize,
-                TotalItems = totalItems,
-                Items = books.Select(b => b.ToDTO()).ToList()
+                Page = result.Page,
+                PageSize = result.PageSize,
+                TotalItems = result.TotalItems,
+                Items = result.Items
+                .Select(b => b.ToDTO())
+                .ToList()
             };
         }
 

@@ -1,7 +1,9 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RestWithAspNet10_Scaffold.Data;
+using RestWithAspNet10_Scaffold.DTOs.Common;
+using RestWithAspNet10_Scaffold.Infrastructure.Query;
 using RestWithAspNet10_Scaffold.Model;
+using System.Linq.Expressions;
 
 namespace RestWithAspNet10_Scaffold.Repositories.Implementation
 {
@@ -15,11 +17,10 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
         }
 
         public async Task<Book?> FindByIdAsync(long id)
-        {
-            return await _context.Books.FirstOrDefaultAsync(b => b.Id == id);
-        }
+            => await _context.Books.AsNoTracking()
+                                   .FirstOrDefaultAsync(b => b.Id == id);
 
-        public async Task<(List<Book> Books, int TotalItems)> FindAllAsync(
+        public async Task<PagedResponse<Book>> FindAllAsync(
             int page,
             int pageSize,
             string sortBy,
@@ -30,97 +31,34 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             decimal? minPrice,
             decimal? maxPrice)
         {
-            var offset = (page - 1) * pageSize;
+            var query = BuildFilteredQuery(
+                search,
+                launchFrom,
+                launchTo,
+                minPrice,
+                maxPrice,
+                sortBy,
+                direction);
 
-            var allowedSortColumns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-            {
-                { "id", "id" },
-                { "title", "title" },
-                { "author", "author" },
-                { "price", "price" },
-                { "launchDate", "launch_date" }
-            };
+            var totalItems = await query.CountAsync();
 
-            if (!allowedSortColumns.ContainsKey(sortBy))
-                sortBy = "id";
-
-            direction = direction.Equals("DESC", StringComparison.OrdinalIgnoreCase)
-                ? "DESC"
-                : "ASC";
-
-            var whereParts = new List<string>();
-            var parameters = new List<SqlParameter>();
-
-            if (!string.IsNullOrWhiteSpace(search))
-            {
-                whereParts.Add("(title LIKE @search OR author LIKE @search)");
-                parameters.Add(new SqlParameter("@search", $"%{search}%"));
-            }
-
-            if (launchFrom.HasValue)
-            {
-                whereParts.Add("launch_date >= @launchFrom");
-                parameters.Add(new SqlParameter("@launchFrom", launchFrom.Value));
-            }
-
-            if (launchTo.HasValue)
-            {
-                whereParts.Add("launch_date <= @launchTo");
-                parameters.Add(new SqlParameter("@launchTo", launchTo.Value));
-            }
-
-            if (minPrice.HasValue)
-            {
-                whereParts.Add("price >= @minPrice");
-                parameters.Add(new SqlParameter("@minPrice", minPrice.Value));
-            }
-
-            if (maxPrice.HasValue)
-            {
-                whereParts.Add("price <= @maxPrice");
-                parameters.Add(new SqlParameter("@maxPrice", maxPrice.Value));
-            }
-
-            var whereClause = whereParts.Any()
-                ? "WHERE " + string.Join(" AND ", whereParts)
-                : "";
-
-            // 🔢 QUERY DE TOTAL
-            var countSql = $"""
-                SELECT id
-                FROM dbo.books
-                {whereClause}
-            """;
-
-            var totalItems = await _context.Books
-            .FromSqlRaw(countSql, parameters.ToArray())
-            .AsNoTracking()
-            .CountAsync();
-
-            // 📄 QUERY PAGINADA
-            var dataSql = $"""
-                SELECT id, title, author, price, launch_date
-                FROM dbo.books
-                {whereClause}
-                ORDER BY {allowedSortColumns[sortBy]} {direction}
-                OFFSET @offset ROWS
-                FETCH NEXT @pageSize ROWS ONLY
-            """;
-
-            parameters.Add(new SqlParameter("@offset", offset));
-            parameters.Add(new SqlParameter("@pageSize", pageSize));
-
-            var books = await _context.Books
-                .FromSqlRaw(dataSql, parameters.ToArray())
-                .AsNoTracking()
+            var items = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
 
-            return (books, totalItems);
+            return new PagedResponse<Book>
+            {
+                Page = page,
+                PageSize = pageSize,
+                TotalItems = totalItems,
+                Items = items
+            };
         }
 
         public async Task<Book> CreateAsync(Book book)
         {
-            await _context.Books.AddAsync(book);
+            _context.Books.Add(book);
             await _context.SaveChangesAsync();
             return book;
         }
@@ -134,15 +72,66 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
 
         public async Task DeleteAsync(long id)
         {
-            var entity = await _context.Books
-                .FirstOrDefaultAsync(b => b.Id == id);
+            var entity = await _context.Books.FindAsync(id);
 
-            if (entity != null)
-            {
-                _context.Books.Remove(entity);
-                await _context.SaveChangesAsync();
-            }
+            if (entity is null) return;
+
+            _context.Books.Remove(entity);
+            await _context.SaveChangesAsync();
         }
+
+        // ===========================
+        // FILTROS + ORDENAÇÃO DINÂMICA
+        // ===========================
+
+
+        private IQueryable<Book> BuildFilteredQuery(
+            string? search,
+            DateTime? launchFrom,
+            DateTime? launchTo,
+            decimal? minPrice,
+            decimal? maxPrice,
+            string sortBy,
+            string direction)
+        {
+            IQueryable<Book> query = _context.Books.AsNoTracking();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var term = $"%{search}%";
+                query = query.Where(b =>
+                    EF.Functions.Like(b.Title, term) ||
+                    EF.Functions.Like(b.Author, term));
+            }
+
+            if (launchFrom.HasValue)
+                query = query.Where(b => b.LaunchDate >= launchFrom.Value);
+
+            if (launchTo.HasValue)
+                query = query.Where(b => b.LaunchDate <= launchTo.Value);
+
+            if (minPrice.HasValue)
+                query = query.Where(b => b.Price >= minPrice.Value);
+
+            if (maxPrice.HasValue)
+                query = query.Where(b => b.Price <= maxPrice.Value);
+
+            query = query.ApplySorting(sortBy, direction, SortMap);
+
+            return query;
+        }
+
+
+        private static readonly Dictionary<string, Expression<Func<Book, object?>>> SortMap =
+        new(StringComparer.OrdinalIgnoreCase)
+        {
+            ["title"] = b => b.Title,
+            ["author"] = b => b.Author,
+            ["price"] = b => b.Price,
+            ["launchdate"] = b => b.LaunchDate,
+            ["id"] = b => b.Id
+        };
+
 
     }
 }

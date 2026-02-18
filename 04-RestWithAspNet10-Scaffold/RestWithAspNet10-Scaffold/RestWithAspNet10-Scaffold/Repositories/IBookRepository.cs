@@ -1,4 +1,5 @@
-﻿using RestWithAspNet10_Scaffold.Model;
+﻿using RestWithAspNet10_Scaffold.DTOs.Common;
+using RestWithAspNet10_Scaffold.Model;
 
 namespace RestWithAspNet10_Scaffold.Repositories
 {
@@ -6,7 +7,7 @@ namespace RestWithAspNet10_Scaffold.Repositories
     {
         Task<Book?> FindByIdAsync(long id);
 
-        Task<(List<Book> Books, int TotalItems)> FindAllAsync(
+        Task<PagedResponse<Book>> FindAllAsync(
             int page,
             int pageSize,
             string sortBy,
