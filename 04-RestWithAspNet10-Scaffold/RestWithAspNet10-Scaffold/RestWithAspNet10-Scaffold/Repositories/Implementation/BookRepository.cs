@@ -31,14 +31,17 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             decimal? minPrice,
             decimal? maxPrice)
         {
-            var query = BuildFilteredQuery(
+            var query = _context.Books
+            .AsNoTracking()
+            .ApplyFilters(
                 search,
                 launchFrom,
                 launchTo,
                 minPrice,
                 maxPrice,
                 sortBy,
-                direction);
+                direction,
+                SortMap);
 
             var totalItems = await query.CountAsync();
 
@@ -80,48 +83,7 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             await _context.SaveChangesAsync();
         }
 
-        // ===========================
-        // FILTROS + ORDENAÇÃO DINÂMICA
-        // ===========================
-
-
-        private IQueryable<Book> BuildFilteredQuery(
-            string? search,
-            DateTime? launchFrom,
-            DateTime? launchTo,
-            decimal? minPrice,
-            decimal? maxPrice,
-            string sortBy,
-            string direction)
-        {
-            IQueryable<Book> query = _context.Books.AsNoTracking();
-
-            if (!string.IsNullOrWhiteSpace(search))
-            {
-                var term = $"%{search}%";
-                query = query.Where(b =>
-                    EF.Functions.Like(b.Title, term) ||
-                    EF.Functions.Like(b.Author, term));
-            }
-
-            if (launchFrom.HasValue)
-                query = query.Where(b => b.LaunchDate >= launchFrom.Value);
-
-            if (launchTo.HasValue)
-                query = query.Where(b => b.LaunchDate <= launchTo.Value);
-
-            if (minPrice.HasValue)
-                query = query.Where(b => b.Price >= minPrice.Value);
-
-            if (maxPrice.HasValue)
-                query = query.Where(b => b.Price <= maxPrice.Value);
-
-            query = query.ApplySorting(sortBy, direction, SortMap);
-
-            return query;
-        }
-
-
+                     
         private static readonly Dictionary<string, Expression<Func<Book, object?>>> SortMap =
         new(StringComparer.OrdinalIgnoreCase)
         {

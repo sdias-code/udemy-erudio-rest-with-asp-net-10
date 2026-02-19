@@ -1,7 +1,6 @@
 ﻿using RestWithAspNet10.IntegrationTests.Fixtures;
 using RestWithAspNet10.IntegrationTests.Tools;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
-using System.Net;
 using System.Net.Http.Json;
 
 namespace RestWithAspNet10.IntegrationTests.Person.JSON
