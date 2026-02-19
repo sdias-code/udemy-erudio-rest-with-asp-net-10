@@ -1,10 +1,13 @@
-# RestWithAspNet10_Scaffold
+# Projeto com base no curso da Udemy
+## ASP.NET 2026 do 0 à Azure e GCP com ASP .NET 10 Docker e K8s
 
-ASP.NET 10 RESTful API com Swagger, Docker e Kubernetes.
-
-Projeto demonstrando boas práticas como: - Versionamento de API -
-HATEOAS - Paginação - Testes unitários - Testes de integração com banco
-real - Branch protection
+Projeto demonstrando boas práticas como:
+- Versionamento de API
+- HATEOAS
+- Paginação 
+- Testes unitários 
+- Testes de integração com banco real
+- Uso do Testcontainers
 
 ------------------------------------------------------------------------
 
@@ -77,12 +80,11 @@ Response HTTP
 -   ASP.NET Core Web API
 -   Entity Framework Core
 -   SQL Server
--   Swagger / OpenAPI (OAS 3.0)
+-   Swagger / OpenAPI (OAS 3.0) / Scalar
 -   xUnit
 -   FluentAssertions
 -   Testcontainers
 -   Docker
-
 
 ------------------------------------------------------------------------
 
@@ -177,5 +179,8 @@ dotnet run
 
 Silvio Dias Ferreira\
 https://github.com/sdias-code
+
+Linkedin:\
+https://www.linkedin.com/in/sdias2026
 
 MIT License
