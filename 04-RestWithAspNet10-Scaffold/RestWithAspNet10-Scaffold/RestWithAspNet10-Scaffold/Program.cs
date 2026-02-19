@@ -40,6 +40,9 @@ builder.Services.AddScoped<IPersonServiceV2, PersonServiceImplV2>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookServiceImpl>();
 
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IFileServices, FileServicesImpl>();
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
