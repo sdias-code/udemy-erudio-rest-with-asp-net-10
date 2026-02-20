@@ -1,0 +1,156 @@
+2026-02-20 00:06:05.440 -04:00 [INF] Executing Migrate...
+2026-02-20 00:06:05.505 -04:00 [INF] Evolve initialized.
+2026-02-20 00:06:05.990 -04:00 [INF] Metadata validated.
+2026-02-20 00:06:06.013 -04:00 [INF] Database is up to date. No migration needed.
+2026-02-20 00:06:07.490 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-20 00:06:07.507 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-20 00:06:08.129 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-20 00:06:08.139 -04:00 [INF] Hosting environment: Development
+2026-02-20 00:06:08.149 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-20 00:06:08.619 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-20 00:06:08.619 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-20 00:06:08.708 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 99.5881ms
+2026-02-20 00:06:08.877 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 272.3008ms
+2026-02-20 00:06:09.136 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-20 00:06:09.402 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 266.159ms
+2026-02-20 00:09:45.195 -04:00 [INF] Request starting HTTP/2 POST https://localhost:7286/api/v1/file/uploadfile - multipart/form-data; boundary=----WebKitFormBoundary6FTBbGBHHseCt1y9 24832
+2026-02-20 00:09:45.215 -04:00 [INF] CORS policy execution successful.
+2026-02-20 00:09:45.229 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:09:45.260 -04:00 [INF] Route matched with {action = "UploadFile", controller = "File"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadFile(RestWithAspNet10_Scaffold.DTOs.V1.FileUploadDTO) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:10:13.337 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold) in 28067.4502ms
+2026-02-20 00:10:13.346 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:10:13.357 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: File extension is not allowed
+   at RestWithAspNet10_Scaffold.Services.Implementations.FileServicesImpl.SaveFileToDisk(IFormFile file) in D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\Services\Implementations\FileServicesImpl.cs:line 38
+   at RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile(FileUploadDTO input) in D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\Controllers\V1\FileController.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-02-20 00:10:14.182 -04:00 [INF] Request finished HTTP/2 POST https://localhost:7286/api/v1/file/uploadfile - 500 null text/plain; charset=utf-8 28987.7735ms
+2026-02-20 00:13:46.297 -04:00 [INF] Request starting HTTP/2 POST https://localhost:7286/api/v1/file/uploadfile - multipart/form-data; boundary=----WebKitFormBoundaryaG5A59BnJfPFLxBL 183526
+2026-02-20 00:13:46.316 -04:00 [INF] CORS policy execution successful.
+2026-02-20 00:13:46.320 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:13:46.325 -04:00 [INF] Route matched with {action = "UploadFile", controller = "File"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadFile(RestWithAspNet10_Scaffold.DTOs.V1.FileUploadDTO) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:17:28.593 -04:00 [INF] File carro.jpg uploaded successfully.
+2026-02-20 00:17:40.469 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V1.FileDetailDTO'.
+2026-02-20 00:17:40.491 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold) in 234160.0207ms
+2026-02-20 00:17:40.495 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:17:40.500 -04:00 [INF] Request finished HTTP/2 POST https://localhost:7286/api/v1/file/uploadfile - 200 null application/json; charset=utf-8 234202.9239ms
+2026-02-20 00:19:28.771 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carros.jpeg - null null
+2026-02-20 00:19:28.780 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:19:28.785 -04:00 [INF] Route matched with {action = "DownloadFile", controller = "File"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadFile(System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:20:20.382 -04:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-02-20 00:20:20.385 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold) in 51594.2982ms
+2026-02-20 00:20:20.389 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:20:20.393 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carros.jpeg - 204 null null 51622.0947ms
+2026-02-20 00:20:29.799 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - null null
+2026-02-20 00:20:29.806 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:20:29.810 -04:00 [INF] Route matched with {action = "DownloadFile", controller = "File"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadFile(System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:20:58.985 -04:00 [INF] Executing FileContentResult, sending file with download name 'carro.jpg' ...
+2026-02-20 00:20:58.998 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold) in 29182.949ms
+2026-02-20 00:20:59.003 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:20:59.007 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - 200 183343 application/jpg 29207.197ms
+2026-02-20 00:22:08.219 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - multipart/form-data; boundary=--------------------------749528690743871256845055 168
+2026-02-20 00:22:08.227 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:22:08.230 -04:00 [INF] Route matched with {action = "DownloadFile", controller = "File"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadFile(System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:22:15.090 -04:00 [INF] Executing FileContentResult, sending file with download name 'carro.jpg' ...
+2026-02-20 00:22:15.103 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold) in 6867.2328ms
+2026-02-20 00:22:15.107 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:22:15.111 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - 200 183343 application/jpg 6892.1335ms
+2026-02-20 00:24:43.068 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - multipart/form-data; boundary=--------------------------070821486982067696212529 168
+2026-02-20 00:24:43.074 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:24:43.078 -04:00 [INF] Route matched with {action = "DownloadFile", controller = "File"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadFile(System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:24:44.886 -04:00 [INF] Executing FileContentResult, sending file with download name 'carro.jpg' ...
+2026-02-20 00:24:44.896 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold) in 1812.9857ms
+2026-02-20 00:24:44.900 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:24:44.904 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - 200 183343 application/jpg 1835.7094ms
+2026-02-20 00:26:42.356 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/natureza.jpg - multipart/form-data; boundary=--------------------------316413177172560685023663 168
+2026-02-20 00:26:42.366 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:26:42.370 -04:00 [INF] Route matched with {action = "DownloadFile", controller = "File"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadFile(System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:26:48.436 -04:00 [INF] Executing FileContentResult, sending file with download name 'natureza.jpg' ...
+2026-02-20 00:26:48.447 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold) in 6070.965ms
+2026-02-20 00:26:48.452 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:26:48.456 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/natureza.jpg - 200 269956 application/jpg 6099.8794ms
+2026-02-20 00:45:29.136 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/v1/file/uploadfile - multipart/form-data; boundary=--------------------------520994686010074800746739 64918
+2026-02-20 00:45:29.143 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:45:29.146 -04:00 [INF] Route matched with {action = "UploadFile", controller = "File"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadFile(RestWithAspNet10_Scaffold.DTOs.V1.FileUploadDTO) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:45:29.156 -04:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-02-20 00:45:29.177 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold) in 25.5353ms
+2026-02-20 00:45:29.181 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:45:29.185 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/v1/file/uploadfile - 400 null application/json; charset=utf-8 48.3393ms
+2026-02-20 00:47:52.809 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/v1/file/uploadfile - multipart/form-data; boundary=--------------------------302133505968609254435008 64917
+2026-02-20 00:47:52.818 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:47:52.822 -04:00 [INF] Route matched with {action = "UploadFile", controller = "File"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadFile(RestWithAspNet10_Scaffold.DTOs.V1.FileUploadDTO) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:47:58.232 -04:00 [INF] File Curriculo atualizado.pdf uploaded successfully.
+2026-02-20 00:48:02.684 -04:00 [INF] Executing OkObjectResult, writing value of type 'RestWithAspNet10_Scaffold.DTOs.V1.FileDetailDTO'.
+2026-02-20 00:48:04.213 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold) in 11384.9877ms
+2026-02-20 00:48:04.218 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:48:04.222 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/v1/file/uploadfile - 200 null application/json; charset=utf-8 11413.6903ms
+2026-02-20 00:50:16.812 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/file/v1/downloadFile/Curriculo atualizado.pdf - multipart/form-data; boundary=--------------------------458042538191615277516070 168
+2026-02-20 00:50:16.819 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/file/v1/downloadFile/Curriculo atualizado.pdf - 404 0 null 8.5216ms
+2026-02-20 00:50:16.827 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/api/file/v1/downloadFile/Curriculo%20atualizado.pdf, Response status code: 404
+2026-02-20 00:51:31.939 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/file/v1/downloadFile/Curriculo atualizado.pdf - multipart/form-data; boundary=--------------------------804787950742026489172735 172
+2026-02-20 00:51:31.949 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/file/v1/downloadFile/Curriculo atualizado.pdf - 404 0 null 9.1362ms
+2026-02-20 00:51:31.958 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/api/file/v1/downloadFile/Curriculo%20atualizado.pdf, Response status code: 404
+2026-02-20 00:52:11.493 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/file/v1/downloadFile/carro.jpg - multipart/form-data; boundary=--------------------------822914250379921037177948 168
+2026-02-20 00:52:11.500 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/file/v1/downloadFile/carro.jpg - 404 0 null 7.7946ms
+2026-02-20 00:52:11.509 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/api/file/v1/downloadFile/carro.jpg, Response status code: 404
+2026-02-20 00:52:40.236 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - multipart/form-data; boundary=--------------------------491536907316546033719940 168
+2026-02-20 00:52:40.244 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:52:40.252 -04:00 [INF] Route matched with {action = "DownloadFile", controller = "File"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadFile(System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:52:44.374 -04:00 [INF] Executing FileContentResult, sending file with download name 'carro.jpg' ...
+2026-02-20 00:52:44.386 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold) in 4128.9602ms
+2026-02-20 00:52:44.390 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:52:44.393 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - 200 183343 application/jpg 4157.5957ms
+2026-02-20 00:52:55.855 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/file/v1/downloadFile/carro.jpg - multipart/form-data; boundary=--------------------------590980803065047583290270 168
+2026-02-20 00:52:55.864 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/file/v1/downloadFile/carro.jpg - 404 0 null 8.846ms
+2026-02-20 00:52:55.873 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7286/api/file/v1/downloadFile/carro.jpg, Response status code: 404
+2026-02-20 00:53:11.046 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - multipart/form-data; boundary=--------------------------308892890301409169774955 168
+2026-02-20 00:53:11.055 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:53:11.059 -04:00 [INF] Route matched with {action = "DownloadFile", controller = "File"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadFile(System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:53:12.632 -04:00 [INF] Executing FileContentResult, sending file with download name 'carro.jpg' ...
+2026-02-20 00:53:12.637 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold) in 1572.6944ms
+2026-02-20 00:53:12.642 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:53:12.646 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/carro.jpg - 200 183343 application/jpg 1599.6926ms
+2026-02-20 00:53:41.419 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/Curriculo atualizado.pdf - multipart/form-data; boundary=--------------------------764758089844203113731662 168
+2026-02-20 00:53:41.426 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:53:41.430 -04:00 [INF] Route matched with {action = "DownloadFile", controller = "File"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadFile(System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 00:53:47.056 -04:00 [INF] Executing FileContentResult, sending file with download name 'Curriculo atualizado.pdf' ...
+2026-02-20 00:53:47.062 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold) in 5625.8913ms
+2026-02-20 00:53:47.067 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 00:53:47.070 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/Curriculo atualizado.pdf - 200 64690 application/pdf 5651.4152ms
+2026-02-20 01:03:39.804 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7286/api/v1/file/uploadmultiplefiles - multipart/form-data; boundary=--------------------------112984646800778011213257 683
+2026-02-20 01:03:39.811 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadMultipleFiles (RestWithAspNet10-Scaffold)'
+2026-02-20 01:03:39.822 -04:00 [INF] Route matched with {action = "UploadMultipleFiles", controller = "File"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadMultipleFiles(RestWithAspNet10_Scaffold.DTOs.V1.MultipleFilesUploadDTO) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 01:03:39.837 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RestWithAspNet10_Scaffold.DTOs.V1.FileDetailDTO, RestWithAspNet10-Scaffold, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-20 01:03:39.844 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadMultipleFiles (RestWithAspNet10-Scaffold) in 17.844ms
+2026-02-20 01:03:39.848 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.UploadMultipleFiles (RestWithAspNet10-Scaffold)'
+2026-02-20 01:03:39.853 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7286/api/v1/file/uploadmultiplefiles - 200 null application/json; charset=utf-8 48.9137ms
+2026-02-20 01:11:49.994 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/teste03.txt - multipart/form-data; boundary=--------------------------698144073888311301035014 168
+2026-02-20 01:11:50.001 -04:00 [INF] Executing endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 01:11:50.005 -04:00 [INF] Route matched with {action = "DownloadFile", controller = "File"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadFile(System.String) on controller RestWithAspNet10_Scaffold.Controllers.V1.FileController (RestWithAspNet10-Scaffold).
+2026-02-20 01:11:52.283 -04:00 [INF] Executing FileContentResult, sending file with download name 'teste03.txt' ...
+2026-02-20 01:11:52.288 -04:00 [INF] Executed action RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold) in 2278.2347ms
+2026-02-20 01:11:52.292 -04:00 [INF] Executed endpoint 'RestWithAspNet10_Scaffold.Controllers.V1.FileController.DownloadFile (RestWithAspNet10-Scaffold)'
+2026-02-20 01:11:52.297 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7286/api/v1/file/downloadfile/teste03.txt - 200 55 application/txt 2303.4735ms
+2026-02-20 01:11:53.362 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/index.html - null null
+2026-02-20 01:11:53.522 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/index.html - 200 null text/html;charset=utf-8 160.3106ms
+2026-02-20 01:11:53.620 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-20 01:11:53.621 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-20 01:11:53.636 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 15.6496ms
+2026-02-20 01:11:53.655 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 33.7105ms
+2026-02-20 01:11:54.041 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-20 01:11:54.097 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 55.9597ms

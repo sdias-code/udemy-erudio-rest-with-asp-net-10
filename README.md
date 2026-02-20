@@ -4,7 +4,9 @@
 Projeto demonstrando boas práticas como:
 - Versionamento de API
 - HATEOAS
-- Paginação 
+- Paginação
+- Filtragem e ordenação nas consultas
+- Upload e download de arquivos
 - Testes unitários 
 - Testes de integração com banco real
 - Uso do Testcontainers

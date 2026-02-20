@@ -25,7 +25,9 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
         public byte[] GetFile(string fileName)
         {
             var filePath = Path.Combine(_basePath, fileName);
+
             if (!File.Exists(filePath)) return null;
+
             return File.ReadAllBytes(filePath);
         }
 
@@ -33,7 +35,9 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
         {
             if (file == null || file.Length == 0)
                 throw new Exception("File is empty");
+
             var fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
+
             if (!_allowedExtensions.Contains(fileExtension))
                 throw new Exception("File extension is not allowed");
 
@@ -59,9 +63,11 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations
         public async Task<List<FileDetailDTO>> SaveFilesToDisk(List<IFormFile> files)
         {
             var results = new List<FileDetailDTO>();
+
             foreach (var file in files)
             {
                 var detail = await SaveFileToDisk(file);
+
                 if (!string.IsNullOrEmpty(detail.DocumentName))
                     results.Add(detail);
             }

@@ -13,40 +13,47 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
         private IFileServices _fileServices = fileServices;
         private readonly ILogger<FileController> _logger = logger;
 
+        // Download a file by name
         [HttpGet("downloadFile/{fileName}")]
-        [ProducesResponseType(200, Type = typeof(byte[]))]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(byte[]))]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/octet-stream")]
         public IActionResult DownloadFile(string fileName)
         {
             var buffer = _fileServices.GetFile(fileName);
+
             if (buffer == null || buffer.Length == 0)
                 return NoContent();
 
             var contentType = $"application/{Path.GetExtension(fileName).TrimStart('.')}";
+
             return File(buffer, contentType, fileName);
         }
 
+        // Upload a single file
         [HttpPost("uploadFile")]
-        [ProducesResponseType(200, Type = typeof(FileDetailDTO))]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(FileDetailDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/json", "application/xml")]
         //public async Task<IActionResult> UploadFile(IFormFile file)
         public async Task<IActionResult> UploadFile([FromForm] FileUploadDTO input)
         {
             var fileDetail = await _fileServices.SaveFileToDisk(input.File);
+
             _logger.LogInformation("File {fileName} uploaded successfully.", fileDetail.DocumentName);
+
             return Ok(fileDetail);
         }
 
+        // Upload multiple files
         [HttpPost("uploadMultipleFiles")]
         [Consumes("multipart/form-data")]
-        [ProducesResponseType(200, Type = typeof(List<FileDetailDTO>))]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<FileDetailDTO>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/json", "application/xml")]
         public async Task<IActionResult> UploadMultipleFiles(
             [FromForm] MultipleFilesUploadDTO input
