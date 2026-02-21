@@ -1,6 +1,8 @@
 ﻿using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
+using RestWithAspNet10_Scaffold.Files.Importers.Contract.Factory;
 using RestWithAspNet10_Scaffold.Mappers.V1;
+using RestWithAspNet10_Scaffold.Model;
 using RestWithAspNet10_Scaffold.Repositories;
 
 namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
@@ -8,10 +10,17 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
     public class PersonServiceImpl : IPersonService
     {
         private readonly IPersonRepository _repo;
+        private readonly FileImporterFactory _fileImporterFactory;
+        private readonly ILogger<PersonServiceImpl> _logger;
 
-        public PersonServiceImpl(IPersonRepository repo)
+        public PersonServiceImpl(
+            IPersonRepository repo,
+            FileImporterFactory fileImporterFactory,
+            ILogger<PersonServiceImpl> logger)
         {
             _repo = repo;
+            _fileImporterFactory = fileImporterFactory;
+            _logger = logger;
         }
 
         public async Task<PagedResponse<PersonResponseDTO>> FindAllAsync(
@@ -106,6 +115,40 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
             var entity = await _repo.Disable(id);
 
             return entity?.ToDTO();
+        }
+
+        public async Task<List<PersonResponseDTO>> ImportFromFileAsync(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                _logger.LogWarning("File is null or empty");
+                throw new ArgumentException("File is null or empty");
+            }
+
+            using var stream = file.OpenReadStream();
+            var fileName = file.FileName;
+
+            try
+            {
+                var importer = _fileImporterFactory.GetImporter(fileName);
+
+                var personsDto = await importer.ImportFileAsync(stream);
+
+                var entities = personsDto
+                    .Select(dto => dto.ToEntity())
+                    .ToList();
+
+                var savedEntities = await _repo.CreateRangeAsync(entities);
+
+                return savedEntities
+                    .Select(entity => entity.ToDTO())
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error importing file");
+                throw;
+            }
         }
     }
 }

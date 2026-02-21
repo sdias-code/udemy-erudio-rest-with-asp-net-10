@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Formatters;
 using RestWithAspNet10_Scaffold.Configurations;
 using RestWithAspNet10_Scaffold.Extensions;
+using RestWithAspNet10_Scaffold.Files.Importers.Contract.Factory;
 using RestWithAspNet10_Scaffold.Hypermedia.Filters;
 using RestWithAspNet10_Scaffold.Repositories;
 using RestWithAspNet10_Scaffold.Repositories.Implementation;
@@ -39,6 +40,10 @@ builder.Services.AddScoped<IPersonService, PersonServiceImpl>();
 builder.Services.AddScoped<IPersonServiceV2, PersonServiceImplV2>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookServiceImpl>();
+
+builder.Services.AddScoped<CsvImporter>();
+builder.Services.AddScoped<XlsxImporter>();
+builder.Services.AddScoped<FileImporterFactory>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IFileServices, FileServicesImpl>();

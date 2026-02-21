@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithAspNet10_Scaffold.DTOs.Common;
+using RestWithAspNet10_Scaffold.DTOs.V1;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 using RestWithAspNet10_Scaffold.Services;
 
@@ -50,10 +51,10 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
             [FromQuery] string? search = null)
         {
             var result = await _service.FindAllAsync(
-                page, 
-                pageSize, 
-                sortBy, 
-                direction, 
+                page,
+                pageSize,
+                sortBy,
+                direction,
                 search);
 
             if (!result.Items.Any())
@@ -148,6 +149,31 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
                 return NotFound();
 
             return NoContent();
+        }
+
+        [HttpPost("import")]
+        [Consumes("multipart/form-data")]
+        [ProducesResponseType(typeof(List<PersonResponseDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Import([FromForm] FileUploadDTO request)
+        {
+            var file = request.File;
+
+            if (file == null || file.Length == 0)
+            {
+                _logger.LogWarning("Tentativa de importação sem arquivo.");
+                return BadRequest("Arquivo não fornecido.");
+            }
+
+            var importedPersons = await _service.ImportFromFileAsync(file);
+
+            _logger.LogInformation(
+                "Importação concluída. Total importado: {Count}",
+                importedPersons.Count);
+
+            return Ok(importedPersons);
         }
     }
 }

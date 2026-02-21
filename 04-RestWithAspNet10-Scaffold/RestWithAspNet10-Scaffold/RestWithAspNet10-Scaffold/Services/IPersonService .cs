@@ -19,5 +19,7 @@ namespace RestWithAspNet10_Scaffold.Services
         Task<PersonResponseDTO> CreateAsync(PersonCreateDTO dto);
         Task<PersonResponseDTO?> UpdateAsync(long id, PersonUpdateDTO dto);
         Task<bool> DeleteAsync(long id);
+
+        Task<List<PersonResponseDTO>> ImportFromFileAsync(IFormFile file);
     }
 }

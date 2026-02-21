@@ -68,6 +68,14 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
           
         }
 
+        public async Task<List<Person>> CreateRangeAsync(List<Person> persons)
+        {
+            await _context.Persons.AddRangeAsync(persons);
+            await _context.SaveChangesAsync();
+
+            return persons;
+        }
+
         public async Task<Person> UpdateAsync(Person person)
         {
             _context.Persons.Update(person);

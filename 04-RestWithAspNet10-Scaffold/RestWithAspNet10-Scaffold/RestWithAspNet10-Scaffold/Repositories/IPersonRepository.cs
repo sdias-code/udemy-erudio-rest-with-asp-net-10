@@ -16,6 +16,8 @@ namespace RestWithAspNet10_Scaffold.Repositories
 
         Task<Person> CreateAsync(Person person);
 
+        Task<List<Person>> CreateRangeAsync(List<Person> persons);
+
         Task<Person> UpdateAsync(Person person);
 
         Task DeleteAsync(long id);

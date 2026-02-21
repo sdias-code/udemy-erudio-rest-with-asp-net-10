@@ -17,7 +17,9 @@ namespace RestWithAspNet10_Scaffold.Mappers.V1
                     ?? throw new ArgumentException("Address é obrigatório"),
 
                 Gender = dto.Gender
-                    ?? throw new ArgumentException("Gender é obrigatório")               
+                    ?? throw new ArgumentException("Gender é obrigatório"),
+
+                Enabled = true
             };
         }
 
