@@ -39,22 +39,30 @@ namespace RestWithAspNet10_Scaffold.Hypermedia
             var urlHelper = new UrlHelperFactory()
                 .GetUrlHelper(response);
 
-            if (response.Result is ObjectResult objectResult && objectResult.Value != null)
+            if (response.Result is ObjectResult objectResult
+                && objectResult.Value != null)
             {
-                if (objectResult.Value is T model)
+                switch (objectResult.Value)
                 {
-                    await EnrichModel(model, urlHelper);
-                }
-                else if (objectResult.Value is PagedResponse<T> paged)
-                {
-                    foreach (var element in paged.Items)
-                    {
-                        //element.Links?.Clear();
-                        await EnrichModel(element, urlHelper);
-                    }
+                    case T model:
+                        await EnrichModel(model, urlHelper);
+                        break;
+
+                    case IEnumerable<T> collection:
+                        foreach (var item in collection)
+                        {
+                            await EnrichModel(item, urlHelper);
+                        }
+                        break;
+
+                    case PagedResponse<T> paged:
+                        foreach (var element in paged.Items)
+                        {
+                            await EnrichModel(element, urlHelper);
+                        }
+                        break;
                 }
             }
-           
         }
 
     }
