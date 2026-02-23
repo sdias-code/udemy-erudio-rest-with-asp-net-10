@@ -7,6 +7,11 @@ Projeto demonstrando boas práticas como:
 - Paginação
 - Filtragem e ordenação nas consultas
 - Upload e download de arquivos
+- Importação e exportação de arquivos csv e xlsx
+- Factory Pattern
+- Service Layer
+- Repository Pattern
+- Injeção de Dependência
 - Testes unitários 
 - Testes de integração com banco real
 - Uso do Testcontainers
