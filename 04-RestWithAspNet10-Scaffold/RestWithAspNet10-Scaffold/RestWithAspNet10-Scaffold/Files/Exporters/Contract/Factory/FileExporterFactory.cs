@@ -1,14 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc.Formatters;
-using RestWithAspNet10_Scaffold.Files.Importers.Contract.Factory;
-
-namespace RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory
+﻿namespace RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory
 {
-    public class FileExporterFactory(
-        IServiceProvider serviceProvider,
-        ILogger<FileExporterFactory> logger)
+    public class FileExporterFactory
     {
-        private readonly IServiceProvider _serviceProvider = serviceProvider;
-        private readonly ILogger<FileExporterFactory> _logger = logger;
+        private readonly XlsxExporter _xlsxExporter;
+        private readonly CsvExporter _csvExporter;
+        private readonly ILogger<FileExporterFactory> _logger;
+
+        public FileExporterFactory(
+            XlsxExporter xlsxExporter,
+            CsvExporter csvExporter,
+            ILogger<FileExporterFactory> logger)
+        {
+            _xlsxExporter = xlsxExporter;
+            _csvExporter = csvExporter;
+            _logger = logger;
+        }
 
         public IFileExporter GetExporter(string acceptHeader)
         {
@@ -16,20 +22,20 @@ namespace RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory
             {
                 _logger.LogInformation(
                     "Selected Excel file exporter for media type: {AcceptHeader}", acceptHeader);
-                return _serviceProvider.GetRequiredService<XlsxExporter>();
+
+                return _xlsxExporter;
             }
-            else if (string.Equals(acceptHeader, MediaTypes.ApplicationCsv, StringComparison.OrdinalIgnoreCase))
+
+            if (string.Equals(acceptHeader, MediaTypes.ApplicationCsv, StringComparison.OrdinalIgnoreCase))
             {
                 _logger.LogInformation(
                     "Selected CSV file exporter for media type: {AcceptHeader}", acceptHeader);
-                return _serviceProvider.GetRequiredService<CsvExporter>();
-            }
-            else
-            {
-                _logger.LogError("Unsupported media type: {AcceptHeader}", acceptHeader);
-                throw new NotSupportedException($"The media type of '{acceptHeader}' is not supported.");
-            }
-        }
 
+                return _csvExporter;
+            }
+
+            _logger.LogError("Unsupported media type: {AcceptHeader}", acceptHeader);
+            throw new NotSupportedException($"The media type of '{acceptHeader}' is not supported.");
+        }
     }
 }

@@ -42,12 +42,12 @@ builder.Services.AddScoped<IPersonServiceV2, PersonServiceImplV2>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookServiceImpl>();
 
-builder.Services.AddScoped<CsvImporter>();
-builder.Services.AddScoped<XlsxImporter>();
+builder.Services.AddTransient<CsvImporter>();
+builder.Services.AddTransient<XlsxImporter>();
 builder.Services.AddScoped<FileImporterFactory>();
 
-builder.Services.AddScoped<XlsxExporter>();
-builder.Services.AddScoped<CsvExporter>();
+builder.Services.AddTransient<XlsxExporter>();
+builder.Services.AddTransient<CsvExporter>();
 builder.Services.AddScoped<FileExporterFactory>();
 
 builder.Services.AddHttpContextAccessor();

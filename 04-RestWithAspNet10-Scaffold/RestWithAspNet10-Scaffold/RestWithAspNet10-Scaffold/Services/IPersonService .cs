@@ -1,4 +1,5 @@
-﻿using RestWithAspNet10_Scaffold.DTOs.Common;
+﻿using Microsoft.AspNetCore.Mvc;
+using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 
 namespace RestWithAspNet10_Scaffold.Services
@@ -21,5 +22,14 @@ namespace RestWithAspNet10_Scaffold.Services
         Task<bool> DeleteAsync(long id);
 
         Task<List<PersonResponseDTO>> ImportFromFileAsync(IFormFile file);
+
+        Task<FileContentResult> ExportPage(
+            int page,
+            int pageSize,
+            string sortBy,
+            string sortDirection,
+            string? search,
+            string acceptHeader,
+            string name);
     }
 }

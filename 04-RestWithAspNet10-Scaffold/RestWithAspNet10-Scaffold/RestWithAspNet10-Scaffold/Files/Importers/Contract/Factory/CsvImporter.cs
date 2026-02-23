@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace RestWithAspNet10_Scaffold.Files.Importers.Contract.Factory
 {
-    internal class CsvImporter : IFileImporter
+    public class CsvImporter : IFileImporter
     {
         public async Task<List<PersonCreateDTO>> ImportFileAsync(Stream fileStream)
         {

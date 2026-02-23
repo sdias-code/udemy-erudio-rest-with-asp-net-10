@@ -5,6 +5,6 @@ namespace RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory
 {
     public interface IFileExporter
     {
-        FileContentResult ExportFile(List<PersonResponseDTO> people);
+        FileContentResult ExportFile(List<PersonResponseDTO> data, string fileName);
     }
 }

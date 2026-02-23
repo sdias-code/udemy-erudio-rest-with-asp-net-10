@@ -3,7 +3,7 @@ using RestWithAspNet10_Scaffold.DTOs.V1.Person;
 
 namespace RestWithAspNet10_Scaffold.Files.Importers.Contract.Factory
 {
-    internal class XlsxImporter : IFileImporter
+    public class XlsxImporter : IFileImporter
     {       
 
         public Task<List<PersonCreateDTO>> ImportFileAsync(Stream fileStream)

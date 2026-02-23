@@ -6,14 +6,14 @@ using System.Text;
 
 namespace RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory
 {
-    internal class CsvExporter : IFileExporter
+    public class CsvExporter : IFileExporter
     {
-        public FileContentResult ExportFile(List<PersonResponseDTO> people)
+        public FileContentResult ExportFile(List<PersonResponseDTO> data, string fileName)
         {
             using var memoryStream = new MemoryStream();
             using var streamWriter = new StreamWriter(
-                memoryStream, 
-                Encoding.UTF8,
+                memoryStream,
+                new UTF8Encoding(true),
                 leaveOpen: true);
 
             using var csvWriter = new CsvHelper.CsvWriter(
@@ -27,19 +27,22 @@ namespace RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory
                     NewLine = Environment.NewLine
                 });
 
-            csvWriter.WriteRecords(people);
+            csvWriter.WriteRecords(data);
 
             streamWriter.Flush();
 
             var fileBytes = memoryStream.ToArray();
 
+            var baseName = string.IsNullOrWhiteSpace(fileName)
+                ? "people"
+                : Path.GetFileNameWithoutExtension(Path.GetFileName(fileName));
+
+            var safeName = $"{baseName}_{DateTime.UtcNow:yyyyMMddHHmmss}.csv";            
+
             return new FileContentResult(fileBytes, MediaTypes.ApplicationCsv)
             {
-                FileDownloadName = $"people_exported_{DateTime.UtcNow:yyyyMMddHHmmss}.csv"
+                FileDownloadName = safeName
             };
-
-
-
 
         }
     }

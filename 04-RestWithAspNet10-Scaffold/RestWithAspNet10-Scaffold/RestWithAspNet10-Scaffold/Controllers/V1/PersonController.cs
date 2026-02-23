@@ -2,6 +2,7 @@
 using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
+using RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory;
 using RestWithAspNet10_Scaffold.Services;
 
 namespace RestWithAspNet10_Scaffold.Controllers.V1
@@ -175,5 +176,56 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
 
             return Ok(importedPersons);
         }
-    }
+
+        [HttpGet("export")]
+        [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status415UnsupportedMediaType)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Produces(MediaTypes.ApplicationCsv, MediaTypes.ApplicationXlsx)]
+        public async Task<IActionResult> Export(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string sortBy = "id",
+            [FromQuery] string sortDirection = "asc",
+            [FromQuery] string? search = null,            
+            [FromQuery] string fileName = "")
+        {
+            try
+            {
+                var acceptHeader = Request.Headers["Accept"].ToString();
+
+                if (string.IsNullOrWhiteSpace(acceptHeader))
+                    {
+                    _logger.LogWarning("Cabeçalho 'Accept' ausente na requisição de exportação.");
+
+                    return BadRequest("Cabeçalho 'Accept' é obrigatório para determinar o formato de exportação.");
+                }
+
+
+                var fileResult = await _service.ExportPage(
+                    page,
+                    pageSize,
+                    sortBy,
+                    sortDirection,
+                    search,
+                    acceptHeader,
+                    fileName);
+
+                return fileResult;
+            }
+            catch (NotSupportedException ex)
+            {
+                _logger.LogError(ex, "Erro ao exportar: formato não suportado.");
+                return StatusCode(StatusCodes.Status415UnsupportedMediaType, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro inesperado ao exportar.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro ao processar a exportação.");
+            }
+        }
+
+        }
 }

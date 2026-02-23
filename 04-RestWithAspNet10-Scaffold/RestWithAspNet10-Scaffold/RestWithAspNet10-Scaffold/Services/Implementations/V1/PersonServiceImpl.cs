@@ -1,8 +1,9 @@
-﻿using RestWithAspNet10_Scaffold.DTOs.Common;
+﻿using Microsoft.AspNetCore.Mvc;
+using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
+using RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory;
 using RestWithAspNet10_Scaffold.Files.Importers.Contract.Factory;
 using RestWithAspNet10_Scaffold.Mappers.V1;
-using RestWithAspNet10_Scaffold.Model;
 using RestWithAspNet10_Scaffold.Repositories;
 
 namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
@@ -11,15 +12,18 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
     {
         private readonly IPersonRepository _repo;
         private readonly FileImporterFactory _fileImporterFactory;
+        private readonly FileExporterFactory _fileExporterFactory;
         private readonly ILogger<PersonServiceImpl> _logger;
 
         public PersonServiceImpl(
             IPersonRepository repo,
             FileImporterFactory fileImporterFactory,
+            FileExporterFactory fileExporterFactory,
             ILogger<PersonServiceImpl> logger)
         {
             _repo = repo;
             _fileImporterFactory = fileImporterFactory;
+            _fileExporterFactory = fileExporterFactory;
             _logger = logger;
         }
 
@@ -150,5 +154,44 @@ namespace RestWithAspNet10_Scaffold.Services.Implementations.V1
                 throw;
             }
         }
+
+        public async Task<FileContentResult> ExportPage(
+            int page,
+            int pageSize,
+            string sortBy,
+            string sortDirection,
+            string? search,
+            string acceptHeader,
+            string fileName)
+        {
+            _logger.LogInformation(
+                "Exporting page: {page}, {pageSize}, {sortDirection}, {acceptHeader}, {name}",
+                page, pageSize, sortDirection, acceptHeader, fileName);            
+
+            try
+            {
+                var content = await FindAllAsync(
+                    page,
+                    pageSize,
+                    sortBy,
+                    sortDirection,
+                    search
+                    );
+
+                var exporter = _fileExporterFactory.GetExporter(acceptHeader);
+
+                var data = content.Items;
+
+                return exporter.ExportFile(data, fileName);
+            }
+            catch (NotSupportedException ex)
+            {
+                _logger.LogError(ex, "Unsupported export format requested: {AcceptHeader}", acceptHeader);
+                throw;
+            }
+
+        }
+
+        
     }
 }
