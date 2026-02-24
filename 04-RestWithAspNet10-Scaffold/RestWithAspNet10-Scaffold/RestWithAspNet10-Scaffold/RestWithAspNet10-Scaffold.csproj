@@ -38,6 +38,7 @@
 	<ItemGroup>
 	  <Folder Include="Files\Exporters\Contract\Factory\Implementation\" />
 	  <Folder Include="Files\Importers\Contract\Factory\Implementation\" />
+	  <Folder Include="Logs\" />
 	</ItemGroup>
 
 
