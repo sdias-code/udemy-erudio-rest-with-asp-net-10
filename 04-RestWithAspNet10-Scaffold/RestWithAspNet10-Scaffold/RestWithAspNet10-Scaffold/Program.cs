@@ -28,6 +28,9 @@ builder.Services.AddControllers( options =>
 
 builder.Services.AddCorsConfiguration(builder.Configuration);
 builder.Services.AddHATEOASConfiguration();
+
+builder.Services.ConfigureEmail(builder.Configuration);
+
 builder.Services.AddSwaggerConfig();
 builder.Services.AddOpenAPIConfig();
 builder.Services.AddRouteConfiguration();
