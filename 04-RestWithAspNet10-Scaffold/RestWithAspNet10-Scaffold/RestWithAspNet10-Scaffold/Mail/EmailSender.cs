@@ -1,4 +1,5 @@
-﻿using MailKit.Security;
+﻿using MailKit.Net.Smtp;
+using MailKit.Security;
 using MimeKit;
 using RestWithAspNet10_Scaffold.Mail.Settings;
 
@@ -11,9 +12,9 @@ namespace RestWithAspNet10_Scaffold.Mail
         private readonly EmailSettings _settings = settings;
         private readonly ILogger<EmailSender> _logger = logger;
 
-        private string _to;
-        private string _subject;
-        private string _body;
+        private string? _to;
+        private string? _subject;
+        private string? _body;
         private readonly List<MailboxAddress> _recipients = new();
         private string? _attachment;
 
@@ -105,6 +106,7 @@ namespace RestWithAspNet10_Scaffold.Mail
         private IEnumerable<MailboxAddress> ParseRecipients(string to)
         {
             var tosWithoutSpaces = to.Replace(" ", string.Empty);
+
             var recipients = tosWithoutSpaces.Split(';',
                 StringSplitOptions.RemoveEmptyEntries);
 

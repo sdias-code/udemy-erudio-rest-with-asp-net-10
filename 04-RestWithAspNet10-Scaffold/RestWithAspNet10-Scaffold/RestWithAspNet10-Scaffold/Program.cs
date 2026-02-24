@@ -4,6 +4,7 @@ using RestWithAspNet10_Scaffold.Extensions;
 using RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory;
 using RestWithAspNet10_Scaffold.Files.Importers.Contract.Factory;
 using RestWithAspNet10_Scaffold.Hypermedia.Filters;
+using RestWithAspNet10_Scaffold.Mail;
 using RestWithAspNet10_Scaffold.Repositories;
 using RestWithAspNet10_Scaffold.Repositories.Implementation;
 using RestWithAspNet10_Scaffold.Services;
@@ -44,6 +45,9 @@ builder.Services.AddScoped<IPersonService, PersonServiceImpl>();
 builder.Services.AddScoped<IPersonServiceV2, PersonServiceImplV2>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookServiceImpl>();
+
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<EmailSender>();
 
 builder.Services.AddTransient<CsvImporter>();
 builder.Services.AddTransient<XlsxImporter>();

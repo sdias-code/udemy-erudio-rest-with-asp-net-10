@@ -26,6 +26,25 @@ TestResults/
 *.cachefile
 
 ###############################
+# Extra Protections
+###############################
+
+# Logs
+**/*.log
+
+# Banco local
+*.mdf
+*.ldf
+
+# Docker local override
+docker-compose.override.yml
+**/docker-compose.override.yml
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+###############################
 # Publish
 ###############################
 publish/

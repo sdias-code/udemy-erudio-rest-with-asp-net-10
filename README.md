@@ -8,6 +8,7 @@ Projeto demonstrando boas práticas como:
 - Filtragem e ordenação nas consultas
 - Upload e download de arquivos
 - Importação e exportação de arquivos csv e xlsx
+- Envio de e-mail e anexos (MailKit)
 - Factory Pattern
 - Service Layer
 - Repository Pattern
