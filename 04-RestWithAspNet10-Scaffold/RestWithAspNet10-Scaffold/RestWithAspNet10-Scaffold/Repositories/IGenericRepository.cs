@@ -6,7 +6,7 @@
         T? Update(T entity);
         void Delete(long id);
         T? FindById(long id);
-        IEnumerable<T> FindAll();
+        IQueryable<T> FindAll();
         bool Exists(long id);
     }
 }

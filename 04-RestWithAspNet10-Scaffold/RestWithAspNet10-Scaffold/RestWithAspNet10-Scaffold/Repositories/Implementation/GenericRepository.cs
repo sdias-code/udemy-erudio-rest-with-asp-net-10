@@ -1,14 +1,18 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using RestWithAspNet10_Scaffold.Data;
+using RestWithAspNet10_Scaffold.Model.Base;
 
 namespace RestWithAspNet10_Scaffold.Repositories.Implementation
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T, TContext>
+        : IGenericRepository<T>
+        where T : BaseEntity
+        where TContext : DbContext
     {
-        private readonly AppDbContext _context;
-        private readonly DbSet<T> _dataset;
-        public GenericRepository(AppDbContext context)
+        protected readonly TContext _context;
+        protected readonly DbSet<T> _dataset;
+
+        public GenericRepository(TContext context)
         {
             _context = context;
             _dataset = _context.Set<T>();
@@ -23,15 +27,7 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
 
         public T? Update(T entity)
         {
-            var entry = _context.Entry(entity);
-            var keyProp = entry.Property("Id");
-
-            if (keyProp.CurrentValue == null)
-                throw new InvalidOperationException("Entidade sem chave primária definida.");
-
-            var key = (long)keyProp.CurrentValue;
-
-            var current = _dataset.Find(key);
+            var current = _dataset.Find(entity.Id);
 
             if (current == null)
                 return null;
@@ -44,7 +40,7 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
         }
 
         public void Delete(long id)
-        {            
+        {
             var entity = _dataset.Find(id);
 
             if (entity != null)
@@ -54,19 +50,15 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             }
         }
 
-        public T? FindById(long id) 
+        public T? FindById(long id)
             => _dataset.Find(id);
 
 
-        public IEnumerable<T> FindAll()        
-            => _dataset.AsNoTracking().ToList();
-        
+        public IQueryable<T> FindAll()
+            => _dataset.AsNoTracking();
+
         public bool Exists(long id)
-         => _dataset.Any(e => EF.Property<long>(e, "Id") == id);
-
-
-
-
+         => _dataset.Any(e => e.Id == id);
 
     }
 }

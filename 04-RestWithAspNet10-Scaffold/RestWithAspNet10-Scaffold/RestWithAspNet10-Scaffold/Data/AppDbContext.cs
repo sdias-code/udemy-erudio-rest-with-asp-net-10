@@ -13,6 +13,7 @@ namespace RestWithAspNet10_Scaffold.Data
         public DbSet<Person> Persons { get; set; }
         public DbSet<LogEvent> Logs { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,6 +29,8 @@ namespace RestWithAspNet10_Scaffold.Data
                 entity.Property(e => e.Exception).HasColumnType("nvarchar(max)");
                 entity.Property(e => e.Properties).HasColumnType("nvarchar(max)");
             });
+
+           
         }
     }
 }

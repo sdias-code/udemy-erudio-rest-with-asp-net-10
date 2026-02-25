@@ -1,0 +1,45 @@
+2026-02-25 02:02:48.893 -04:00 [INF] Executing Migrate...
+2026-02-25 02:02:48.938 -04:00 [INF] Evolve initialized.
+2026-02-25 02:02:49.394 -04:00 [ERR] Evolve migration failed
+EvolveDb.EvolveConfigurationException: Found multiple sql migration files with the same version: 7.
+   at EvolveDb.Utilities.MigrationUtil.CheckForDuplicateVersion(IEnumerable`1 migrations)
+   at EvolveDb.Migration.FileMigrationLoader.GetMigrations()
+   at EvolveDb.Evolve.ValidateAndRepairMetadata(DatabaseHelper db)
+   at EvolveDb.Evolve.InternalMigrate(DatabaseHelper db)
+   at EvolveDb.Evolve.<Migrate>b__144_0(DatabaseHelper db)
+   at EvolveDb.Evolve.InternalExecuteCommand(Action`1 commandAction)
+   at EvolveDb.Evolve.Migrate()
+   at RestWithAspNet10_Scaffold.Configurations.EvolveConfig.ExecuteMigrations(String connectionString) in D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\Configurations\EvolveConfig.cs:line 37
+2026-02-25 02:04:51.139 -04:00 [INF] Executing Migrate...
+2026-02-25 02:04:51.189 -04:00 [INF] Evolve initialized.
+2026-02-25 02:04:51.409 -04:00 [INF] Metadata validated.
+2026-02-25 02:04:51.457 -04:00 [INF] Successfully applied migration V8__Create_Table_Users.sql in 28 ms.
+2026-02-25 02:04:51.472 -04:00 [INF] Successfully applied migration V9__Insert_Data_In_Users.sql in 8 ms.
+2026-02-25 02:04:51.480 -04:00 [INF] Database migrated to version 9. 2 migration(s) applied in 36 ms.
+2026-02-25 02:04:52.730 -04:00 [INF] Now listening on: https://localhost:7286
+2026-02-25 02:04:52.738 -04:00 [INF] Now listening on: http://localhost:5120
+2026-02-25 02:04:53.345 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'Microsoft.AspNetCore.Mvc.FileContentResult'.
+System.InvalidOperationException: Microsoft.AspNetCore.Mvc.FileContentResult cannot be serialized because it does not have a parameterless constructor.
+   at System.Xml.Serialization.TypeDesc.CheckSupported()
+   at System.Xml.Serialization.TypeScope.GetTypeDesc(Type type, MemberInfo source, Boolean directReference, Boolean throwOnError)
+   at System.Xml.Serialization.ModelScope.GetTypeModel(Type type, Boolean directReference)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-25 02:04:53.382 -04:00 [WRN] An error occurred while trying to create an XmlSerializer for the type 'Microsoft.AspNetCore.Mvc.FileContentResult'.
+System.InvalidOperationException: Microsoft.AspNetCore.Mvc.FileContentResult cannot be serialized because it does not have a parameterless constructor.
+   at System.Xml.Serialization.TypeDesc.CheckSupported()
+   at System.Xml.Serialization.TypeScope.GetTypeDesc(Type type, MemberInfo source, Boolean directReference, Boolean throwOnError)
+   at System.Xml.Serialization.ModelScope.GetTypeModel(Type type, Boolean directReference)
+   at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   at Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter.CreateSerializer(Type type)
+2026-02-25 02:04:53.472 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-25 02:04:53.481 -04:00 [INF] Hosting environment: Development
+2026-02-25 02:04:53.486 -04:00 [INF] Content root path: D:\2025-udemy\erudio\src\git\udemy-erudio-rest-with-asp-net-10\04-RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold\RestWithAspNet10-Scaffold
+2026-02-25 02:04:54.144 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-25 02:04:54.144 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/_vs/browserLink - null null
+2026-02-25 02:04:54.264 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_framework/aspnetcore-browser-refresh.js - 200 16535 application/javascript; charset=utf-8 140.4148ms
+2026-02-25 02:04:54.445 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/_vs/browserLink - 200 null text/javascript; charset=UTF-8 357.1071ms
+2026-02-25 02:04:54.843 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - null null
+2026-02-25 02:04:54.993 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7286/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 149.8735ms
