@@ -30,6 +30,8 @@ TestResults/
 ###############################
 
 # Logs
+Logs/
+**/Logs/
 **/*.log
 
 # Banco local
