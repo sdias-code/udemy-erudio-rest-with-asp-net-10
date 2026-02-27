@@ -9,7 +9,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Authorize("Bearer")]
+    [Authorize]
     public class BookController : ControllerBase
     {
         private readonly IBookService _service;

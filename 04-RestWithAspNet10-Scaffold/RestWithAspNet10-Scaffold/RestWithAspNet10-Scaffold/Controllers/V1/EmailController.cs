@@ -9,7 +9,7 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Authorize("Bearer")]
+    [Authorize]
     public class EmailController(
          IEmailService emailService,
         ILogger<EmailController> logger

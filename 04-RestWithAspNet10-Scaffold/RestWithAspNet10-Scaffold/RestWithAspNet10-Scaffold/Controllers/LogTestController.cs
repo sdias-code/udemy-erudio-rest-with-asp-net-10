@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
 namespace RestWithAspNet10_Scaffold.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class LogTestController: ControllerBase
     {
         [HttpGet]

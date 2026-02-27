@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V2.Person;
 using RestWithAspNet10_Scaffold.Services;
@@ -8,6 +9,7 @@ namespace RestWithAspNet10_Scaffold.Controllers.V2
 {
     [Route("api/v2/[controller]")]
     [ApiController]
+    [Authorize]
     public class PersonController : ControllerBase
     {
         private readonly IPersonServiceV2 _service;

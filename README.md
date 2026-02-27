@@ -9,6 +9,7 @@ Projeto demonstrando boas práticas como:
 - Upload e download de arquivos
 - Importação e exportação de arquivos csv e xlsx
 - Envio de e-mail e anexos (MailKit)
+- Autenticação usando JWT com atualização e expiração de token
 - Factory Pattern
 - Service Layer
 - Repository Pattern
@@ -98,6 +99,16 @@ Response HTTP
 
 # Endpoints
 
+## Auth
+
+/api/auth
+
+POST /api/auth/signin
+POST /api/auth/refresh
+POST /api/auth/revoke
+POST /api/auth/create
+
+------------------------------------------------------------------------
 ## Book (v1)
 
 /api/v1/book

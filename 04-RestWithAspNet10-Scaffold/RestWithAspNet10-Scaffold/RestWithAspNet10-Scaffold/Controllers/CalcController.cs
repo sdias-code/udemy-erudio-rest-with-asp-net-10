@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestWithAspNet10_Scaffold.Services;
 using RestWithAspNet10_Scaffold.Utils;
@@ -8,6 +9,7 @@ namespace RestWithAspNet10_Scaffold.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class CalcController : ControllerBase
     {
         private readonly NumberService _service;
