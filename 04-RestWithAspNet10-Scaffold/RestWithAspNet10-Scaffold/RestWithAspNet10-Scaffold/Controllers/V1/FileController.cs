@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestWithAspNet10_Scaffold.DTOs.V1;
 using RestWithAspNet10_Scaffold.Services;
 
@@ -6,6 +7,7 @@ namespace RestWithAspNet10_Scaffold.Controllers.V1
 {
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize("Bearer")]
     public class FileController(
         IFileServices fileServices,
         ILogger<FileController> logger ) : ControllerBase

@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.IdentityModel.Tokens;
+using RestWithAspNet10_Scaffold.Auth.Config;
+using RestWithAspNet10_Scaffold.Auth.Contract;
+using RestWithAspNet10_Scaffold.Auth.Tools;
 using RestWithAspNet10_Scaffold.Configurations;
 using RestWithAspNet10_Scaffold.Extensions;
 using RestWithAspNet10_Scaffold.Files.Exporters.Contract.Factory;
@@ -11,6 +15,8 @@ using RestWithAspNet10_Scaffold.Services;
 using RestWithAspNet10_Scaffold.Services.Implementations;
 using RestWithAspNet10_Scaffold.Services.Implementations.V1;
 using RestWithAspNet10_Scaffold.Services.Implementations.V2;
+using System.Text;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,11 +46,23 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSingleton<NumberService>();
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
+
+builder.Services.Configure<TokenConfiguration>(
+    builder.Configuration.GetSection("TokenConfiguration"));
+
+builder.Services.AddJwtConfiguration(builder.Configuration);
+
+builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
+builder.Services.AddScoped<IPasswordHasher, SecurePasswordHasher>();
+builder.Services.AddScoped<IUserAuthService, UserAuthServiceImpl>();
+builder.Services.AddScoped<ILoginService, LoginServiceImpl>();
+
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IPersonService, PersonServiceImpl>();
 builder.Services.AddScoped<IPersonServiceV2, PersonServiceImplV2>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookServiceImpl>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<EmailSender>();
@@ -60,15 +78,17 @@ builder.Services.AddScoped<FileExporterFactory>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IFileServices, FileServicesImpl>();
 
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCors("DefaultPolicy");
-
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCors("DefaultPolicy");
 
 app.MapControllers();
 

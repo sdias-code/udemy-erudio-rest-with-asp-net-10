@@ -8,7 +8,7 @@ namespace RestWithAspNet10_Scaffold.Repositories
         User? FindById(long id);
 
         User Create(User user);
-        User? Update(User user);
+        User Update(User user);
 
         bool Exists(long id);
         bool UsernameExists(string username);

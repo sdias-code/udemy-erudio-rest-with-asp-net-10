@@ -15,7 +15,7 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
         public User? FindByUsername(string username)
         {
             return _context.Users
-                .SingleOrDefault(u => u.Username == username);
+                .SingleOrDefault(u => u.UserName == username);
         }
 
         public User? FindById(long id)
@@ -26,7 +26,7 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
         public bool UsernameExists(string username)
         {
             return _context.Users
-                .Any(u => u.Username == username);
+                .Any(u => u.UserName == username);
         }
 
         public bool Exists(long id)
@@ -41,12 +41,11 @@ namespace RestWithAspNet10_Scaffold.Repositories.Implementation
             return user;
         }
 
-        public User? Update(User user)
+        public User Update(User user)
         {
-            var current = _context.Users.Find(user.Id);
-
-            if (current == null)
-                return null;
+            var current = _context.Users.Find(user.Id)
+            ?? throw new KeyNotFoundException(
+                $"User with id {user.Id} not found.");
 
             _context.Entry(current).CurrentValues.SetValues(user);
 

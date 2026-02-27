@@ -6,8 +6,9 @@ namespace RestWithAspNet10_Scaffold.Model
     [Table("users")]
     public class User : BaseEntity
     {
+
         [Column("user_name")]
-        public string Username { get; set; } = string.Empty;
+        public string UserName { get; set; } = string.Empty;
 
         [Column("full_name")]
         public string FullName { get; set; } = string.Empty;
