@@ -9,7 +9,7 @@ Projeto demonstrando boas práticas como:
 - Upload e download de arquivos
 - Importação e exportação de arquivos csv e xlsx
 - Envio de e-mail e anexos (MailKit)
-- Autenticação usando JWT com atualização e expiração de token
+- Autenticação usando JWT com atualização, expiração e revoke de token
 - Factory Pattern
 - Service Layer
 - Repository Pattern
