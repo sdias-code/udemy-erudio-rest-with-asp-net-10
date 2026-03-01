@@ -7,7 +7,7 @@ Projeto demonstrando boas práticas como:
 - Paginação
 - Filtragem e ordenação nas consultas
 - Upload e download de arquivos
-- Importação e exportação de arquivos csv e xlsx
+- Importação e exportação de arquivos .csv e .xlsx
 - Envio de e-mail e anexos (MailKit)
 - Autenticação usando JWT com atualização, expiração e revoke de token
 - Factory Pattern
