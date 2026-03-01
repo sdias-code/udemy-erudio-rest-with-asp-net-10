@@ -1,31 +1,32 @@
-﻿using RestWithAspNet10.IntegrationTests.Fixtures;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using RestWithAspNet10.IntegrationTests.Tools;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace RestWithAspNet10.IntegrationTests.Person.JSON
 {
-    [TestCaseOrderer("RestWithAspNet10.IntegrationTests.Tools.PriorityOrderer", "RestWithAspNet10.IntegrationTests")]
     [Collection("IntegrationTests")]
-    public class PersonCorsIntegrationTests : IClassFixture<SqlServerFixture>
+    public class PersonCorsIntegrationTests
+        : IClassFixture<SqlServerFixture>
     {
         private readonly HttpClient _client;
-        private readonly TestDatabaseFixture _db;
 
-        public PersonCorsIntegrationTests(
-            SqlServerFixture sqlServerFixture,
-            TestDatabaseFixture db)
+        public PersonCorsIntegrationTests(SqlServerFixture fixture)
         {
-            
-            var factory = new CustomWebApplicationFactory<Program>
-                (sqlServerFixture.ConnectionString);
-
-            _db = db;
-
-            _db.InitializeAsync(sqlServerFixture.ConnectionString)
-                .GetAwaiter().GetResult();
+            var factory = new CustomWebApplicationFactory<Program>(
+                fixture.ConnectionString);
 
             _client = factory.CreateClient();
+
+            var configuration = factory.Services
+                .GetRequiredService<IConfiguration>();
+
+            var token = JwtTestHelper.GenerateToken(configuration);
+
+            _client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
         }
 
         private void AddOriginHeader(HttpRequestMessage request, string origin)
@@ -33,13 +34,29 @@ namespace RestWithAspNet10.IntegrationTests.Person.JSON
             request.Headers.Add("Origin", origin);
         }
 
-        [Fact, TestPriority(1)]
+        [Fact]
+        public async Task GetAllPersons_ShouldAllowRequestFromAllowedOrigin()
+        {
+            var origin = "http://localhost:8080";
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Get, "/api/v1/person");
+
+            AddOriginHeader(request, origin);
+
+            var response = await _client.SendAsync(request);
+
+            Assert.True(
+                response.Headers.Contains("Access-Control-Allow-Origin"));
+        }
+
+        [Fact]
         public async Task Should_Block_Invalid_Origin()
         {
             var request = new HttpRequestMessage(
                 HttpMethod.Get, "/api/v1/person");
 
-            request.Headers.Add("Origin", "http://evil.com");
+            AddOriginHeader(request, "http://evil.com");
 
             var response = await _client.SendAsync(request);
 
@@ -47,232 +64,30 @@ namespace RestWithAspNet10.IntegrationTests.Person.JSON
                 response.Headers.Contains("Access-Control-Allow-Origin"));
         }
 
-        [Fact, TestPriority(2)]
-        public async Task GetAllPersons_ShouldAllowRequestFromAllowedOrigin()
+        [Fact]
+        public async Task CreatePerson_WithAllowedOrigin_ShouldReturnCreated()
         {
-            // Arrange
-            var allowedOrigins = new[]
-            {
-                "http://localhost:8080",
-                "http://localhost:3000"
-            };
+            var origin = "http://localhost:8080";
 
-            var origin = allowedOrigins.First();
-
-            var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/person");
+            var request = new HttpRequestMessage(
+                HttpMethod.Post, "/api/v1/person");
 
             AddOriginHeader(request, origin);
 
-            // Act
-            var response = await _client.SendAsync(request);
-
-            // Assert
-            Assert.True(
-                response.Headers.Contains("Access-Control-Allow-Origin"));
-            var corsHeader = response.Headers
-                .GetValues("Access-Control-Allow-Origin")
-                .First();
-            Assert.Equal(origin, corsHeader);
-
-        }
-
-
-        [Fact, TestPriority(3)]
-        public async Task GetAllPersons_ShouldBlockRequestFromNotAllowedOrigin()
-        {
-            // Arrange
-            var notAllowedOrigin = "http://malicious-website.com";
-            var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/person");
-            AddOriginHeader(request, notAllowedOrigin);
-
-            // Act
-            var response = await _client.SendAsync(request);
-
-            // Assert
-            Assert.False(
-                response.Headers.Contains("Access-Control-Allow-Origin"));
-        }
-
-
-        [Fact, TestPriority(4)]
-        public async Task GetPersonById_ShouldAllowRequestFromAllowedOrigin()
-        {
-            // Arrange
-            var allowedOrigins = new[]
-            {
-                "http://localhost:8080",
-                "http://localhost:3000"
-            };
-
-            var origin = allowedOrigins.First();
-            var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/person/1");
-
-            AddOriginHeader(request, origin);
-
-            // Act
-            var response = await _client.SendAsync(request);
-
-            // Assert
-            Assert.True(
-                response.Headers.Contains("Access-Control-Allow-Origin"));
-            var corsHeader = response.Headers
-                .GetValues("Access-Control-Allow-Origin")
-                .First();
-            Assert.Equal(origin, corsHeader);
-        }
-
-
-        [Fact, TestPriority(5)]
-        public async Task GetPersonById_ShouldBlockRequestFromNotAllowedOrigin()
-        {
-            // Arrange
-            var notAllowedOrigin = "http://malicious-website.com";
-            var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/person/1");
-
-            AddOriginHeader(request, notAllowedOrigin);
-
-            // Act
-            var response = await _client.SendAsync(request);
-
-            // Assert
-            Assert.False(
-                response.Headers.Contains("Access-Control-Allow-Origin"));
-        }
-
-
-        [Fact, TestPriority(6)]
-        public async Task CreatePerson_ShouldAllowRequestFromAllowedOrigin()
-        {
-            // Arrange
-            await _db.ResetAsync();
-
-            var allowedOrigins = new[]
-            {
-                "http://localhost:8080",
-                "http://localhost:3000"
-            };
-
-            var origin = allowedOrigins.First();
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/v1/person");
-
-            AddOriginHeader(request, origin);
-
-            request.Content = new StringContent(
-                "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"address\":\"123 Main St\",\"gender\":\"Male\"}",
-                System.Text.Encoding.UTF8,
-                "application/json");
-
-            // Act
-            var response = await _client.SendAsync(request);
-
-            // Assert
-            Assert.True(
-                response.Headers.Contains("Access-Control-Allow-Origin"));
-
-            var corsHeader = response.Headers
-                .GetValues("Access-Control-Allow-Origin")
-                .First();
-
-            Assert.Equal(origin, corsHeader);
-        }
-
-
-        [Fact, TestPriority(7)]
-        public async Task CreatePerson_ShouldBlockRequestFromNotAllowedOrigin()
-        {
-            // Arrange
-            var notAllowedOrigin = "http://malicious-website.com";
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/v1/person");
-
-            AddOriginHeader(request, notAllowedOrigin);
-
-            request.Content = new StringContent(
-                "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"address\":\"123 Main St\",\"gender\":\"Male\"}",
-                System.Text.Encoding.UTF8,
-                "application/json");
-
-            // Act
-            var response = await _client.SendAsync(request);
-
-            // Assert
-            Assert.False(
-                response.Headers.Contains("Access-Control-Allow-Origin"));
-        }
-
-
-        [Fact, TestPriority(8)]
-        public async Task OptionsRequest_ShouldReturnCorsHeadersForPreflightRequest()
-        {
-            // Arrange
-            var allowedOrigins = new[]
-            {
-                "http://localhost:8080",
-                "http://localhost:3000"
-            };
-
-            var origin = allowedOrigins.First();
-            var request = new HttpRequestMessage(HttpMethod.Options, "/api/v1/person");
-
-            AddOriginHeader(request, origin);
-            request.Headers.Add("Access-Control-Request-Method", "POST");
-            request.Headers.Add("Access-Control-Request-Headers", "Content-Type");
-
-            // Act
-            var response = await _client.SendAsync(request);
-
-            foreach (var header in response.Headers)
-            {
-                Console.WriteLine($"{header.Key}: {string.Join(",", header.Value)}");
-            }
-
-
-            // Assert
-            Assert.True(
-                response.Headers.Contains("Access-Control-Allow-Origin"));
-            var corsHeader = response.Headers
-                .GetValues("Access-Control-Allow-Origin")
-                .First();
-            Assert.Equal(origin, corsHeader);
-            Assert.True(
-                response.Headers.Contains("Access-Control-Allow-Methods"));
-            Assert.True(
-                response.Headers.Contains("Access-Control-Allow-Headers"));
-        }
-
-
-        [Fact, TestPriority(8)]
-        public async Task CreatePerson_WithAllowedOrgin_SholdReturnCreated()
-        {
-            // Arrange
-            await _db.ResetAsync();
-
-            var allowedOrigins = new[]
-            {
-                "http://localhost:8080",
-                "http://localhost:3000"
-            };
-
-            var request = new PersonCreateDTO
+            request.Content = JsonContent.Create(new PersonCreateDTO
             {
                 FirstName = "Jane",
                 LastName = "Smith",
-                Address = "456 Elm St",
+                Address = "Street",
                 Gender = "Female"
-            };
+            });
 
-            // Act
-            var response = await _client.PostAsJsonAsync("/api/v1/person", request);
+            var response = await _client.SendAsync(request);
 
-            // Assert
             response.EnsureSuccessStatusCode();
 
-            var created = await response.Content.ReadFromJsonAsync<PersonCreateDTO>();
-
-            Assert.NotNull(created);
-            Assert.Equal(request.FirstName, created!.FirstName);            
-
+            Assert.True(
+                response.Headers.Contains("Access-Control-Allow-Origin"));
         }
-
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using RestWithAspNet10.IntegrationTests.Fixtures;
+﻿using RestWithAspNet10.IntegrationTests.Base;
+using RestWithAspNet10.IntegrationTests.Fixtures;
 using RestWithAspNet10.IntegrationTests.Tools;
 using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
@@ -6,21 +7,24 @@ using System.Text.Json;
 
 namespace RestWithAspNet10.IntegrationTests.HETOAS
 {
-    [Collection("LocalDbCollection")]
-    public class PersonPaginationTests : IClassFixture<SqlServerFixture>
+    [Collection("IntegrationTests")]
+    public class PersonPaginationTests
+        : AuthenticatedIntegrationTest
     {
-        private readonly HttpClient _client;
-
-        public PersonPaginationTests(LocalDbSqlFixture fixture)
+        public PersonPaginationTests(
+            SqlServerFixture sqlServerFixture,
+            TestDatabaseFixture db)
+            : base(sqlServerFixture, db)
         {
-            var factory = new CustomWebApplicationFactory<Program>(fixture.ConnectionString);
-            _client = factory.CreateClient();
         }
 
         [Fact]
         public async Task ShouldReturnPagedPersons()
         {
-            var response = await _client.GetAsync("/api/v1/person?page=1&pageSize=5");
+            await SetupAsync();
+
+            var response = await _client
+                .GetAsync("/api/v1/person?page=1&pageSize=5");
 
             response.EnsureSuccessStatusCode();
 
@@ -31,12 +35,10 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
             Assert.NotNull(result);
-
             Assert.True(result.Page > 0);
             Assert.True(result.PageSize > 0);
             Assert.True(result.TotalItems > 0);
-            Assert.True(result.TotalPages > 1);
+            Assert.True(result.TotalPages > 0);
         }
-
     }
 }

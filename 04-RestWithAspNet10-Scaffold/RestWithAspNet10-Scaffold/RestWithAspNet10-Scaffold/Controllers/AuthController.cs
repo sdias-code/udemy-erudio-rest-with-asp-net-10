@@ -12,7 +12,6 @@ namespace RestWithAspNet10_Scaffold.Controllers
     public class AuthController : ControllerBase
     {
         private readonly ILoginService _loginService;
-        private readonly IUserAuthService _userAuthService;
         private readonly ILogger<AuthController> _logger;
 
         public AuthController(
@@ -21,7 +20,6 @@ namespace RestWithAspNet10_Scaffold.Controllers
             ILogger<AuthController> logger)
         {
             _loginService = loginService;
-            _userAuthService = userAuthService;
             _logger = logger;
         }
 
@@ -77,6 +75,9 @@ namespace RestWithAspNet10_Scaffold.Controllers
             return NoContent();
         }
 
+        // Endpoint to create a new user account
+        // This is a simple implementation for demonstration purposes.
+        // In a real application, you would want to add validation,
         [HttpPost("create")]
         [AllowAnonymous]
         public IActionResult Create(

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Respawn;
 using Respawn.Graph;
+using RestWithAspNet10_Scaffold.Auth.Tools;
 
 namespace RestWithAspNet10.IntegrationTests.Fixtures;
 
@@ -72,5 +73,27 @@ public class TestDatabaseFixture
     {
         await SeedPersonAsync();
         await SeedBookAsync();
+        await SeedUserAsync();
+    }
+
+    public async Task SeedUserAsync()
+    {
+        await using var conn = new SqlConnection(ConnectionString);
+        await conn.OpenAsync();
+
+        var hasher = new SecurePasswordHasher();
+        var hash = hasher.Hash("123456");
+
+        var cmd = conn.CreateCommand();
+        cmd.CommandText = """
+            INSERT INTO users (user_name, full_name, password_hash, refresh_token, refresh_token_expiry_time)
+            VALUES (@username, @fullname, @password, NULL, NULL);
+            """;
+
+        cmd.Parameters.AddWithValue("@username", "testuser");
+        cmd.Parameters.AddWithValue("@fullname", "Test User");
+        cmd.Parameters.AddWithValue("@password", hash);
+
+        await cmd.ExecuteNonQueryAsync();
     }
 }

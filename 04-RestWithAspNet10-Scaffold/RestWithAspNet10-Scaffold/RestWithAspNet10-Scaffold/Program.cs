@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.IdentityModel.Tokens;
 using RestWithAspNet10_Scaffold.Auth.Config;
 using RestWithAspNet10_Scaffold.Auth.Contract;
 using RestWithAspNet10_Scaffold.Auth.Tools;
@@ -15,8 +14,6 @@ using RestWithAspNet10_Scaffold.Services;
 using RestWithAspNet10_Scaffold.Services.Implementations;
 using RestWithAspNet10_Scaffold.Services.Implementations.V1;
 using RestWithAspNet10_Scaffold.Services.Implementations.V2;
-using System.Text;
-using static Org.BouncyCastle.Math.EC.ECCurve;
 
 var builder = WebApplication.CreateBuilder(args);
 

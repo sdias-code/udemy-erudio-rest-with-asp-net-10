@@ -1,4 +1,5 @@
-﻿using RestWithAspNet10.IntegrationTests.Fixtures;
+﻿using RestWithAspNet10.IntegrationTests.Base;
+using RestWithAspNet10.IntegrationTests.Fixtures;
 using RestWithAspNet10.IntegrationTests.Tools;
 using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Person;
@@ -9,29 +10,18 @@ using System.Text.Json;
 namespace RestWithAspNet10.IntegrationTests.HETOAS
 {
     [Collection("IntegrationTests")]
-    public class PersonControllerHATOASTests : IClassFixture<SqlServerFixture>
+    public class PersonControllerHATOASTests : AuthenticatedIntegrationTest
     {
-        private readonly HttpClient _client;
-        private readonly TestDatabaseFixture _db;
-
-        public PersonControllerHATOASTests(SqlServerFixture sqlServerFixture, TestDatabaseFixture db)
+        public PersonControllerHATOASTests(
+            SqlServerFixture fixture, 
+            TestDatabaseFixture db) : base(fixture, db)
         {
-            var factory = new CustomWebApplicationFactory<Program>(
-                sqlServerFixture.ConnectionString);
-
-            _db = db;
-
-            _db.InitializeAsync(sqlServerFixture.ConnectionString)
-                .GetAwaiter().GetResult();
-
-            _client = factory.CreateClient();
         }
 
         [Fact]
         public async Task GetAllPerson_ShouldReturnPersonWithHateoasLinks()
         {
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             var response = await _client.GetAsync("/api/v1/person");
             response.EnsureSuccessStatusCode();
@@ -60,8 +50,7 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         public async Task GetPersonById_ShouldReturnPersonWithHateoasLinks()
         {
             // Arrange
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             // Act
             var response = await _client.GetAsync("/api/v1/person/1");
@@ -86,8 +75,7 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         public async Task CreatePerson_ShouldReturnPersonkWithHateoasLinks()
         {
             // Arrange
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             var person = new
             {
@@ -126,8 +114,7 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         public async Task UpdatePerson_ShouldReturnUpdatedPersonWithHateoasLinks()
         {
             // Arrange
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             var updatedPerson = new
             {
@@ -163,8 +150,7 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         public async Task DeletePerson_ShouldRemovePerson()
         {
             // Arrange
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             // Act
             var deleteResponse = await _client.DeleteAsync("/api/v1/person/1");

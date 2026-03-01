@@ -1,4 +1,5 @@
-﻿using RestWithAspNet10.IntegrationTests.Fixtures;
+﻿using RestWithAspNet10.IntegrationTests.Base;
+using RestWithAspNet10.IntegrationTests.Fixtures;
 using RestWithAspNet10.IntegrationTests.Tools;
 using RestWithAspNet10_Scaffold.DTOs.Common;
 using RestWithAspNet10_Scaffold.DTOs.V1.Book;
@@ -8,30 +9,19 @@ using System.Text.Json;
 namespace RestWithAspNet10.IntegrationTests.HETOAS
 {
     [Collection("IntegrationTests")]
-    public class BookControllerHATOASTests : IClassFixture<SqlServerFixture>
+    public class BookControllerHATOASTests : AuthenticatedIntegrationTest
     {
-        private readonly HttpClient _client;
-        private readonly TestDatabaseFixture _db;
-
-        public BookControllerHATOASTests(SqlServerFixture sqlServerFixture, TestDatabaseFixture db)
+        public BookControllerHATOASTests(
+            SqlServerFixture fixture, 
+            TestDatabaseFixture db) : base(fixture, db)
         {
-            var factory = new CustomWebApplicationFactory<Program>(
-                sqlServerFixture.ConnectionString);
-
-            _db = db;
-
-            _db.InitializeAsync(sqlServerFixture.ConnectionString)
-                .GetAwaiter().GetResult();
-
-            _client = factory.CreateClient();
         }
 
         [Fact]
         public async Task GetAllBooks_ShouldReturnBooksWithHateoasLinks()
         {
             // Arrange
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             // Act 
             var response = await _client.GetAsync("/api/v1/book");
@@ -60,8 +50,7 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         public async Task GetBookById_ShouldReturnBookWithHateoasLinks()
         {
             // Arrange
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             // Act
             var response = await _client.GetAsync("/api/v1/book/1");
@@ -86,8 +75,7 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         public async Task CreateBook_ShouldReturnBookWithHateoasLinks()
         {
             // Arrange
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             var newBook = new
             {
@@ -126,8 +114,7 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         public async Task UpdateBook_ShouldReturnUpdatedBookWithHateoasLinks()
         {
             // Arrange
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             var updatedBook = new
             {
@@ -166,8 +153,7 @@ namespace RestWithAspNet10.IntegrationTests.HETOAS
         public async Task DeleteBook_ShouldRemoveBook()
         {
             // Arrange
-            await _db.ResetAsync();
-            await _db.SeedAllAsync();
+            await SetupAsync();
 
             // Act
             var deleteResponse = await _client.DeleteAsync("/api/v1/book/1");
