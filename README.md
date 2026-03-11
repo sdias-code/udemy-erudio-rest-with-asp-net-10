@@ -134,34 +134,34 @@ Exemplo .env
 
 ## Executando com Docker
 
-    Para subir toda a aplicação utilizando containers:
-    docker compose up --build
+Para subir toda a aplicação utilizando containers:
+docker compose up --build
 
-    A aplicação ficará disponível em:
+A aplicação ficará disponível em:
     http://localhost:8080
 
 ## Swagger / Scalar
 
-    Documentação da API:
+Documentação da API:
 
-    Swagger:
+Swagger:
     http://localhost:8080/swagger
 
-    Scalar:
+Scalar:
     http://localhost:8080/scalar
 
 ## Banco de Dados
 
-    O banco de dados roda em container utilizando Microsoft SQL Server.
-    Os dados são persistidos utilizando Docker Volume, garantindo que os dados não sejam perdidos caso o container seja recriado.
+O banco de dados roda em container utilizando Microsoft SQL Server.
+Os dados são persistidos utilizando Docker Volume, garantindo que os dados não sejam perdidos caso o container seja recriado.
 
-    Obs. subir apenas o container sqlserver, criar o banco db_erudio, depois subir o container da api 
-    Ao subir o container da api o Evolve criará as tabelas: person, books, users, logs
+Obs. subir apenas o container sqlserver, criar o banco db_erudio, depois subir o container da api 
+Ao subir o container da api o Evolve criará as tabelas: person, books, users, logs
 
 ## Migrações
 
-    O projeto utiliza Evolve para versionamento do banco de dados.
-    As migrations são executadas automaticamente quando a aplicação inicia.
+O projeto utiliza Evolve para versionamento do banco de dados.
+As migrations são executadas automaticamente quando a aplicação inicia.
 
 ------------------------------------------------------------------------
 
