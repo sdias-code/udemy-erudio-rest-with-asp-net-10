@@ -97,6 +97,70 @@ Response HTTP
 
 ------------------------------------------------------------------------
 
+# Docker
+
+A aplicação pode ser executada utilizando Docker e Docker Compose, permitindo rodar a API e o banco de dados sem instalação local do SQL Server.
+
+A arquitetura utiliza containers para:
+
+ - API ASP.NET Core
+
+ - SQL Server
+
+ - Volume persistente para dados do banco
+
+## Containers utilizados
+ Serviço	 Imagem
+ API	     .NET ASP.NET Runtime
+ Database	 Microsoft SQL Server
+
+ ## Variáveis de Ambiente
+
+    A aplicação utiliza variáveis de ambiente para configuração sensível.
+
+    Essas variáveis devem ser definidas em um arquivo .env na raiz do projeto.
+
+Exemplo .env
+
+### Database
+    SQLSERVER_CONNECTION=Server=sqlserver;Database=db_erudio;User Id=sa;Password=YourStrongPassword;TrustServerCertificate=True
+
+### JWT
+    TOKEN_SECRET=your-super-secret-key
+
+### ASP.NET
+    ASPNETCORE_ENVIRONMENT=Development
+
+## Executando com Docker
+
+    Para subir toda a aplicação utilizando containers:
+    docker compose up --build
+
+    A aplicação ficará disponível em:
+    http://localhost:8080
+
+## Swagger / Scalar
+
+    Documentação da API:
+
+    Swagger:
+    http://localhost:8080/swagger
+
+    Scalar:
+    http://localhost:8080/scalar
+
+## Banco de Dados
+
+    O banco de dados roda em container utilizando Microsoft SQL Server.
+    Os dados são persistidos utilizando Docker Volume, garantindo que os dados não sejam perdidos caso o container seja recriado.
+
+## Migrações
+
+    O projeto utiliza Evolve para versionamento do banco de dados.
+    As migrations são executadas automaticamente quando a aplicação inicia.
+
+------------------------------------------------------------------------
+
 # Endpoints
 
 ## Auth
@@ -166,12 +230,6 @@ GET /calc/raiz/{number}
 
 ------------------------------------------------------------------------
 
-## Scalar
-
-Url: https://localhost:7286/scalar/
-
-------------------------------------------------------------------------
-
 # Testes
 
 Executar:
@@ -185,6 +243,21 @@ dotnet test
 dotnet restore\
 dotnet build\
 dotnet run
+
+------------------------------------------------------------------------
+
+# Estrutura do Projeto
+
+    project-root
+    │
+    ├── docker-compose.yml
+    ├── .env
+    │
+    ├── src
+    │   └── RestWithAspNet10_Scaffold
+    │
+    └── tests
+        └── RestWithAspNet10
 
 ------------------------------------------------------------------------
 
