@@ -154,6 +154,9 @@ Exemplo .env
     O banco de dados roda em container utilizando Microsoft SQL Server.
     Os dados são persistidos utilizando Docker Volume, garantindo que os dados não sejam perdidos caso o container seja recriado.
 
+    Obs. subir apenas o container sqlserver, criar o banco db_erudio, depois subir o container da api 
+    Ao subir o container da api o Evolve criará as tabelas: person, books, users, logs
+
 ## Migrações
 
     O projeto utiliza Evolve para versionamento do banco de dados.
