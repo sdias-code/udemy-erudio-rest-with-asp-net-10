@@ -7,7 +7,7 @@ namespace RestWithAspNet10_Scaffold.Extensions
     {
         public static void ConfigureSqlServer(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = configuration.GetConnectionString("SqlServerConnection");
 
             if (string.IsNullOrEmpty(connectionString))
             {

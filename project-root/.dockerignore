@@ -1,0 +1,33 @@
+# Git
+**/.git
+**/.gitignore
+
+# IDE
+**/.vs
+**/.vscode
+**/*.user
+**/*.suo
+
+# Build
+**bin/
+**obj/
+
+# Logs
+**Logs/
+*.log
+
+# Node
+**/node_modules
+npm-debug.log
+
+# Docker compose files (não precisam ir para build context)
+docker-compose*
+
+# Environment
+.env
+secrets.dev.yaml
+values.dev.yaml
+
+# Docs
+README.md
+LICENSE

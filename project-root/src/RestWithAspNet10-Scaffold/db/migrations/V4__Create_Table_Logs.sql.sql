@@ -1,0 +1,10 @@
+CREATE TABLE Logs (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Message NVARCHAR(MAX) NULL,
+    MessageTemplate NVARCHAR(MAX) NULL,
+    Level NVARCHAR(128) NULL,
+    TimeStamp DATETIME2 NOT NULL,
+    Exception NVARCHAR(MAX) NULL,
+    Properties NVARCHAR(MAX) NULL,
+    LogEventJson NVARCHAR(MAX) NULL
+);

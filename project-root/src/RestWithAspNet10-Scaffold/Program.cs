@@ -41,8 +41,11 @@ builder.Services.AddRouteConfiguration();
 builder.Services.ConfigureSqlServer(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddHealthChecks();
+
 builder.Services.AddSingleton<NumberService>();
-builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
+
+EvolveConfig.ExecuteMigrations(builder.Configuration);
 
 builder.Services.Configure<TokenConfiguration>(
     builder.Configuration.GetSection("TokenConfiguration"));
@@ -78,7 +81,11 @@ builder.Services.AddScoped<IFileServices, FileServicesImpl>();
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+if(!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
 
 app.UseRouting();
 
@@ -95,4 +102,9 @@ app.UseSwaggerConfig();
 
 app.UseScalarConfig();
 
+app.MapHealthChecks("/health");
+
+//var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+//app.Run($"http://*:{port}");
+//app.Run("http://0.0.0.0:8080");
 app.Run();
