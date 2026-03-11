@@ -144,10 +144,10 @@ A aplicação ficará disponível em:
 
 Documentação da API:
 
-Swagger:
+### Swagger:
     http://localhost:8080/swagger
 
-Scalar:
+### Scalar:
     http://localhost:8080/scalar
 
 ## Banco de Dados
