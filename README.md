@@ -110,9 +110,10 @@ A arquitetura utiliza containers para:
  - Volume persistente para dados do banco
 
 ## Containers utilizados
- Serviço	 Imagem
- API	     .NET ASP.NET Runtime
- Database	 Microsoft SQL Server
+ | Serviço  | Imagem               | Descrição                      |
+ |----------|----------------------|--------------------------------|
+ | API      | .NET ASP.NET Runtime | Container da aplicação Web API |
+ | Database | Microsoft SQL Server | Banco de dados relacional      |
 
  ## Variáveis de Ambiente
 
