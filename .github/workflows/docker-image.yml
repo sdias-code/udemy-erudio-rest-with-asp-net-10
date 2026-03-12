@@ -21,12 +21,12 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-    - name: Build Docker image
-      run: |
-        docker build -t sdiascode/project-root-api:latest \
-                     -t sdiascode/project-root-api:1.0.${{ github.run_number }} .
-
-    - name: Push Docker images
-      run: |
-        docker push sdiascode/project-root-api:latest
-        docker push sdiascode/project-root-api:1.0.${{ github.run_number }}
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: |
+          sdiascode/project-root-api:latest
+          sdiascode/project-root-api:1.0.${{ github.run_number }}
