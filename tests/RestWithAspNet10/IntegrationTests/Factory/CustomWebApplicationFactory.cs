@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RestWithAspNet10_Scaffold.Data;
 
-public class CustomWebApplicationFactory<TProgram>
-    : WebApplicationFactory<TProgram> where TProgram : class
+public class CustomWebApplicationFactory
+    : WebApplicationFactory<Program>
 {
     private readonly string _connectionString;
 
@@ -13,21 +13,20 @@ public class CustomWebApplicationFactory<TProgram>
     {
         _connectionString = connectionString;
     }
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureServices(services =>
         {
             var descriptor = services.SingleOrDefault(
                 d => d.ServiceType ==
-                     typeof(DbContextOptions<AppDbContext>));
+                typeof(DbContextOptions<AppDbContext>));
 
             if (descriptor != null)
                 services.Remove(descriptor);
 
             services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseSqlServer(_connectionString);
-            });
+                options.UseSqlServer(_connectionString));
         });
     }
 }

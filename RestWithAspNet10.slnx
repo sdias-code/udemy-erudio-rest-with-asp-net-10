@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/RestWithAspNet10-Scaffold/RestWithAspNet10-Scaffold.csproj" />
+  <Project Path="tests/RestWithAspNet10/RestWithAspNet10.csproj" />
+</Solution>
